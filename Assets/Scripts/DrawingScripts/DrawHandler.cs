@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Splines;
 
 public class DrawHandler : MonoBehaviour
 {
@@ -11,9 +13,10 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private int brushSize = 4;
     [SerializeField] private Color brushColor = Color.black;
 
-    [SerializeField] private Material drawingMaterial;
+    [SerializeField] private Material drawingCanvasMaterial;
 
     [SerializeField] private Texture2D generatedTexture;
+    [SerializeField] private Texture2D currDrawTemplateTexture;
 
     private Color[] colorMap;
 
@@ -29,7 +32,13 @@ public class DrawHandler : MonoBehaviour
     private float yDrawMult = 0;
 
     private bool pressedLastFrame = false;
+    private bool startedDrawing = false;
     private Vector2Int lastPoint = Vector2Int.zero;
+
+    [SerializeField] private SplineContainer drawSpline;
+    [SerializeField] private float minDistToSplinePoints = 0.1f;
+    [SerializeField] private GameObject _NextPointMarker;
+    private DrawingMarkerHandler nextPointMarker;
 
     private void Start()
     {
@@ -38,10 +47,13 @@ public class DrawHandler : MonoBehaviour
         generatedTexture = new Texture2D(totalPixelsY, totalPixelsX, TextureFormat.RGBA32, false);
         generatedTexture.filterMode = FilterMode.Point;
 
-        drawingMaterial.SetTexture("_BaseMap", generatedTexture);
+        drawingCanvasMaterial.SetTexture("_BaseMap", generatedTexture);
 
         xDrawMult = totalPixelsX / (_BottomRightPoint.localPosition.x - _TopLeftPoint.localPosition.x);
         yDrawMult = totalPixelsY / (_BottomRightPoint.localPosition.y - _TopLeftPoint.localPosition.y);
+
+        nextPointMarker = Instantiate(_NextPointMarker).GetComponent<DrawingMarkerHandler>();
+        nextPointMarker.transform.position = drawSpline.transform.position;
 
         ClearDrawTexture();
     }
@@ -68,12 +80,30 @@ public class DrawHandler : MonoBehaviour
             drawPoint.position = hit.point;
             currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
             currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
-            DrawAndSetTexure();
+
+            //Checks if you can draw there based on template texture
+            if (currDrawTemplateTexture.GetPixel(currXPixel, currYPixel) != Color.clear)
+            {
+                //Handles logic if starting to draw for the first time
+                if (!startedDrawing)
+                {
+                    if (StartDrawingSplineCheck())
+                    {
+                        HandleDrawingLogic();
+                        return;
+                    }
+                }
+
+                //Handles logic if continueing the drawing 
+                if (pressedLastFrame || colorMap[currXPixel * totalPixelsY + currYPixel] != Color.clear)
+                {
+                    HandleDrawingLogic();
+                    return;
+                }
+            }
         }
-        else
-        {
-            pressedLastFrame = false;
-        }
+
+        pressedLastFrame = false;
     }
 
     private void DrawAndSetTexure()
@@ -147,5 +177,59 @@ public class DrawHandler : MonoBehaviour
         }
 
         SetDrawingTexture();
+    }
+
+    private void HandleSplineChecking()
+    {
+        if (drawSpline.Spline.Count != 0)
+        {
+            //Checks if close enough to starting point
+            Vector3 worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
+            Vector3 diference = worldSpaceKnotLocation - drawPoint.position;
+            if (diference.sqrMagnitude <= minDistToSplinePoints)
+            {
+                drawSpline.Spline.RemoveAt(0);
+                if (drawSpline.Spline.Count != 0)
+                {
+                    nextPointMarker.HandleMoveNextMarker((Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
+                }
+            }
+            else
+            {
+                //Checks if close enough to ending point
+                worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
+                diference = worldSpaceKnotLocation - drawPoint.position;
+                if (diference.sqrMagnitude <= minDistToSplinePoints)
+                {
+                    drawSpline.Spline.RemoveAt(drawSpline.Spline.Count - 1);
+                    if (drawSpline.Spline.Count != 0)
+                    {
+                        nextPointMarker.HandleMoveNextMarker((Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
+                    }
+                }
+            }
+
+            if (drawSpline.Spline.Count == 0)
+            {
+                //Finished drawing
+            }
+        }
+    }
+
+    private void HandleDrawingLogic()
+    {
+        DrawAndSetTexure();
+        HandleSplineChecking();
+        startedDrawing = true;
+        return;
+    }
+
+    private bool StartDrawingSplineCheck()
+    {
+        //Checks if close enough to starting point
+        Vector3 worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
+        Vector3 diference = worldSpaceKnotLocation - drawPoint.position;
+
+        return diference.sqrMagnitude <= minDistToSplinePoints;
     }
 }
