@@ -1,0 +1,151 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class DrawHandler : MonoBehaviour
+{
+    [SerializeField] private Camera _Cam;
+    [SerializeField] private int totalPixelsX = 1024;
+    [SerializeField] private int totalPixelsY = 512;
+    [SerializeField] private int brushSize = 4;
+    [SerializeField] private Color brushColor = Color.black;
+
+    [SerializeField] private Material drawingMaterial;
+
+    [SerializeField] private Texture2D generatedTexture;
+
+    private Color[] colorMap;
+
+    [SerializeField] private Transform _TopLeftPoint;
+    [SerializeField] private Transform _BottomRightPoint;
+    [SerializeField] private Transform drawPoint;
+
+    [SerializeField] private float _RaycastDistence;
+
+    private int currXPixel = 0;
+    private int currYPixel = 0;
+    private float xDrawMult = 0;
+    private float yDrawMult = 0;
+
+    private bool pressedLastFrame = false;
+    private Vector2Int lastPoint = Vector2Int.zero;
+
+    private void Start()
+    {
+        colorMap = new Color[totalPixelsX * totalPixelsY];
+
+        generatedTexture = new Texture2D(totalPixelsY, totalPixelsX, TextureFormat.RGBA32, false);
+        generatedTexture.filterMode = FilterMode.Point;
+
+        drawingMaterial.SetTexture("_BaseMap", generatedTexture);
+
+        xDrawMult = totalPixelsX / (_BottomRightPoint.localPosition.x - _TopLeftPoint.localPosition.x);
+        yDrawMult = totalPixelsY / (_BottomRightPoint.localPosition.y - _TopLeftPoint.localPosition.y);
+
+        ClearDrawTexture();
+    }
+
+    private void Update()
+    {
+        if (Mouse.current.leftButton.isPressed)
+        {
+            CalculatePixelToBeDrawnAt();
+        }
+        else
+        {
+            pressedLastFrame = false;
+        }
+    }
+
+    private void CalculatePixelToBeDrawnAt()
+    {
+        Ray drawRay = _Cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
+        {
+            drawPoint.position = hit.point;
+            currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
+            currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
+            DrawAndSetTexure();
+        }
+        else
+        {
+            pressedLastFrame = false;
+        }
+    }
+
+    private void DrawAndSetTexure()
+    {
+        if (pressedLastFrame && (lastPoint.x != currXPixel || lastPoint.y != currYPixel))
+        {
+            int dist = (int)Mathf.Sqrt((currXPixel - lastPoint.x) * (currXPixel - lastPoint.x) + (currYPixel - lastPoint.y) * (currYPixel - lastPoint.y));
+            for (int i = 1; i <= dist; i++)
+            {
+                DrawPixels((i * currXPixel + (dist - i) * lastPoint.x) / dist, (i * currYPixel + (dist - i) * lastPoint.y) / dist);
+            }
+        }
+        else
+        {
+            DrawPixels(currXPixel, currYPixel);
+        }
+
+        pressedLastFrame = true;
+        lastPoint = new Vector2Int(currXPixel, currYPixel);
+        SetDrawingTexture();
+    }
+
+    private void DrawPixels(int xPixel, int yPixel)
+    {
+        int i = xPixel - brushSize + 1;
+        int j = yPixel - brushSize + 1;
+        int maxI = xPixel + brushSize - 1;
+        int maxJ = yPixel + brushSize - 1;
+
+        if (i < 0)
+        {
+            i = 0;
+        }
+        if (j < 0)
+        {
+            j = 0;
+        }
+
+        if (maxI >= totalPixelsX)
+        {
+            maxI = totalPixelsX - 1;
+        }
+        if (maxJ >= totalPixelsY)
+        {
+            maxJ = totalPixelsY - 1;
+        }
+
+        for (int x = i; x <= maxI; x++)
+        {
+            for (int y = j; y <= maxJ; y++)
+            {
+                if ((x - xPixel) * (x - xPixel) + (y - yPixel) * (y - yPixel) <= brushSize * brushSize)
+                {
+                    colorMap[x * totalPixelsY + y] = brushColor;
+                }
+            }
+        }
+    }
+
+    private void SetDrawingTexture()
+    {
+        generatedTexture.SetPixels(colorMap);
+        generatedTexture.Apply();
+    }
+
+    private void ClearDrawTexture()
+    {
+        for (int i = 0; i < colorMap.Length; i++)
+        {
+            colorMap[i] = new Color(0, 0, 0, 0);
+        }
+
+        SetDrawingTexture();
+    }
+}
