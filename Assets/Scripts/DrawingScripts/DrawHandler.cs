@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
+using UnityEngine.VFX;
 
 public class DrawHandler : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private Color brushColor = Color.black;
 
     [SerializeField] private Material drawingCanvasMaterial;
+    [SerializeField] private Material finalCanvasMaterial;
 
     [SerializeField] private Texture2D generatedTexture;
     [SerializeField] private Texture2D currDrawTemplateTexture;
+    [SerializeField] private Texture2D finalSketchTexture;
 
     private Color[] colorMap;
 
@@ -37,8 +40,12 @@ public class DrawHandler : MonoBehaviour
 
     [SerializeField] private SplineContainer drawSpline;
     [SerializeField] private float minDistToSplinePoints = 0.1f;
+    private int startingKnotCount;
+
     [SerializeField] private GameObject _NextPointMarker;
     private DrawingMarkerHandler nextPointMarker;
+
+    [SerializeField] private GameObject _CompleteVFX;
 
     private void Start()
     {
@@ -54,6 +61,8 @@ public class DrawHandler : MonoBehaviour
 
         nextPointMarker = Instantiate(_NextPointMarker).GetComponent<DrawingMarkerHandler>();
         nextPointMarker.transform.position = drawSpline.transform.position;
+
+        startingKnotCount = drawSpline.Spline.Count;
 
         ClearDrawTexture();
     }
@@ -199,7 +208,7 @@ public class DrawHandler : MonoBehaviour
                 //Checks if close enough to ending point
                 worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
                 diference = worldSpaceKnotLocation - drawPoint.position;
-                if (diference.sqrMagnitude <= minDistToSplinePoints)
+                if (diference.sqrMagnitude <= minDistToSplinePoints && startingKnotCount - drawSpline.Spline.Count > 2)
                 {
                     drawSpline.Spline.RemoveAt(drawSpline.Spline.Count - 1);
                     if (drawSpline.Spline.Count != 0)
@@ -212,6 +221,9 @@ public class DrawHandler : MonoBehaviour
             if (drawSpline.Spline.Count == 0)
             {
                 //Finished drawing
+                HandleCompletion();
+
+
             }
         }
     }
@@ -222,6 +234,25 @@ public class DrawHandler : MonoBehaviour
         HandleSplineChecking();
         startedDrawing = true;
         return;
+    }
+
+    private void HandleCompletion()
+    {
+        Destroy(nextPointMarker.gameObject);
+
+        VisualEffect vfx = Instantiate(_CompleteVFX, transform.parent).GetComponent<VisualEffect>();
+        vfx.SetTexture("DrawTexture", generatedTexture);
+        vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
+
+        StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
+    }
+
+    private IEnumerator Co_DelayFinalSketchChange(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameObject.GetComponent<Renderer>().material = finalCanvasMaterial;
+        gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap", finalSketchTexture);
+        gameObject.transform.localEulerAngles += new Vector3(-90, 0, 0);
     }
 
     private bool StartDrawingSplineCheck()

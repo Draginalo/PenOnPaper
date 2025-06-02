@@ -360,7 +360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &253933786
 Transform:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ Transform:
   m_GameObject: {fileID: 709309092}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.56, y: 0.94, z: 2.39}
+  m_LocalPosition: {x: -2.29, y: 0.43, z: 1.51}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1051,8 +1051,10 @@ MonoBehaviour:
   brushSize: 10
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
+  finalCanvasMaterial: {fileID: 0}
   generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
+  finalSketchTexture: {fileID: 0}
   _TopLeftPoint: {fileID: 1737910681}
   _BottomRightPoint: {fileID: 1527959930}
   drawPoint: {fileID: 585770840}
@@ -1060,6 +1062,7 @@ MonoBehaviour:
   drawSpline: {fileID: 0}
   minDistToSplinePoints: 0.1
   _NextPointMarker: {fileID: 0}
+  _CompleteVFX: {fileID: 0}
 --- !u!65 &1245680696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2198,8 +2201,10 @@ MonoBehaviour:
   brushSize: 10
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
+  finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
+  finalSketchTexture: {fileID: 2800000, guid: 88aaa8d7ddde9804ca493ba336db8470, type: 3}
   _TopLeftPoint: {fileID: 1737910681}
   _BottomRightPoint: {fileID: 1527959930}
   drawPoint: {fileID: 585770840}
@@ -2207,6 +2212,7 @@ MonoBehaviour:
   drawSpline: {fileID: 1518232052}
   minDistToSplinePoints: 0.01
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
+  _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
 --- !u!1 &2139795760
 GameObject:
   m_ObjectHideFlags: 3
