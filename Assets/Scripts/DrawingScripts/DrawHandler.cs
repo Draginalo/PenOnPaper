@@ -8,7 +8,7 @@ using UnityEngine.VFX;
 
 public class DrawHandler : MonoBehaviour
 {
-    [SerializeField] private Camera _Cam;
+    [SerializeField] private Camera cam;
     [SerializeField] private int totalPixelsX = 1024;
     [SerializeField] private int totalPixelsY = 512;
     [SerializeField] private int brushSize = 4;
@@ -47,6 +47,8 @@ public class DrawHandler : MonoBehaviour
 
     [SerializeField] private GameObject _CompleteVFX;
 
+    public Camera MainCam { set { cam = value; } }
+
     private void Start()
     {
         colorMap = new Color[totalPixelsX * totalPixelsY];
@@ -81,7 +83,7 @@ public class DrawHandler : MonoBehaviour
 
     private void CalculatePixelToBeDrawnAt()
     {
-        Ray drawRay = _Cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray drawRay = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
 
         if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
@@ -239,6 +241,7 @@ public class DrawHandler : MonoBehaviour
     private void HandleCompletion()
     {
         Destroy(nextPointMarker.gameObject);
+        Destroy(gameObject.GetComponent<MeshCollider>());
 
         VisualEffect vfx = Instantiate(_CompleteVFX, transform.parent).GetComponent<VisualEffect>();
         vfx.SetTexture("DrawTexture", generatedTexture);
@@ -253,6 +256,9 @@ public class DrawHandler : MonoBehaviour
         gameObject.GetComponent<Renderer>().material = finalCanvasMaterial;
         gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap", finalSketchTexture);
         gameObject.transform.localEulerAngles += new Vector3(-90, 0, 0);
+
+        EventSystem.SketchComplete();
+        Destroy(this);
     }
 
     private bool StartDrawingSplineCheck()
