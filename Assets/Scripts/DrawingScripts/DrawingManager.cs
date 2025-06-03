@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class DrawingManager : MonoBehaviour
 {
-    public enum Sketch
+    public enum Sketches
     {
         TREE_SKETCH,
         MOON_SKETCH
     }
 
-    public enum GameEvent
+
+    public enum DrawingCompleteTrigger
     {
-        FLIP_PAGE
+        NONE,
+        LOOKING_DOWN,
+        LOOKING_UP
     }
 
     [SerializeField] private GameObject[] sketches;
-    [SerializeField] private GameEvent gameEvents;
-    private bool currSketchCompleted = false;
+    private GameObject currSketchCompleted = null;
+    private DrawingCompleteTrigger currTrigger = DrawingCompleteTrigger.NONE;
     private int nextSketch = 0;
-    private int nextGameEvent = 0;
     [SerializeField] private Camera _MainCamera;
     [SerializeField] private NotepadManager _NotepadManager;
 
@@ -32,27 +34,61 @@ public class DrawingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
-        sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+        SpawnNextSketch();
+    }
+
+    private void HandleSketchCompleted(GameObject sketch)
+    {
+        GameEvent sketchGameEventScript = sketch.GetComponent<GameEvent>();
+        if (sketchGameEventScript != null)
+        {
+            sketchGameEventScript.Execute();
+        }
+
+        DrawHandler sketchScript = sketch.GetComponent<DrawHandler>();
+        switch (sketchScript.CompletionTrigger)
+        {
+            case DrawingCompleteTrigger.NONE:
+                SpawnNextSketch();
+                break;
+            default:
+                currSketchCompleted = sketch;
+                currTrigger = sketchScript.CompletionTrigger;
+                break;
+        }
     }
 
     private void OnLookChanging(bool lookingUp)
     {
-        if (lookingUp && currSketchCompleted)
+        if (currSketchCompleted && ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp)))
         {
-            HandleSketchCompleted();
+            SpawnNextSketch();
         }
+
     }
 
-    private void HandleSketchCompleted()
+    //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)
+    private void SpawnNextSketch()
     {
-        nextSketch++;
+        /*nextSketch++;
+        GameObject sketchOBJ;
         switch (nextSketch)
         {
             case 1:
-                GameObject sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+                sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
                 sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
                 break;
+            case 2:
+                sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+                sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+                break;
+        }*/
+
+        if (nextSketch < sketches.Length)
+        {
+            GameObject sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+            sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+            nextSketch++;
         }
     }
 

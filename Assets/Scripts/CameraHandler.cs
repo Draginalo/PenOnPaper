@@ -11,10 +11,12 @@ public class CameraHandler : MonoBehaviour
     public void SwitchToUpCam()
     {
         _UpCam.MoveToTopOfPrioritySubqueue();
+        EventSystem.CameraLookChange(true);
     }
 
     public void SwitchToDownCam()
     {
         _DowmCam.MoveToTopOfPrioritySubqueue();
+        EventSystem.CameraLookChange(false);
     }
 }

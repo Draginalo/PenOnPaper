@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class NotepadManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _NotepadPage;
     [SerializeField] private GameObject currPage;
+    [SerializeField] private Animator pageAnimator;
 
     public GameObject CurrentPage {  get { return currPage; } }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        EventSystem.OnFlipNotepadPage += HandleFlipPage;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        EventSystem.OnFlipNotepadPage -= HandleFlipPage;
+    }
+
+    private void Start()
+    {
+        //HandleFlipPage();
+    }
+
+    private void HandleFlipPage()
+    {
+        pageAnimator.SetBool("StartPageFlip", true);
+
+        currPage = Instantiate(_NotepadPage, transform);
+        pageAnimator = currPage.GetComponent<Animator>();
     }
 }

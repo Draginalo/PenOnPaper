@@ -641,6 +641,7 @@ MonoBehaviour:
   minDistToSplinePoints: 0.01
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
+  completeTrigger: 1
 --- !u!1 &2651387071254323114
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +809,7 @@ MonoBehaviour:
   minDistToSplinePoints: 0.1
   _NextPointMarker: {fileID: 0}
   _CompleteVFX: {fileID: 0}
+  completeTrigger: 0
 --- !u!1 &4903599326846733470
 GameObject:
   m_ObjectHideFlags: 0

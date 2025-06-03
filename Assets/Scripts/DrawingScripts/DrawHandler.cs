@@ -46,8 +46,10 @@ public class DrawHandler : MonoBehaviour
     private DrawingMarkerHandler nextPointMarker;
 
     [SerializeField] private GameObject _CompleteVFX;
+    [SerializeField] private DrawingManager.DrawingCompleteTrigger completeTrigger;
 
     public Camera MainCam { set { cam = value; } }
+    public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
 
     private void Start()
     {
@@ -62,6 +64,7 @@ public class DrawHandler : MonoBehaviour
         yDrawMult = totalPixelsY / (_BottomRightPoint.localPosition.y - _TopLeftPoint.localPosition.y);
 
         nextPointMarker = Instantiate(_NextPointMarker).GetComponent<DrawingMarkerHandler>();
+        nextPointMarker.transform.SetParent(transform);
         nextPointMarker.transform.position = drawSpline.transform.position;
 
         startingKnotCount = drawSpline.Spline.Count;
@@ -248,6 +251,7 @@ public class DrawHandler : MonoBehaviour
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
 
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
+        StartCoroutine(Co_DelaySketchChangeVFXDone(vfx.GetFloat("Delay") - vfx.GetFloat("BeforeSpawnTime") + vfx.GetFloat("FinalMaxLifetime")));
     }
 
     private IEnumerator Co_DelayFinalSketchChange(float delay)
@@ -256,12 +260,17 @@ public class DrawHandler : MonoBehaviour
         gameObject.GetComponent<Renderer>().material = finalCanvasMaterial;
         gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap", finalSketchTexture);
         gameObject.transform.localEulerAngles += new Vector3(-90, 0, 0);
+    }
 
-        EventSystem.SketchComplete();
+    private IEnumerator Co_DelaySketchChangeVFXDone(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        EventSystem.SketchComplete(gameObject);
         Destroy(this);
     }
 
-    private bool StartDrawingSplineCheck()
+        private bool StartDrawingSplineCheck()
     {
         //Checks if close enough to starting point
         Vector3 worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;

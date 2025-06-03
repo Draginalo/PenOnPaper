@@ -1,16 +1,20 @@
+using UnityEngine;
 using UnityEngine.Events;
 
 public static class EventSystem
 {
     // Camera Events
     public static event UnityAction<bool> OnCameraLookChange;
-    public static void SketchComplete(bool lookingUp) => OnCameraLookChange?.Invoke(lookingUp);
+    public static void CameraLookChange(bool lookingUp) => OnCameraLookChange?.Invoke(lookingUp);
 
     // Sketch Events
-    public static event UnityAction OnSketchComplete;
-    public static void SketchComplete() => OnSketchComplete?.Invoke();
+    public static event UnityAction<GameObject> OnSketchComplete;
+    public static void SketchComplete(GameObject sketch) => OnSketchComplete?.Invoke(sketch);
 
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();
 
+    //Notepad events
+    public static event UnityAction OnFlipNotepadPage;
+    public static void FlipNotepadPage() => OnFlipNotepadPage?.Invoke();
 }
