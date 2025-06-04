@@ -25,11 +25,12 @@ public class NotepadManager : MonoBehaviour
         //HandleFlipPage();
     }
 
-    private void HandleFlipPage()
+    private void HandleFlipPage(GameEvent eventData)
     {
+        pageAnimator.GetComponent<AnimationHandler>().sourceGameEvent = eventData;
         pageAnimator.SetBool("StartPageFlip", true);
 
-        currPage = Instantiate(_NotepadPage, transform);
+        currPage = Instantiate(_NotepadPage, transform).transform.GetChild(0).gameObject;
         pageAnimator = currPage.GetComponent<Animator>();
     }
 }

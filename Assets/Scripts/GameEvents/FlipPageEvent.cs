@@ -6,6 +6,11 @@ public class FlipPageEvent : GameEvent
 {
     public override void Execute()
     {
-        EventSystem.FlipNotepadPage();
+        EventSystem.FlipNotepadPage(this);
+    }
+
+    public override void Completed()
+    {
+        base.Completed();
     }
 }

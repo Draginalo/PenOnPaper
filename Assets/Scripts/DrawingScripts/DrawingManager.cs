@@ -29,6 +29,14 @@ public class DrawingManager : MonoBehaviour
     {
         EventSystem.OnSketchComplete += HandleSketchCompleted;
         EventSystem.OnCameraLookChange += OnLookChanging;
+        EventSystem.OnGameEventCompleted += OnGameEventCompleted;
+    }
+
+    private void OnDisable()
+    {
+        EventSystem.OnSketchComplete -= HandleSketchCompleted;
+        EventSystem.OnCameraLookChange -= OnLookChanging;
+        EventSystem.OnGameEventCompleted -= OnGameEventCompleted;
     }
 
     // Start is called before the first frame update
@@ -43,6 +51,7 @@ public class DrawingManager : MonoBehaviour
         if (sketchGameEventScript != null)
         {
             sketchGameEventScript.Execute();
+            return;
         }
 
         DrawHandler sketchScript = sketch.GetComponent<DrawHandler>();
@@ -62,9 +71,15 @@ public class DrawingManager : MonoBehaviour
     {
         if (currSketchCompleted && ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp)))
         {
+            currSketchCompleted = null;
             SpawnNextSketch();
         }
 
+    }
+
+    private void OnGameEventCompleted()
+    {
+        SpawnNextSketch();
     }
 
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)

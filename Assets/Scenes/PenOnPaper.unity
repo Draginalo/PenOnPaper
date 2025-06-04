@@ -3727,6 +3727,14 @@ PrefabInstance:
       propertyPath: _MainCamera
       value: 
       objectReference: {fileID: 557977115}
+    - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: sketches.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: sketches.Array.data[2]
+      value: 
+      objectReference: {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

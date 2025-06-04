@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
+    public GameEvent sourceGameEvent;
+
     private void DestroyAnimationObject()
     {
+        if (sourceGameEvent != null)
+        {
+            sourceGameEvent.Completed();
+        }
+
         Destroy(gameObject);
     }
 }
