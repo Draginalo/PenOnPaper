@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PenOnPaper.unity
+    guid: 78bd7581f80245e41bf262a36e467065
   m_configObjects: {}

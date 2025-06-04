@@ -21,19 +21,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TropGrassMat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 90c8479a85003fa41bf96b1a2319a188, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ALPHATEST_ON
-  - _NORMALMAP
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -184,7 +181,9 @@ Material:
     - _Surface: 0
     - _TwoSided: 2
     - _WINDQUALITY: 4
+    - _WindIntensity: 0.1
     - _WindQuality: 1
+    - _WindSpeed: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -201,4 +200,6 @@ Material:
     - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _WindContrast: {r: 0, g: 0, b: 0, a: 0}
+    - _WindNoiseScale: {r: 180, g: 200, b: 0, a: 0}
   m_BuildTextureStacks: []

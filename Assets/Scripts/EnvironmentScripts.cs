@@ -12,7 +12,7 @@ public class EnvironmentScripts : MonoBehaviour
 
     private void FixedUpdate()
     {
-        light.range = maxIntensity * lightIntensityCurve.Evaluate(currTime * curveEvaluationSpeed);
+        light.intensity = maxIntensity * lightIntensityCurve.Evaluate(currTime * curveEvaluationSpeed);
         currTime += Time.deltaTime;
 
         if (currTime * curveEvaluationSpeed > 1)
