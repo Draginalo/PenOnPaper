@@ -15,6 +15,9 @@ public static class EventSystem
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();
 
+    public static event UnityAction OnSketchCompleted;
+    public static void SketchCompleted() => OnSketchCompleted?.Invoke();
+
     //Notepad events
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);

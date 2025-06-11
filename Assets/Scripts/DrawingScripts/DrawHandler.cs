@@ -250,6 +250,7 @@ public class DrawHandler : MonoBehaviour
         vfx.SetTexture("DrawTexture", generatedTexture);
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
 
+        EventSystem.SketchCompleted();
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
         StartCoroutine(Co_DelaySketchChangeVFXDone(vfx.GetFloat("Delay") - vfx.GetFloat("BeforeSpawnTime") + vfx.GetFloat("FinalMaxLifetime")));
     }

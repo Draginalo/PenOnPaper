@@ -1,16 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DrawingManager : MonoBehaviour
 {
-    public enum Sketches
-    {
-        TREE_SKETCH,
-        MOON_SKETCH
-    }
-
-
     public enum DrawingCompleteTrigger
     {
         NONE,
@@ -18,9 +12,16 @@ public class DrawingManager : MonoBehaviour
         LOOKING_UP
     }
 
-    [SerializeField] private GameObject[] sketches;
+    [Serializable]
+    public struct Sketches
+    {
+        public GameObject sketchOBJ;
+        public HighlightScript objectToDraw;
+    }
+
+    [SerializeField] private Sketches[] sketchStore;
     private DrawingCompleteTrigger currTrigger = DrawingCompleteTrigger.NONE;
-    private int nextSketch = 0;
+    private int currSketch = -1;
     [SerializeField] private Camera _MainCamera;
     [SerializeField] private NotepadManager _NotepadManager;
 
@@ -28,12 +29,14 @@ public class DrawingManager : MonoBehaviour
     {
         EventSystem.OnTriggerNextSketch += HandleNextSketch;
         EventSystem.OnCameraLookChange += OnLookChanging;
+        EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
     private void OnDisable()
     {
         EventSystem.OnTriggerNextSketch -= HandleNextSketch;
         EventSystem.OnCameraLookChange -= OnLookChanging;
+        EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
 
     // Start is called before the first frame update
@@ -68,35 +71,38 @@ public class DrawingManager : MonoBehaviour
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)
     private void SpawnNextSketch()
     {
-        /*nextSketch++;
+        /*currSketch++;
         GameObject sketchOBJ;
-        switch (nextSketch)
+        switch (currSketch)
         {
             case 1:
-                sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+                sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
                 sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
                 break;
             case 2:
-                sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+                sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
                 sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
                 break;
         }*/
 
-        if (nextSketch < sketches.Length)
+        if (currSketch < sketchStore.Length)
         {
-            GameObject sketchOBJ = Instantiate(sketches[nextSketch], _NotepadManager.CurrentPage.transform);
+            currSketch++;
+            GameObject sketchOBJ = Instantiate(sketchStore[currSketch].sketchOBJ, _NotepadManager.CurrentPage.transform);
+            if (sketchStore[currSketch].objectToDraw != null)
+            {
+                sketchStore[currSketch].objectToDraw.SetHighlightStrength(1.0f);
+            }
+
             sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-            nextSketch++;
         }
     }
 
-    private void HandleNotepadChange()
+    private void TurnOffHighlight()
     {
-
-    }
-
-    private void HandleWorldChange()
-    {
-
+        if (sketchStore[currSketch].objectToDraw != null)
+        {
+            sketchStore[currSketch].objectToDraw.SetHighlightStrength(0.0f);
+        }
     }
 }
