@@ -376,7 +376,7 @@ MonoBehaviour:
   minDistToSplinePoints: 0.01
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
-  completeTrigger: 0
+  completeTrigger: 1
 --- !u!114 &1326576456316357315
 MonoBehaviour:
   m_ObjectHideFlags: 0

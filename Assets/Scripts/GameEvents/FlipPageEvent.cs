@@ -7,11 +7,13 @@ public class FlipPageEvent : GameEvent
 {
     public override void Execute()
     {
+        base.Execute();
         EventSystem.FlipNotepadPage(this);
     }
 
     public override void Completed()
     {
-        EventSystem.TriggerNextSketch(DrawingCompleteTrigger.NONE);
+        base.Completed();
+        EventSystem.TriggerNextSketch(DrawingCompleteTrigger.LOOKING_DOWN);
     }
 }

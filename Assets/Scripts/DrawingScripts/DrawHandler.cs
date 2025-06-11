@@ -49,7 +49,7 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private DrawingManager.DrawingCompleteTrigger completeTrigger;
 
     public Camera MainCam { set { cam = value; } }
-    public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
+    //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
 
     private void Start()
     {
@@ -278,7 +278,7 @@ public class DrawHandler : MonoBehaviour
         GameEvent sketchGameEventScript = GetComponent<GameEvent>();
         if (sketchGameEventScript != null)
         {
-            sketchGameEventScript.Execute();
+            sketchGameEventScript.Begin(DrawingManager.DrawingCompleteTrigger.NONE);
             return true;
         }
 
