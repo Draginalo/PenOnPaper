@@ -19,7 +19,6 @@ public class DrawingManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject[] sketches;
-    private GameObject currSketchCompleted = null;
     private DrawingCompleteTrigger currTrigger = DrawingCompleteTrigger.NONE;
     private int nextSketch = 0;
     [SerializeField] private Camera _MainCamera;
@@ -27,16 +26,14 @@ public class DrawingManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.OnSketchComplete += HandleSketchCompleted;
+        EventSystem.OnTriggerNextSketch += HandleNextSketch;
         EventSystem.OnCameraLookChange += OnLookChanging;
-        EventSystem.OnGameEventCompleted += OnGameEventCompleted;
     }
 
     private void OnDisable()
     {
-        EventSystem.OnSketchComplete -= HandleSketchCompleted;
+        EventSystem.OnTriggerNextSketch -= HandleNextSketch;
         EventSystem.OnCameraLookChange -= OnLookChanging;
-        EventSystem.OnGameEventCompleted -= OnGameEventCompleted;
     }
 
     // Start is called before the first frame update
@@ -45,41 +42,27 @@ public class DrawingManager : MonoBehaviour
         SpawnNextSketch();
     }
 
-    private void HandleSketchCompleted(GameObject sketch)
+    private void HandleNextSketch(DrawingCompleteTrigger trigger)
     {
-        GameEvent sketchGameEventScript = sketch.GetComponent<GameEvent>();
-        if (sketchGameEventScript != null)
-        {
-            sketchGameEventScript.Execute();
-            return;
-        }
-
-        DrawHandler sketchScript = sketch.GetComponent<DrawHandler>();
-        switch (sketchScript.CompletionTrigger)
+        switch (trigger)
         {
             case DrawingCompleteTrigger.NONE:
                 SpawnNextSketch();
                 break;
             default:
-                currSketchCompleted = sketch;
-                currTrigger = sketchScript.CompletionTrigger;
+                currTrigger = trigger;
                 break;
         }
     }
 
     private void OnLookChanging(bool lookingUp)
     {
-        if (currSketchCompleted && ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp)))
+        if ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
         {
-            currSketchCompleted = null;
+            currTrigger = DrawingCompleteTrigger.NONE;
             SpawnNextSketch();
         }
 
-    }
-
-    private void OnGameEventCompleted()
-    {
-        SpawnNextSketch();
     }
 
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)

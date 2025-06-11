@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static DrawingManager;
 
 public static class EventSystem
 {
@@ -8,8 +9,8 @@ public static class EventSystem
     public static void CameraLookChange(bool lookingUp) => OnCameraLookChange?.Invoke(lookingUp);
 
     // Sketch Events
-    public static event UnityAction<GameObject> OnSketchComplete;
-    public static void SketchComplete(GameObject sketch) => OnSketchComplete?.Invoke(sketch);
+    public static event UnityAction<DrawingCompleteTrigger> OnTriggerNextSketch;
+    public static void TriggerNextSketch(DrawingCompleteTrigger trigger) => OnTriggerNextSketch?.Invoke(trigger);
 
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();
@@ -19,6 +20,6 @@ public static class EventSystem
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
     //Game event events
-    public static event UnityAction OnGameEventCompleted;
-    public static void GameEventCompleted() => OnGameEventCompleted?.Invoke();
+    //public static event UnityAction OnGameEventCompleted;
+    //public static void GameEventCompleted() => OnGameEventCompleted?.Invoke();
 }

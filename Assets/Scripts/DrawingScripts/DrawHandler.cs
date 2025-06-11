@@ -266,8 +266,23 @@ public class DrawHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        EventSystem.SketchComplete(gameObject);
-        Destroy(this);
+        if (!HandlePossibleEvent())
+        {
+            EventSystem.TriggerNextSketch(completeTrigger);
+            Destroy(this);
+        }
+    }
+
+    private bool HandlePossibleEvent()
+    {
+        GameEvent sketchGameEventScript = GetComponent<GameEvent>();
+        if (sketchGameEventScript != null)
+        {
+            sketchGameEventScript.Execute();
+            return true;
+        }
+
+        return false;
     }
 
         private bool StartDrawingSplineCheck()
