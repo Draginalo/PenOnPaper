@@ -94,6 +94,7 @@ public class DrawingManager : MonoBehaviour
                 sketchStore[currSketch].objectToDraw.SetHighlightStrength(1.0f);
             }
 
+
             sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
         }
     }
