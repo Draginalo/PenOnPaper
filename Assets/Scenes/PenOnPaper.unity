@@ -3750,6 +3750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawingPad
       objectReference: {fileID: 0}
+    - target: {fileID: 7256732978006754678, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: _MainCamera
       value: 

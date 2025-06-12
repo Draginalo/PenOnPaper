@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5210183b38eda3844ae9d7962c9e2a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 5113901490936186769}
+  campfireLight: {fileID: 5113901490936186769}
   maxIntensity: 300
   curveEvaluationSpeed: 0.1
   lightIntensityCurve:
@@ -551,15 +551,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5b69ad27187c974e8038edebbaf8d9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.78
+      value: 8.2921
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5b69ad27187c974e8038edebbaf8d9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.12
+      value: -25.98468
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5b69ad27187c974e8038edebbaf8d9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.29
+      value: 24.95478
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5b69ad27187c974e8038edebbaf8d9a, type: 3}
       propertyPath: m_LocalRotation.w

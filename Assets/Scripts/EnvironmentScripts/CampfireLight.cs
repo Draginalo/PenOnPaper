@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentScripts : MonoBehaviour
+public class CampfireScript : MonoBehaviour
 {
-    [SerializeField] private Light light;
+    [SerializeField] private Light campfireLight;
     [SerializeField] private float maxIntensity;
     [SerializeField] private float curveEvaluationSpeed;
     [SerializeField] private AnimationCurve lightIntensityCurve;
@@ -12,7 +12,7 @@ public class EnvironmentScripts : MonoBehaviour
 
     private void FixedUpdate()
     {
-        light.intensity = maxIntensity * lightIntensityCurve.Evaluate(currTime * curveEvaluationSpeed);
+        campfireLight.intensity = maxIntensity * lightIntensityCurve.Evaluate(currTime * curveEvaluationSpeed);
         currTime += Time.deltaTime;
 
         if (currTime * curveEvaluationSpeed > 1)
