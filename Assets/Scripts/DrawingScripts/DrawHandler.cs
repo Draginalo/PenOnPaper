@@ -279,7 +279,7 @@ public class DrawHandler : MonoBehaviour
         GameEvent sketchGameEventScript = GetComponent<GameEvent>();
         if (sketchGameEventScript != null)
         {
-            sketchGameEventScript.Begin(DrawingManager.DrawingCompleteTrigger.NONE);
+            sketchGameEventScript.Begin(completeTrigger);
             return true;
         }
 

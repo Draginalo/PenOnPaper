@@ -22,6 +22,10 @@ public static class EventSystem
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
+    //Environment events
+    public static event UnityAction<EnvironmentSwitchManager.Environments> OnSwapEnvironments;
+    public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment) => OnSwapEnvironments?.Invoke(newEnvironment);
+
     //Game event events
     //public static event UnityAction OnGameEventCompleted;
     //public static void GameEventCompleted() => OnGameEventCompleted?.Invoke();

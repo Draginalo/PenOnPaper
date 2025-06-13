@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362043220487431962}
   m_Layer: 0
-  m_Name: TestSketch
+  m_Name: TestEnvSwapSketch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
   - component: {fileID: 6663071328765507513}
-  - component: {fileID: 2820283421343616144}
+  - component: {fileID: 4034157362216003394}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -376,8 +376,8 @@ MonoBehaviour:
   minDistToSplinePoints: 0.01
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
-  completeTrigger: 0
---- !u!114 &2820283421343616144
+  completeTrigger: 1
+--- !u!114 &4034157362216003394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -386,34 +386,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3611650364959769581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a0cbd0296bbe6694a9b209e150b9f415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VignetteCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  curveEvaluationSpeed: 0.2
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

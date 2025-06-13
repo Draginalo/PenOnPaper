@@ -298,7 +298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 107312758}
   - component: {fileID: 107312757}
-  - component: {fileID: 107312759}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: MainGlobalVolume
@@ -338,26 +337,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &107312759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107312756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VignetteCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  curveEvaluationSpeed: 0
-  v: {fileID: 107312757}
 --- !u!1 &146809256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,8 +1435,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
+  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
+  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2011,6 +1990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1018797376}
+  - component: {fileID: 1018797378}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -2034,6 +2014,25 @@ Transform:
   - {fileID: 864968028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1018797378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018797375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a1dd7fb95288a4299aa436a191126d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environments:
+  - envOBJ: {fileID: 0}
+    skybox: {fileID: 8900000, guid: d6ebebfa67e6e7840b98f08817c73666, type: 3}
+  - envOBJ: {fileID: 864968027}
+    skybox: {fileID: 8900000, guid: e05f699048296f741b9be275da273623, type: 3}
+  envDelayTime: 0.1
+  skyboxMat: {fileID: 2100000, guid: a002f3f3b54f16f419082683adb9edd9, type: 2}
 --- !u!4 &1020605625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9359af3abcff1134885e920fe704101e, type: 3}
@@ -3794,7 +3793,7 @@ PrefabInstance:
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[0].sketchOBJ
       value: 
-      objectReference: {fileID: 2477873707247255058, guid: bcd0b58469c5f5349814c14f14f3d4e8, type: 3}
+      objectReference: {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[1].sketchOBJ
       value: 
