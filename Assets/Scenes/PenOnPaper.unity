@@ -1435,8 +1435,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
-  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3773,7 +3773,7 @@ PrefabInstance:
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[0].sketchOBJ
       value: 
-      objectReference: {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
+      objectReference: {fileID: 2477873707247255058, guid: bcd0b58469c5f5349814c14f14f3d4e8, type: 3}
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[1].sketchOBJ
       value: 

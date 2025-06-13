@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 public class BlurRenderPass : ScriptableRenderPass
 {
     private Material blurMaterial;
+    private Material vignetteMaterial;
     private BlurSettings blurSettings = null;
 
     private RenderTargetIdentifier source;
@@ -20,6 +21,7 @@ public class BlurRenderPass : ScriptableRenderPass
         if (blurSettings != null && blurSettings.IsActive())
         {
             blurMaterial = new Material(Shader.Find("PostProcessing/Blur"));
+            vignetteMaterial = new Material(Shader.Find("Shader Graphs/ColorVignette"));
             return true;
         }
 
@@ -34,8 +36,6 @@ public class BlurRenderPass : ScriptableRenderPass
         }
 
         blurTexID = Shader.PropertyToID("_BlurTex");
-        //blurTex = new RTHandle();
-        //blurTex.id = blurTexID;
         cmd.GetTemporaryRT(blurTexID, cameraTextureDescriptor);
 
         base.Configure(cmd, cameraTextureDescriptor);
@@ -50,8 +50,8 @@ public class BlurRenderPass : ScriptableRenderPass
 
         CommandBuffer cmd = CommandBufferPool.Get("Blur Post Process");
 
-        //Set shader properties
-        int gridSize = Mathf.CeilToInt(blurSettings.strength.value * 6.0f);
+        //Set blur shader properties
+        int gridSize = Mathf.CeilToInt(blurSettings.blurrStrength.value * 6.0f);
 
         if (gridSize % 2 == 0)
         {
@@ -59,13 +59,23 @@ public class BlurRenderPass : ScriptableRenderPass
         }
 
         blurMaterial.SetInteger("_GridSize", gridSize);
-        blurMaterial.SetFloat("_Spread", blurSettings.strength.value);
+        blurMaterial.SetFloat("_Spread", blurSettings.blurrStrength.value);
+
+        //Set vignette shader properties
+        vignetteMaterial.SetFloat("_ColorStrength", blurSettings.colorStrength.value);
+        vignetteMaterial.SetFloat("_VignetteExtent", blurSettings.vignetteSpread.value);
+        vignetteMaterial.SetFloat("_VignetteStrength", blurSettings.vignetteStrength.value);
 
         source = renderingData.cameraData.renderer.cameraColorTargetHandle;
 
-        //Execute effect with 2 passes
+        //Execute blur effect with 2 passes
         cmd.Blit(source, blurTexID, blurMaterial, 0);
         cmd.Blit(blurTexID, source, blurMaterial, 1);
+
+        //Execute vignette effect
+        //cmd.Blit(source, blurTexID, vignetteMaterial, 0);
+        cmd.Blit(blurTexID, source, vignetteMaterial, 0);
+
         context.ExecuteCommandBuffer(cmd);
 
         cmd.Clear();

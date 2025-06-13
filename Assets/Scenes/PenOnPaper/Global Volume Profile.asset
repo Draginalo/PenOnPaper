@@ -75,6 +75,15 @@ MonoBehaviour:
   m_Name: BlurSettings
   m_EditorClassIdentifier: 
   active: 1
-  strength:
+  blurrStrength:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.02
+  colorStrength:
+    m_OverrideState: 1
+    m_Value: 0.027
+  vignetteSpread:
+    m_OverrideState: 1
+    m_Value: 1
+  vignetteStrength:
+    m_OverrideState: 1
+    m_Value: 22
