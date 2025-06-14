@@ -3793,7 +3793,7 @@ PrefabInstance:
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[0].sketchOBJ
       value: 
-      objectReference: {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
+      objectReference: {fileID: 2477873707247255058, guid: 15e47902cb4902246b3e59003b2c2826, type: 3}
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: sketchStore.Array.data[1].sketchOBJ
       value: 

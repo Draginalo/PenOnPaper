@@ -65,7 +65,7 @@ public class DrawHandler : MonoBehaviour
 
         nextPointMarker = Instantiate(_NextPointMarker).GetComponent<DrawingMarkerHandler>();
         nextPointMarker.transform.SetParent(transform);
-        nextPointMarker.transform.position = drawSpline.transform.position;
+        nextPointMarker.transform.position = (Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
 
         startingKnotCount = drawSpline.Spline.Count;
 
@@ -95,8 +95,11 @@ public class DrawHandler : MonoBehaviour
             currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
             currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
 
+            //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
+            int flippedCurrXPixel = totalPixelsX - currXPixel;
+
             //Checks if you can draw there based on template texture
-            if (currDrawTemplateTexture.GetPixel(currXPixel, currYPixel) != Color.clear)
+            if (currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel) != Color.clear)
             {
                 //Handles logic if starting to draw for the first time
                 if (!startedDrawing)

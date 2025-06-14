@@ -63,9 +63,17 @@ public class DrawingManager : MonoBehaviour
         if ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
         {
             currTrigger = DrawingCompleteTrigger.NONE;
-            SpawnNextSketch();
+
+            //Delays the spawning of the sketch until in between looking up and down to not have the highlighted object pop into existence
+            StartCoroutine(Co_DelaySketchSpawn());
         }
 
+    }
+
+    private IEnumerator Co_DelaySketchSpawn()
+    {
+        yield return new WaitForSeconds(0.15f);
+        SpawnNextSketch();
     }
 
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)
@@ -85,7 +93,7 @@ public class DrawingManager : MonoBehaviour
                 break;
         }*/
 
-        if (currSketch < sketchStore.Length)
+        if (currSketch + 1 < sketchStore.Length)
         {
             currSketch++;
             GameObject sketchOBJ = Instantiate(sketchStore[currSketch].sketchOBJ, _NotepadManager.CurrentPage.transform);

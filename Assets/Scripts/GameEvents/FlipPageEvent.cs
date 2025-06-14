@@ -14,6 +14,6 @@ public class FlipPageEvent : GameEvent
     public override void Completed()
     {
         base.Completed();
-        EventSystem.TriggerNextSketch(DrawingCompleteTrigger.LOOKING_DOWN);
+        EventSystem.TriggerNextSketch(DrawingCompleteTrigger.LOOKING_UP);
     }
 }
