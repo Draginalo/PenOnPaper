@@ -25,15 +25,11 @@ public class GameEventManager : MonoBehaviour
 
     public void LoadAndExecuteEventChain(GameEventChain gameEventsToExecute)
     {
-        //if (currGameEvents && currGameEvents.GetEventChain().Count > 0)
-        //{
-        //    for (int i = 0; i < currGameEvents.GetEventChain().Count; i++)
-        //    {
-        //        Destroy(gameEventsToExecute.GetEventChain()[i]);
-        //    }
-
-        //    Destroy(currGameEvents);
-        //}
+        if (currGameEvents != null && currGameEvents.GetEventChain().Count > 0)
+        {
+            currGameEvents.CleanupChain();
+            //Destroy(currGameEvents);
+        }
 
         currGameEvents = gameEventsToExecute;
         ExecuteNextEventChain();
