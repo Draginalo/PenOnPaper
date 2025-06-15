@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static DrawingManager;
@@ -9,8 +10,8 @@ public static class EventSystem
     public static void CameraLookChange(bool lookingUp) => OnCameraLookChange?.Invoke(lookingUp);
 
     // Sketch Events
-    public static event UnityAction<DrawingCompleteTrigger> OnTriggerNextSketch;
-    public static void TriggerNextSketch(DrawingCompleteTrigger trigger) => OnTriggerNextSketch?.Invoke(trigger);
+    public static event UnityAction OnTriggerNextSketch;
+    public static void TriggerNextSketch() => OnTriggerNextSketch?.Invoke();
 
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();
@@ -26,7 +27,10 @@ public static class EventSystem
     public static event UnityAction<EnvironmentSwitchManager.Environments> OnSwapEnvironments;
     public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment) => OnSwapEnvironments?.Invoke(newEnvironment);
 
-    //Game event events
-    //public static event UnityAction OnGameEventCompleted;
-    //public static void GameEventCompleted() => OnGameEventCompleted?.Invoke();
+    //Possible combine this with the on sketch complete event with a bool perameter to only have one event
+    public static event UnityAction OnTriggerNextEventChain;
+    public static void TriggerNextEventChain() => OnTriggerNextEventChain?.Invoke();
+
+    public static event UnityAction<List<GameEventChain>, GameObject> OnLoadEventChains;
+    public static void LoadEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent) => OnLoadEventChains?.Invoke(gameEventChains, chainsParent);
 }

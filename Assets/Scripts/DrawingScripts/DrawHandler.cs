@@ -46,7 +46,9 @@ public class DrawHandler : MonoBehaviour
     private DrawingMarkerHandler nextPointMarker;
 
     [SerializeField] private GameObject _CompleteVFX;
-    [SerializeField] private DrawingManager.DrawingCompleteTrigger completeTrigger;
+
+    [Tooltip("The game events to occure following the completion of the sketch")]
+    [SerializeField] private GameEventChain followingGameEvents;
 
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
@@ -270,23 +272,27 @@ public class DrawHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        if (!HandlePossibleEvent())
-        {
-            EventSystem.TriggerNextSketch(completeTrigger);
-            Destroy(this);
-        }
+        HandleGameEvents();
+        Destroy(this);
     }
 
-    private bool HandlePossibleEvent()
+    private void HandleGameEvents()
     {
-        GameEvent sketchGameEventScript = GetComponent<GameEvent>();
-        if (sketchGameEventScript != null)
+        if (followingGameEvents.ComponentParent != null)
         {
-            sketchGameEventScript.Begin(completeTrigger);
-            return true;
+            GameEventManager.instance.LoadAndExecuteEventChain(followingGameEvents);
+
+            //Attaches game event components to game event manager to make sure the components don't get destroyed
+            // the following makes sure the drawing object does not get moved
+            if (followingGameEvents.ComponentParent != gameObject)
+            {
+                followingGameEvents.ComponentParent.transform.SetParent(GameEventManager.instance.transform);
+            }
+
+            return;
         }
 
-        return false;
+        EventSystem.TriggerNextEventChain();
     }
 
         private bool StartDrawingSplineCheck()

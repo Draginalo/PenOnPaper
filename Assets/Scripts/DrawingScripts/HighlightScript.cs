@@ -6,6 +6,7 @@ public class HighlightScript : MonoBehaviour
 {
     [SerializeField] private Texture2D texture;
     [SerializeField] private Color highlightColor;
+    private bool isActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,20 @@ public class HighlightScript : MonoBehaviour
 
     public void SetHighlightStrength(float strength)
     {
+        if (strength > 0)
+        {
+            isActive = true;
+        }
+        else
+        {
+            isActive = false;
+        }
+
         gameObject.GetComponent<Renderer>().material.SetFloat("_Strength", strength);
+    }
+
+    public bool GetIsActive()
+    {
+        return isActive;
     }
 }

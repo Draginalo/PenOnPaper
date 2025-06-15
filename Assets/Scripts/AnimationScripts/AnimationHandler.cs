@@ -10,7 +10,7 @@ public class AnimationHandler : MonoBehaviour
     {
         if (sourceGameEvent != null)
         {
-            sourceGameEvent.Completed();
+            sourceGameEvent.GameEventCompleted();
         }
 
         Destroy(gameObject);

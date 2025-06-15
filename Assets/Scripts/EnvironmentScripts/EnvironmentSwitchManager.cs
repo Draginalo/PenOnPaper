@@ -8,7 +8,7 @@ public class EnvironmentSwitchManager : MonoBehaviour
     [SerializeField] private EnvironmentData[] environments;
     private GameObject currEnv;
 
-    [SerializeField] private float envDelayTime = 0.1f;
+    [SerializeField] private float envDelayTime = 0.15f;
 
     [SerializeField] private Material skyboxMat;
 

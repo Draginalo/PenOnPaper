@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using static DrawingManager;
 
 public class FaintEvent : GameEvent
 {
@@ -29,19 +25,18 @@ public class FaintEvent : GameEvent
             blurSettings.blurrStrength.value = 10.0f;
         }
 
+
         StartCoroutine(Co_RunFaintEffect());
     }
 
-    public override void Completed()
+    public override void GameEventCompleted()
     {
-        base.Completed();
-
         if (blurSettings)
         {
             blurSettings.active = false;
         }
 
-        //EventSystem.TriggerNextSketch(DrawingCompleteTrigger.LOOKING_DOWN);
+        base.GameEventCompleted();
     }
 
     private bool FaintFinished()
@@ -51,8 +46,6 @@ public class FaintEvent : GameEvent
         blurSettings.colorStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * colorMultiple;
         blurSettings.blurrStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * blurrMultiple;
 
-        Debug.Log(currTime * curveEvaluationSpeed);
-
         currTime += Time.deltaTime;
 
         return currTime * curveEvaluationSpeed >= 1;
@@ -61,6 +54,6 @@ public class FaintEvent : GameEvent
     private IEnumerator Co_RunFaintEffect()
     {
         yield return new WaitUntil(FaintFinished);
-        Completed();
+        GameEventCompleted();
     }
 }

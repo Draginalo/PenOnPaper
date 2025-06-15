@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using static DrawingManager;
 
 public class GameEvent : MonoBehaviour
 {
-    private DrawingCompleteTrigger currTrigger;
+    [SerializeField] protected DrawingCompleteTrigger eventTrigger;
 
     private void OnEnable()
     {
@@ -15,30 +16,46 @@ public class GameEvent : MonoBehaviour
         EventSystem.OnCameraLookChange -= OnLookChanging;
     }
 
+    private void Start()
+    {
+        this.enabled = false; 
+    }
+
     private void OnLookChanging(bool lookingUp)
     {
-        if ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
+        if ((eventTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (eventTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
         {
-            currTrigger = DrawingCompleteTrigger.NONE;
+            eventTrigger = DrawingCompleteTrigger.NONE;
             Execute();
         }
 
     }
 
-    public virtual void Begin(DrawingCompleteTrigger trigger) 
+    public virtual void Begin() 
     {
-        switch (trigger)
+        switch (eventTrigger)
         {
             case DrawingCompleteTrigger.NONE:
                 Execute();
                 break;
             default:
-                currTrigger = trigger;
                 break;
         }
     }
 
     public virtual void Execute() { }
 
-    public virtual void Completed() { }
+    public static event UnityAction OnGameEventCompleted;
+    public virtual void GameEventCompleted() { OnGameEventCompleted?.Invoke(); }
+
+    public void Cleanup(bool destroyParentComponent)
+    {
+        //Destroys the parent component to this game event if it is the last event attached to it
+        if (destroyParentComponent && gameObject.GetComponentsInChildren<GameEvent>().Length == 1)
+        {
+            Destroy(gameObject);
+        }
+
+        Destroy(this);
+    }
 }

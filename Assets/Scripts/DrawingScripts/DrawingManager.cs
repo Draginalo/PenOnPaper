@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DrawingManager : MonoBehaviour
 {
@@ -20,98 +21,172 @@ public class DrawingManager : MonoBehaviour
     }
 
     [SerializeField] private Sketches[] sketchStore;
-    private DrawingCompleteTrigger currTrigger = DrawingCompleteTrigger.NONE;
     private int currSketch = -1;
     [SerializeField] private Camera _MainCamera;
     [SerializeField] private NotepadManager _NotepadManager;
+    [SerializeField] private List<Sketches> thingsToDraw;
+    [SerializeField] private List<GameEventChain> currGameEventChains;
+    [SerializeField] private GameObject gameEventChainHolder;
+    private float _RaycastDistence = 100.0f;
+    private bool ThingsToDrawActivated = false;
 
     private void OnEnable()
     {
-        EventSystem.OnTriggerNextSketch += HandleNextSketch;
-        EventSystem.OnCameraLookChange += OnLookChanging;
-        EventSystem.OnSketchCompleted += TurnOffHighlight;
+        EventSystem.OnTriggerNextSketch += ActivateThingsToDraw;
+        EventSystem.OnTriggerNextEventChain += HandleNextEventChainTriger;
+        EventSystem.OnLoadEventChains += LoadGameEventChains;
+        //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
     private void OnDisable()
     {
-        EventSystem.OnTriggerNextSketch -= HandleNextSketch;
-        EventSystem.OnCameraLookChange -= OnLookChanging;
-        EventSystem.OnSketchCompleted -= TurnOffHighlight;
+        EventSystem.OnTriggerNextSketch -= ActivateThingsToDraw;
+        EventSystem.OnTriggerNextEventChain -= HandleNextEventChainTriger;
+        EventSystem.OnLoadEventChains -= LoadGameEventChains;
+        //EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnNextSketch();
+        ActivateThingsToDraw();
     }
 
-    private void HandleNextSketch(DrawingCompleteTrigger trigger)
+    private void LoadThingsToDraw(List<Sketches> thingsToDraw)
     {
-        switch (trigger)
+        this.thingsToDraw = thingsToDraw;
+    }
+
+    private void LoadGameEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent)
+    {
+        if (currGameEventChains.Count > 0)
         {
-            case DrawingCompleteTrigger.NONE:
-                SpawnNextSketch();
-                break;
-            default:
-                currTrigger = trigger;
-                break;
+            for (int i = 0; i < currGameEventChains.Count; i++)
+            {
+                currGameEventChains[i].CleanupChain();
+            }
+        }
+
+        currGameEventChains.Clear();
+
+        currGameEventChains = gameEventChains;
+
+        chainsParent.transform.SetParent(transform);
+    }
+
+    private void ActivateThingsToDraw()
+    {
+        foreach (Sketches thingToDraw in thingsToDraw)
+        {
+            if (thingToDraw.objectToDraw != null)
+            {
+                thingToDraw.objectToDraw.SetHighlightStrength(1.0f);
+            }
+        }
+
+        ThingsToDrawActivated = true;
+    }
+
+    private void DeactivateThingsToDraw()
+    {
+        foreach (Sketches thingToDraw in thingsToDraw)
+        {
+            if (thingToDraw.objectToDraw != null)
+            {
+                thingToDraw.objectToDraw.SetHighlightStrength(0.0f);
+            }
+        }
+
+        ThingsToDrawActivated = false;
+    }
+
+    private void Update()
+    {
+        if (Mouse.current.leftButton.isPressed && ThingsToDrawActivated)
+        {
+            Ray drawRay = _MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
+            {
+                Sketches possibleSketch = CheckForClickedObject(hit);
+                if (possibleSketch.sketchOBJ != null)
+                {
+                    DeactivateThingsToDraw();
+
+                    GameObject sketchOBJ = Instantiate(possibleSketch.sketchOBJ, _NotepadManager.CurrentPage.transform);
+                    sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+
+                    Destroy(possibleSketch.objectToDraw);
+                    thingsToDraw.Remove(possibleSketch);
+                }
+
+            }
         }
     }
 
-    private void OnLookChanging(bool lookingUp)
+    private Sketches CheckForClickedObject(RaycastHit hitOBJ)
     {
-        if ((currTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (currTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
-        {
-            currTrigger = DrawingCompleteTrigger.NONE;
+        HighlightScript thingToDrawScript = hitOBJ.collider.GetComponent<HighlightScript>();
 
-            //Delays the spawning of the sketch until in between looking up and down to not have the highlighted object pop into existence
-            StartCoroutine(Co_DelaySketchSpawn());
+        if (thingToDrawScript != null) {
+            foreach (Sketches thingsToDraw in thingsToDraw)
+            {
+                if (thingsToDraw.objectToDraw == thingToDrawScript)
+                {
+                    return thingsToDraw;
+                }
+            }
         }
 
+        return new Sketches();
     }
 
-    private IEnumerator Co_DelaySketchSpawn()
+    private void HandleNextEventChainTriger()
     {
-        yield return new WaitForSeconds(0.15f);
-        SpawnNextSketch();
+        if (currGameEventChains != null && currGameEventChains.Count > 0)
+        {
+            GameEventManager.instance.LoadAndExecuteEventChain(currGameEventChains[0]);
+            currGameEventChains.RemoveAt(0);
+        }
     }
 
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)
-    private void SpawnNextSketch()
-    {
-        /*currSketch++;
-        GameObject sketchOBJ;
-        switch (currSketch)
-        {
-            case 1:
-                sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
-                sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-                break;
-            case 2:
-                sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
-                sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-                break;
-        }*/
+    //private void SpawnNextSketch()
+    //{
+    //    /*currSketch++;
+    //    GameObject sketchOBJ;
+    //    switch (currSketch)
+    //    {
+    //        case 1:
+    //            sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
+    //            sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+    //            break;
+    //        case 2:
+    //            sketchOBJ = Instantiate(sketches[currSketch], _NotepadManager.CurrentPage.transform);
+    //            sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+    //            break;
+    //    }*/
 
-        if (currSketch + 1 < sketchStore.Length)
-        {
-            currSketch++;
-            GameObject sketchOBJ = Instantiate(sketchStore[currSketch].sketchOBJ, _NotepadManager.CurrentPage.transform);
-            if (sketchStore[currSketch].objectToDraw != null)
-            {
-                sketchStore[currSketch].objectToDraw.SetHighlightStrength(1.0f);
-            }
+    //    if (currSketch + 1 < sketchStore.Length)
+    //    {
+    //        currSketch++;
+    //        GameObject sketchOBJ = Instantiate(sketchStore[currSketch].sketchOBJ, _NotepadManager.CurrentPage.transform);
+    //        if (sketchStore[currSketch].objectToDraw != null)
+    //        {
+    //            sketchStore[currSketch].objectToDraw.SetHighlightStrength(1.0f);
+    //        }
 
 
-            sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-        }
-    }
+    //        sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+    //    }
+    //}
 
-    private void TurnOffHighlight()
-    {
-        if (sketchStore[currSketch].objectToDraw != null)
-        {
-            sketchStore[currSketch].objectToDraw.SetHighlightStrength(0.0f);
-        }
-    }
+    //private void TurnOffHighlight()
+    //{
+    //    if (sketchStore[currSketch].objectToDraw != null)
+    //    {
+    //        sketchStore[currSketch].objectToDraw.SetHighlightStrength(0.0f);
+    //    }
+    //}
 }

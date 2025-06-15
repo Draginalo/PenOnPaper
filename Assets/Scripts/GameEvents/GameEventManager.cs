@@ -4,15 +4,63 @@ using UnityEngine;
 
 public class GameEventManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameEventChain currGameEvents;
+
+    public static GameEventManager instance;
+
+    private void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEvent.OnGameEventCompleted += HandleGameEventCompleted;
+    }
+
+    private void OnDisable()
+    {
+        GameEvent.OnGameEventCompleted -= HandleGameEventCompleted;
+    }
+
+    public void LoadAndExecuteEventChain(GameEventChain gameEventsToExecute)
+    {
+        //if (currGameEvents && currGameEvents.GetEventChain().Count > 0)
+        //{
+        //    for (int i = 0; i < currGameEvents.GetEventChain().Count; i++)
+        //    {
+        //        Destroy(gameEventsToExecute.GetEventChain()[i]);
+        //    }
+
+        //    Destroy(currGameEvents);
+        //}
+
+        currGameEvents = gameEventsToExecute;
+        ExecuteNextEventChain();
+    }
+
+    public void ExecuteNextEventChain()
+    {
+        ExcecuteNextEvent();
+    }
+
+    public void ExcecuteNextEvent()
+    {
+        if (currGameEvents.GetEventChain().Count > 0)
+        {
+            currGameEvents.GetEventChain()[0].enabled = true;
+            currGameEvents.GetEventChain()[0].Begin();
+
+            return;
+        }
+
+        currGameEvents.CleanupChain();
+        //Destroy(currGameEvents);
+    }
+
+    private void HandleGameEventCompleted()
+    {
+        currGameEvents.RemoveCurrentEvent();
+        ExcecuteNextEvent();
     }
 }

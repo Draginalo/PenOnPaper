@@ -117,6 +117,7 @@ Transform:
   - {fileID: 9046626659872096563}
   - {fileID: 8924923266702494086}
   - {fileID: 6272870258011870500}
+  - {fileID: 1186186350624790670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7553367111645398023
@@ -146,11 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79cb7838575af04a94da5c2e4f51fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sketches:
-  - {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
-  - {fileID: 2477873707247255058, guid: b5b6449408b62f843a2eaafd381418ed, type: 3}
+  sketchStore: []
   _MainCamera: {fileID: 0}
   _NotepadManager: {fileID: 7553367111645398023}
+  thingsToDraw: []
+  currGameEventChains: []
+  gameEventChainHolder: {fileID: 7908638288945673515}
 --- !u!1 &7651271246572502122
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +267,37 @@ Transform:
   m_Children:
   - {fileID: 434553023089886854}
   - {fileID: 4799235923928728131}
+  m_Father: {fileID: 1559681126785227641}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7908638288945673515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186186350624790670}
+  m_Layer: 0
+  m_Name: GameEventChainHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186186350624790670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908638288945673515}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.53434, y: 0.47882378, z: 3.6143947}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 1559681126785227641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8174569092847292918
