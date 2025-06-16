@@ -33,4 +33,7 @@ public static class EventSystem
 
     public static event UnityAction<List<GameEventChain>, GameObject> OnLoadEventChains;
     public static void LoadEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent) => OnLoadEventChains?.Invoke(gameEventChains, chainsParent);
+
+    public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
+    public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
 }

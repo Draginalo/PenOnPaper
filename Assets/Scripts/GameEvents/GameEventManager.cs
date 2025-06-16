@@ -56,7 +56,10 @@ public class GameEventManager : MonoBehaviour
 
     private void HandleGameEventCompleted()
     {
-        currGameEvents.RemoveCurrentEvent();
-        ExcecuteNextEvent();
+        if (currGameEvents != null)
+        {
+            currGameEvents.RemoveCurrentEvent();
+            ExcecuteNextEvent();
+        }
     }
 }

@@ -27,8 +27,11 @@ public class GameEventChain
 
     public void RemoveCurrentEvent()
     {
-        eventChain[0].Cleanup(destroyParentComponent);
-        eventChain.RemoveAt(0);
+        if (eventChain.Count > 0)
+        {
+            eventChain[0].Cleanup(destroyParentComponent);
+            eventChain.RemoveAt(0);
+        }
     }
 
     public void CleanupChain()

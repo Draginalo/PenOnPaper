@@ -13,18 +13,18 @@ public class DrawingManager : MonoBehaviour
         LOOKING_UP
     }
 
-    [Serializable]
-    public struct Sketches
-    {
-        public GameObject sketchOBJ;
-        public HighlightScript objectToDraw;
-    }
+    //[Serializable]
+    //public struct Sketches
+    //{
+    //    public GameObject sketchOBJ;
+    //    public HighlightScript objectToDraw;
+    //}
 
-    [SerializeField] private Sketches[] sketchStore;
-    private int currSketch = -1;
+    //[SerializeField] private GameObject[] sketchStore;
+    //private int currSketch = -1;
     [SerializeField] private Camera _MainCamera;
     [SerializeField] private NotepadManager _NotepadManager;
-    [SerializeField] private List<Sketches> thingsToDraw;
+    [SerializeField] private List<GameObject> sketchesToDraw;
     [SerializeField] private List<GameEventChain> currGameEventChains;
     [SerializeField] private GameObject gameEventChainHolder;
     private float _RaycastDistence = 100.0f;
@@ -35,6 +35,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnTriggerNextSketch += ActivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain += HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains += LoadGameEventChains;
+        EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
         //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
@@ -43,7 +44,30 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnTriggerNextSketch -= ActivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain -= HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains -= LoadGameEventChains;
+        EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
         //EventSystem.OnSketchCompleted -= TurnOffHighlight;
+    }
+
+    private static Dictionary<DrawHandler, HighlightScript> sketchToObjectDictionary = new();
+
+    public static void AddObjectToDraw(DrawHandler sketchScript, HighlightScript thingToDrawScript)
+    {
+        sketchToObjectDictionary.Add(sketchScript, thingToDrawScript);
+    }
+
+    public static void RemoveObjectToDraw(DrawHandler sketchScript)
+    {
+        sketchToObjectDictionary.Remove(sketchScript);
+    }
+
+    public static HighlightScript CheckForConnectingObject(DrawHandler sketchScript)
+    {
+        if (sketchToObjectDictionary.ContainsKey(sketchScript))
+        {
+            return sketchToObjectDictionary[sketchScript];
+        }
+
+        return null;
     }
 
     // Start is called before the first frame update
@@ -52,9 +76,10 @@ public class DrawingManager : MonoBehaviour
         ActivateThingsToDraw();
     }
 
-    private void LoadThingsToDraw(List<Sketches> thingsToDraw)
+    private void LoadSketchesToDraw(List<GameObject> sketchesToDraw)
     {
-        this.thingsToDraw = thingsToDraw;
+        this.sketchesToDraw.Clear();
+        this.sketchesToDraw = sketchesToDraw;
     }
 
     private void LoadGameEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent)
@@ -76,11 +101,12 @@ public class DrawingManager : MonoBehaviour
 
     private void ActivateThingsToDraw()
     {
-        foreach (Sketches thingToDraw in thingsToDraw)
+        foreach (GameObject thingToDraw in sketchesToDraw)
         {
-            if (thingToDraw.objectToDraw != null)
+            HighlightScript possibleScript = CheckForConnectingObject(thingToDraw.GetComponentInChildren<DrawHandler>());
+            if (possibleScript != null)
             {
-                thingToDraw.objectToDraw.SetHighlightStrength(1.0f);
+                possibleScript.SetHighlightStrength(1.0f);
             }
         }
 
@@ -89,11 +115,12 @@ public class DrawingManager : MonoBehaviour
 
     private void DeactivateThingsToDraw()
     {
-        foreach (Sketches thingToDraw in thingsToDraw)
+        foreach (GameObject thingToDraw in sketchesToDraw)
         {
-            if (thingToDraw.objectToDraw != null)
+            HighlightScript possibleScript = CheckForConnectingObject(thingToDraw.GetComponentInChildren<DrawHandler>());
+            if (possibleScript != null)
             {
-                thingToDraw.objectToDraw.SetHighlightStrength(0.0f);
+                possibleScript.SetHighlightStrength(0.0f);
             }
         }
 
@@ -109,37 +136,44 @@ public class DrawingManager : MonoBehaviour
 
             if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
             {
-                Sketches possibleSketch = CheckForClickedObject(hit);
-                if (possibleSketch.sketchOBJ != null)
+                GameObject possibleSketch = CheckForClickedObject(hit);
+                if (possibleSketch != null)
                 {
                     DeactivateThingsToDraw();
 
-                    GameObject sketchOBJ = Instantiate(possibleSketch.sketchOBJ, _NotepadManager.CurrentPage.transform);
+                    GameObject sketchOBJ = Instantiate(possibleSketch, _NotepadManager.CurrentPage.transform);
                     sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
 
-                    Destroy(possibleSketch.objectToDraw);
-                    thingsToDraw.Remove(possibleSketch);
+                    HighlightScript possibleScript = CheckForConnectingObject(possibleSketch.GetComponentInChildren<DrawHandler>());
+                    if (possibleScript != null)
+                    {
+                        //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
+                        Destroy(possibleScript);
+                    }
+
+                    sketchesToDraw.Remove(possibleSketch);
                 }
 
             }
         }
     }
 
-    private Sketches CheckForClickedObject(RaycastHit hitOBJ)
+    private GameObject CheckForClickedObject(RaycastHit hitOBJ)
     {
         HighlightScript thingToDrawScript = hitOBJ.collider.GetComponent<HighlightScript>();
 
         if (thingToDrawScript != null) {
-            foreach (Sketches thingsToDraw in thingsToDraw)
+            foreach (GameObject sketchToDraw in sketchesToDraw)
             {
-                if (thingsToDraw.objectToDraw == thingToDrawScript)
+                HighlightScript possibleConnectingScript = CheckForConnectingObject(sketchToDraw.GetComponentInChildren<DrawHandler>());
+                if (possibleConnectingScript == thingToDrawScript)
                 {
-                    return thingsToDraw;
+                    return sketchToDraw;
                 }
             }
         }
 
-        return new Sketches();
+        return null;
     }
 
     private void HandleNextEventChainTriger()
@@ -149,6 +183,11 @@ public class DrawingManager : MonoBehaviour
             GameEventManager.instance.LoadAndExecuteEventChain(currGameEventChains[0]);
             currGameEventChains.RemoveAt(0);
         }
+    }
+
+    private void OnDestroy()
+    {
+        sketchToObjectDictionary.Clear();
     }
 
     //Add a way to trigger the OnLookChange for this function (perhaps passing a variable into the complete event)
