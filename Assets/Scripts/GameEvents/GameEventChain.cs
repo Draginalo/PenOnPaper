@@ -25,6 +25,16 @@ public class GameEventChain
         get { return componentParent; } 
     }
 
+    public GameEvent GetCurrEvent()
+    {
+        if (eventChain.Count > 0)
+        {
+            return eventChain[0];
+        }
+
+        return null;
+    }
+
     public void RemoveCurrentEvent()
     {
         if (eventChain.Count > 0)

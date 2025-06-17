@@ -45,8 +45,8 @@ public class GameEvent : MonoBehaviour
 
     public virtual void Execute() { }
 
-    public static event UnityAction OnGameEventCompleted;
-    public virtual void GameEventCompleted() { OnGameEventCompleted?.Invoke(); }
+    public static event UnityAction<GameEvent> OnGameEventCompleted;
+    public virtual void GameEventCompleted(GameEvent eventCompleted) { OnGameEventCompleted?.Invoke(eventCompleted); }
 
     public void Cleanup(bool destroyParentComponent)
     {

@@ -19,6 +19,6 @@ public class LoadGameEventChains : GameEvent
     {
         base.Execute();
         EventSystem.LoadEventChains(gameEventChains, gameEventChainsParent);
-        GameEventCompleted();
+        GameEventCompleted(this);
     }
 }

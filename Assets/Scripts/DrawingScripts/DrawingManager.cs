@@ -70,12 +70,6 @@ public class DrawingManager : MonoBehaviour
         return null;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        ActivateThingsToDraw();
-    }
-
     private void LoadSketchesToDraw(List<GameObject> sketchesToDraw)
     {
         this.sketchesToDraw.Clear();

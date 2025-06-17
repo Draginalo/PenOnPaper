@@ -15,6 +15,8 @@ public class LoadSketchesToDraw : GameEvent
     {
         base.Execute();
         EventSystem.LoadSketchesToDraw(newSketchesToDraw);
-        GameEventCompleted();
+        GameEventCompleted(this);
+
+        EventSystem.TriggerNextSketch();
     }
 }

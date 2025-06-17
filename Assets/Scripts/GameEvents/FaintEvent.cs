@@ -29,14 +29,14 @@ public class FaintEvent : GameEvent
         StartCoroutine(Co_RunFaintEffect());
     }
 
-    public override void GameEventCompleted()
+    public override void GameEventCompleted(GameEvent eventCompleted)
     {
         if (blurSettings)
         {
             blurSettings.active = false;
         }
 
-        base.GameEventCompleted();
+        base.GameEventCompleted(eventCompleted);
     }
 
     private bool FaintFinished()
@@ -54,6 +54,6 @@ public class FaintEvent : GameEvent
     private IEnumerator Co_RunFaintEffect()
     {
         yield return new WaitUntil(FaintFinished);
-        GameEventCompleted();
+        GameEventCompleted(this);
     }
 }

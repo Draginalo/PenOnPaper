@@ -16,6 +16,6 @@ public class SpawnNextSketch : GameEvent
     {
         yield return new WaitForSeconds(spawnDelayTime);
         EventSystem.TriggerNextSketch();
-        GameEventCompleted();
+        GameEventCompleted(this);
     }
 }
