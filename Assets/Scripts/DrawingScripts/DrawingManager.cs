@@ -27,7 +27,7 @@ public class DrawingManager : MonoBehaviour
     [SerializeField] private List<GameObject> sketchesToDraw;
     [SerializeField] private List<GameEventChain> currGameEventChains;
     [SerializeField] private GameObject gameEventChainHolder;
-    private float _RaycastDistence = 100.0f;
+    private float _RaycastDistence = 200.0f;
     private bool ThingsToDrawActivated = false;
 
     private void OnEnable()
