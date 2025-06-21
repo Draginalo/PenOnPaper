@@ -17,6 +17,6 @@ public class LoadSketchesToDraw : GameEvent
         EventSystem.LoadSketchesToDraw(newSketchesToDraw);
         GameEventCompleted(this);
 
-        EventSystem.TriggerNextSketch();
+        EventSystem.ActivateSketchChoosing();
     }
 }

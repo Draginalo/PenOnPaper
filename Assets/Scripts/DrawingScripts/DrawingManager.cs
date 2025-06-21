@@ -27,24 +27,30 @@ public class DrawingManager : MonoBehaviour
     [SerializeField] private List<GameObject> sketchesToDraw;
     [SerializeField] private List<GameEventChain> currGameEventChains;
     [SerializeField] private GameObject gameEventChainHolder;
+
+    [SerializeField] private Vector2[] sketchPositions;
+    private int sketchPosIndex = 0;
+
     private float _RaycastDistence = 200.0f;
     private bool ThingsToDrawActivated = false;
 
     private void OnEnable()
     {
-        EventSystem.OnTriggerNextSketch += ActivateThingsToDraw;
+        EventSystem.OnActivateSketchChoosing += ActivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain += HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains += LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
+        EventSystem.OnFlipNotepadPage += HandleResetSketchPos;
         //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
     private void OnDisable()
     {
-        EventSystem.OnTriggerNextSketch -= ActivateThingsToDraw;
+        EventSystem.OnActivateSketchChoosing -= ActivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain -= HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains -= LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
+        EventSystem.OnFlipNotepadPage -= HandleResetSketchPos;
         //EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
 
@@ -95,6 +101,9 @@ public class DrawingManager : MonoBehaviour
 
     private void ActivateThingsToDraw()
     {
+        //Handles if all the current spots to draw sketches in the notebook are filled up
+        HandleDrawingSpotsOccupied();
+
         foreach (GameObject thingToDraw in sketchesToDraw)
         {
             HighlightScript possibleScript = CheckForConnectingObject(thingToDraw.GetComponentInChildren<DrawHandler>());
@@ -121,35 +130,71 @@ public class DrawingManager : MonoBehaviour
         ThingsToDrawActivated = false;
     }
 
+    private void HandleDrawingSpotsOccupied()
+    {
+        if (sketchPosIndex == sketchPositions.Length)
+        {
+            FlipPageEvent flipPageEvent = gameObject.AddComponent<FlipPageEvent>();
+            ActivateSketchesToChooseEvent spawnNextSketchEvent = gameObject.AddComponent<ActivateSketchesToChooseEvent>();
+            spawnNextSketchEvent.SetEventTrigger(DrawingCompleteTrigger.LOOKING_UP);
+
+            ////Maybe add a way to have the activate sketch choosing be without looking down and up 
+            /// again and just fade in instead of snap in
+            /// 
+            GameEventChain newEventsChain = new GameEventChain();
+            newEventsChain.SetEvents(new List<GameEvent> { flipPageEvent, spawnNextSketchEvent });
+            GameEventManager.instance.LoadAndExecuteEventChain(newEventsChain);
+
+            sketchPosIndex = 0;
+            return;
+        }
+    }
+
+    private void HandleResetSketchPos(GameEvent gameEvent)
+    {
+        sketchPosIndex = 0;
+    }
+
     private void Update()
     {
         if (Mouse.current.leftButton.isPressed && ThingsToDrawActivated)
         {
-            Ray drawRay = _MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
+            HandleSelectThingToDraw();
+        }
+    }
 
-            if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
+    private void HandleSelectThingToDraw()
+    {
+        Ray drawRay = _MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
+        {
+            GameObject possibleSketch = CheckForClickedObject(hit);
+            if (possibleSketch != null)
             {
-                GameObject possibleSketch = CheckForClickedObject(hit);
-                if (possibleSketch != null)
-                {
-                    DeactivateThingsToDraw();
+                DeactivateThingsToDraw();
 
-                    GameObject sketchOBJ = Instantiate(possibleSketch, _NotepadManager.CurrentPage.transform);
-                    sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-
-                    HighlightScript possibleScript = CheckForConnectingObject(possibleSketch.GetComponentInChildren<DrawHandler>());
-                    if (possibleScript != null)
-                    {
-                        //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
-                        Destroy(possibleScript);
-                    }
-
-                    sketchesToDraw.Remove(possibleSketch);
-                }
-
+                HandleSpawnNextSketch(possibleSketch);
             }
         }
+    }
+
+    private void HandleSpawnNextSketch(GameObject nextSketch)
+    {
+        GameObject sketchOBJ = Instantiate(nextSketch, _NotepadManager.CurrentPage.transform);
+        sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.position.y, sketchPositions[sketchPosIndex].y);
+        sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+        sketchPosIndex++;
+
+        HighlightScript possibleScript = CheckForConnectingObject(nextSketch.GetComponentInChildren<DrawHandler>());
+        if (possibleScript != null)
+        {
+            //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
+            Destroy(possibleScript);
+        }
+
+        sketchesToDraw.Remove(nextSketch);
     }
 
     private GameObject CheckForClickedObject(RaycastHit hitOBJ)

@@ -10,8 +10,8 @@ public static class EventSystem
     public static void CameraLookChange(bool lookingUp) => OnCameraLookChange?.Invoke(lookingUp);
 
     // Sketch Events
-    public static event UnityAction OnTriggerNextSketch;
-    public static void TriggerNextSketch() => OnTriggerNextSketch?.Invoke();
+    public static event UnityAction OnActivateSketchChoosing;
+    public static void ActivateSketchChoosing() => OnActivateSketchChoosing?.Invoke();
 
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();

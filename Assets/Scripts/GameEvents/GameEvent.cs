@@ -21,7 +21,12 @@ public class GameEvent : MonoBehaviour
         this.enabled = false; 
     }
 
-    private void OnLookChanging(bool lookingUp)
+    public void SetEventTrigger(DrawingCompleteTrigger eventTrigger)
+    {
+        this.eventTrigger = eventTrigger;
+    }
+
+    protected virtual void OnLookChanging(bool lookingUp)
     {
         if ((eventTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (eventTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
         {

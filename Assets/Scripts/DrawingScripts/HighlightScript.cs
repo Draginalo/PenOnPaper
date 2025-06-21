@@ -1,19 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HighlightScript : MonoBehaviour
 {
-    [SerializeField] private Texture2D texture;
+    [SerializeField] private HighlightPackage[] materialsToHighlight;
     [SerializeField] private Color highlightColor;
     [SerializeField] private GameObject connectingSketch;
     private bool isActive = false;
 
+    [Serializable]
+    private struct HighlightPackage
+    {
+        public Texture2D texture;
+        public Renderer renderer;
+    }
+
     // Start is called before the first frame update
     void Awake()
     {
-        gameObject.GetComponent<Renderer>().material.SetTexture("_BaseTex", texture);
-        gameObject.GetComponent<Renderer>().material.SetColor("_HighlightColor", highlightColor);
+        foreach (HighlightPackage highlightPackage in materialsToHighlight)
+        {
+            highlightPackage.renderer.material.SetTexture("_BaseTex", highlightPackage.texture);
+            highlightPackage.renderer.material.SetColor("_HighlightColor", highlightColor);
+        }
 
         if (connectingSketch != null)
         {
@@ -33,7 +44,10 @@ public class HighlightScript : MonoBehaviour
             isActive = false;
         }
 
-        gameObject.GetComponent<Renderer>().material.SetFloat("_Strength", strength);
+        foreach (HighlightPackage highlightPackage in materialsToHighlight)
+        {
+            highlightPackage.renderer.material.SetFloat("_Strength", strength);
+        }
     }
 
     public bool GetIsActive()

@@ -254,6 +254,9 @@ public class DrawHandler : MonoBehaviour
         VisualEffect vfx = Instantiate(_CompleteVFX, transform.parent).GetComponent<VisualEffect>();
         vfx.SetTexture("DrawTexture", generatedTexture);
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
+        //vfx.transform.SetParent(null);
+        //vfx.transform.localScale = new Vector3(_CompleteVFXSize, _CompleteVFXSize, _CompleteVFXSize);
+        //vfx.transform.SetParent(transform);
 
         EventSystem.SketchCompleted();
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
