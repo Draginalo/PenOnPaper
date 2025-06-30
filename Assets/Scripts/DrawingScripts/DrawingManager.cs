@@ -31,7 +31,7 @@ public class DrawingManager : MonoBehaviour
     [SerializeField] private Vector2[] sketchPositions;
     private int sketchPosIndex = 0;
 
-    private float _RaycastDistence = 200.0f;
+    private float _RaycastDistence = 1000.0f;
     private bool ThingsToDrawActivated = false;
 
     private void OnEnable()
@@ -102,18 +102,21 @@ public class DrawingManager : MonoBehaviour
     private void ActivateThingsToDraw()
     {
         //Handles if all the current spots to draw sketches in the notebook are filled up
-        HandleDrawingSpotsOccupied();
+        bool spotsOccupied = HandleDrawingSpotsOccupied();
 
-        foreach (GameObject thingToDraw in sketchesToDraw)
+        if (!spotsOccupied)
         {
-            HighlightScript possibleScript = CheckForConnectingObject(thingToDraw.GetComponentInChildren<DrawHandler>());
-            if (possibleScript != null)
+            foreach (GameObject thingToDraw in sketchesToDraw)
             {
-                possibleScript.SetHighlightStrength(1.0f);
+                HighlightScript possibleScript = CheckForConnectingObject(thingToDraw.GetComponentInChildren<DrawHandler>());
+                if (possibleScript != null)
+                {
+                    possibleScript.SetHighlightStrength(1.0f);
+                }
             }
-        }
 
-        ThingsToDrawActivated = true;
+            ThingsToDrawActivated = true;
+        }
     }
 
     private void DeactivateThingsToDraw()
@@ -130,7 +133,7 @@ public class DrawingManager : MonoBehaviour
         ThingsToDrawActivated = false;
     }
 
-    private void HandleDrawingSpotsOccupied()
+    private bool HandleDrawingSpotsOccupied()
     {
         if (sketchPosIndex == sketchPositions.Length)
         {
@@ -146,8 +149,10 @@ public class DrawingManager : MonoBehaviour
             GameEventManager.instance.LoadAndExecuteEventChain(newEventsChain);
 
             sketchPosIndex = 0;
-            return;
+            return true;
         }
+
+        return false;
     }
 
     private void HandleResetSketchPos(GameEvent gameEvent)
@@ -183,7 +188,7 @@ public class DrawingManager : MonoBehaviour
     private void HandleSpawnNextSketch(GameObject nextSketch)
     {
         GameObject sketchOBJ = Instantiate(nextSketch, _NotepadManager.CurrentPage.transform);
-        sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.position.y, sketchPositions[sketchPosIndex].y);
+        sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.localPosition.y, sketchPositions[sketchPosIndex].y);
         sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
         sketchPosIndex++;
 

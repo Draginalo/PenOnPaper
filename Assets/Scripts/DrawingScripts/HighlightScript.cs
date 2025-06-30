@@ -6,6 +6,7 @@ using UnityEngine;
 public class HighlightScript : MonoBehaviour
 {
     [SerializeField] private HighlightPackage[] materialsToHighlight;
+    [ColorUsage(true, hdr:true)]
     [SerializeField] private Color highlightColor;
     [SerializeField] private GameObject connectingSketch;
     private bool isActive = false;
@@ -14,6 +15,7 @@ public class HighlightScript : MonoBehaviour
     private struct HighlightPackage
     {
         public Texture2D texture;
+        public Color substatuteColor;
         public Renderer renderer;
     }
 
@@ -22,7 +24,15 @@ public class HighlightScript : MonoBehaviour
     {
         foreach (HighlightPackage highlightPackage in materialsToHighlight)
         {
-            highlightPackage.renderer.material.SetTexture("_BaseTex", highlightPackage.texture);
+            if (highlightPackage.texture != null)
+            {
+                highlightPackage.renderer.material.SetTexture("_BaseTex", highlightPackage.texture);
+            }
+            else
+            {
+                highlightPackage.renderer.material.SetColor("_BaseColor", highlightPackage.substatuteColor);
+            }
+
             highlightPackage.renderer.material.SetColor("_HighlightColor", highlightColor);
         }
 

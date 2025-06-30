@@ -39,7 +39,7 @@ public class DrawHandler : MonoBehaviour
     private Vector2Int lastPoint = Vector2Int.zero;
 
     [SerializeField] private SplineContainer drawSpline;
-    [SerializeField] private float minDistToSplinePoints = 0.1f;
+    [SerializeField] private float minDistToSplinePoints = 0.0025f;
     private int startingKnotCount;
 
     [SerializeField] private GameObject _NextPointMarker;

@@ -21,8 +21,11 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     public enum Environments
     {
-        None,
-        Campsite
+        NONE,
+        CAMPSITE,
+        LAKE,
+        HOSPITAL,
+        GRAVEYARD
     }
 
     private void OnEnable()
@@ -38,7 +41,15 @@ public class EnvironmentSwitchManager : MonoBehaviour
     private void Start()
     {
         //Gets first active environment when starting
-        currEnv = GetComponentInChildren<Transform>().gameObject;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i) != transform && transform.GetChild(i).gameObject.activeInHierarchy)
+            {
+                currEnv = transform.GetChild(i).gameObject;
+            }
+
+            break;
+        }
     }
 
     private void HandleEnvironmentSwap(Environments newEnv)
@@ -48,13 +59,25 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     private IEnumerator Co_DelaySwap(Environments newEnv)
     {
-        if (newEnv != Environments.None)
+        Debug.Log((int)newEnv);
+        if (newEnv != Environments.NONE)
         {
             yield return new WaitForSeconds(envDelayTime);
-            environments[(int)newEnv].envOBJ.SetActive(true);
-        }
 
-        currEnv.SetActive(false);
+            if (currEnv != null)
+            {
+                currEnv.SetActive(false);
+            }
+            currEnv = environments[(int)newEnv].envOBJ;
+            currEnv.SetActive(true);
+        }
+        else
+        {
+            if (currEnv != null)
+            {
+                currEnv.SetActive(false);
+            }
+        }
 
         skyboxMat.SetTexture("_Tex", environments[(int)newEnv].skybox);
     }

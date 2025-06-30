@@ -372,10 +372,9 @@ MonoBehaviour:
   drawPoint: {fileID: 8172193093353764175}
   _RaycastDistence: 30
   drawSpline: {fileID: 6929228159023656924}
-  minDistToSplinePoints: 0.01
+  minDistToSplinePoints: 0.005
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
-  _CompleteVFXSize: 3
   followingGameEvents:
     eventChain: []
     componentParent: {fileID: 0}
@@ -547,7 +546,6 @@ MonoBehaviour:
   minDistToSplinePoints: 0.1
   _NextPointMarker: {fileID: 0}
   _CompleteVFX: {fileID: 0}
-  _CompleteVFXSize: 0
   followingGameEvents:
     eventChain: []
     componentParent: {fileID: 0}
