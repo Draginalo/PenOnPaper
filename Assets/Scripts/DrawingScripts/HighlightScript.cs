@@ -24,16 +24,23 @@ public class HighlightScript : MonoBehaviour
     {
         foreach (HighlightPackage highlightPackage in materialsToHighlight)
         {
-            if (highlightPackage.texture != null)
+            Material[] materials = highlightPackage.renderer.materials;
+            foreach (Material material in materials)
             {
-                highlightPackage.renderer.material.SetTexture("_BaseTex", highlightPackage.texture);
-            }
-            else
-            {
-                highlightPackage.renderer.material.SetColor("_BaseColor", highlightPackage.substatuteColor);
-            }
+                if (material.HasProperty("_HighlightColor"))
+                {
+                    if (highlightPackage.texture != null)
+                    {
+                        material.SetTexture("_BaseTex", highlightPackage.texture);
+                    }
+                    else
+                    {
+                        material.SetColor("_BaseColor", highlightPackage.substatuteColor);
+                    }
 
-            highlightPackage.renderer.material.SetColor("_HighlightColor", highlightColor);
+                    material.SetColor("_HighlightColor", highlightColor);
+                }
+            }
         }
 
         if (connectingSketch != null)
@@ -56,7 +63,14 @@ public class HighlightScript : MonoBehaviour
 
         foreach (HighlightPackage highlightPackage in materialsToHighlight)
         {
-            highlightPackage.renderer.material.SetFloat("_Strength", strength);
+            Material[] materials = highlightPackage.renderer.materials;
+            foreach (Material material in materials)
+            {
+                if (material.HasProperty("_HighlightColor"))
+                {
+                    material.SetFloat("_Strength", strength);
+                }
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private int totalPixelsX = 1024;
     [SerializeField] private int totalPixelsY = 512;
-    [SerializeField] private int brushSize = 4;
+    [SerializeField] private int brushSize = 8;
     [SerializeField] private Color brushColor = Color.black;
 
     [SerializeField] private Material drawingCanvasMaterial;
@@ -39,7 +39,7 @@ public class DrawHandler : MonoBehaviour
     private Vector2Int lastPoint = Vector2Int.zero;
 
     [SerializeField] private SplineContainer drawSpline;
-    [SerializeField] private float minDistToSplinePoints = 0.0025f;
+    private float minDistToSplinePoints = 0.0025f;
     private int startingKnotCount;
 
     [SerializeField] private GameObject _NextPointMarker;

@@ -13,11 +13,13 @@ public class NotepadManager : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnFlipNotepadPage += HandleFlipPage;
+        EventSystem.OnSwapEnvironments += HandleResetNotepad;
     }
 
     private void OnDisable()
     {
         EventSystem.OnFlipNotepadPage -= HandleFlipPage;
+        EventSystem.OnSwapEnvironments -= HandleResetNotepad;
     }
 
     private void Start()
@@ -29,6 +31,15 @@ public class NotepadManager : MonoBehaviour
     {
         pageAnimator.GetComponent<AnimationHandler>().sourceGameEvent = eventData;
         pageAnimator.SetBool("StartPageFlip", true);
+
+        GameObject newPageParent = Instantiate(_NotepadPage, transform);
+        currPage = newPageParent.transform.GetChild(0).gameObject;
+        pageAnimator = newPageParent.GetComponent<Animator>();
+    }
+
+    private void HandleResetNotepad(EnvironmentSwitchManager.Environments env)
+    {
+        Destroy(currPage);
 
         GameObject newPageParent = Instantiate(_NotepadPage, transform);
         currPage = newPageParent.transform.GetChild(0).gameObject;

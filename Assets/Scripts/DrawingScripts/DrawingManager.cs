@@ -41,6 +41,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadEventChains += LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage += HandleResetSketchPos;
+        EventSystem.OnSwapEnvironments += HandleResetNotepadPos;
         //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
@@ -51,6 +52,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadEventChains -= LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage -= HandleResetSketchPos;
+        EventSystem.OnSwapEnvironments -= HandleResetNotepadPos;
         //EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
 
@@ -155,9 +157,14 @@ public class DrawingManager : MonoBehaviour
         return false;
     }
 
-    private void HandleResetSketchPos(GameEvent gameEvent)
+    private void HandleResetSketchPos(GameEvent gameEvent = null)
     {
         sketchPosIndex = 0;
+    }
+
+    private void HandleResetNotepadPos(EnvironmentSwitchManager.Environments env)
+    {
+        HandleResetSketchPos();
     }
 
     private void Update()
