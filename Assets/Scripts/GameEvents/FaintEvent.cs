@@ -7,7 +7,7 @@ public class FaintEvent : GameEvent
     [SerializeField] private AnimationCurve VignetteCurve;
     [SerializeField] private float blurrMultiple = 15.0f;
     [SerializeField] private float colorMultiple = 0.1f;
-    //[SerializeField] private float vignetteMultiple = 100.0f;
+    [SerializeField] private float vignetteMultiple = 100.0f;
     [SerializeField] private float curveEvaluationSpeed;
     BlurSettings blurSettings;
     private float currTime = 0;
@@ -42,7 +42,7 @@ public class FaintEvent : GameEvent
     private bool FaintFinished()
     {
         blurSettings.vignetteSpread.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed);
-        //blurSettings.vignetteStrength.value = blurSettings.vignetteStrength.max - (1 - VignetteCurve.Evaluate(currTime * curveEvaluationSpeed)) * vignetteMultiple;
+        blurSettings.vignetteStrength.value = blurSettings.vignetteStrength.max - (1 - VignetteCurve.Evaluate(currTime * curveEvaluationSpeed)) * vignetteMultiple;
         blurSettings.colorStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * colorMultiple;
         blurSettings.blurrStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * blurrMultiple;
 

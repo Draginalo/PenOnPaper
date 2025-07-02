@@ -46,9 +46,8 @@ public class EnvironmentSwitchManager : MonoBehaviour
             if (transform.GetChild(i) != transform && transform.GetChild(i).gameObject.activeInHierarchy)
             {
                 currEnv = transform.GetChild(i).gameObject;
+                break;
             }
-
-            break;
         }
     }
 
