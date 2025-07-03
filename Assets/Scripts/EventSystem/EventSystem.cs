@@ -24,8 +24,8 @@ public static class EventSystem
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
     //Environment events
-    public static event UnityAction<EnvironmentSwitchManager.Environments> OnSwapEnvironments;
-    public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment) => OnSwapEnvironments?.Invoke(newEnvironment);
+    public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;
+    public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment, GameEvent gameEvent) => OnSwapEnvironments?.Invoke(newEnvironment, gameEvent);
 
     //Possible combine this with the on sketch complete event with a bool perameter to only have one event
     public static event UnityAction OnTriggerNextEventChain;

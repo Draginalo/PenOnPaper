@@ -53,7 +53,7 @@ public class GameEvent : MonoBehaviour
     public static event UnityAction<GameEvent> OnGameEventCompleted;
     public virtual void GameEventCompleted(GameEvent eventCompleted) { OnGameEventCompleted?.Invoke(eventCompleted); }
 
-    public void Cleanup(bool destroyParentComponent)
+    public virtual void Cleanup(bool destroyParentComponent)
     {
         //Destroys the parent component to this game event if it is the last event attached to it
         if (destroyParentComponent && gameObject.GetComponentsInChildren<GameEvent>().Length == 1)

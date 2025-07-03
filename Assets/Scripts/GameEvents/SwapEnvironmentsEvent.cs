@@ -7,10 +7,7 @@ public class SwapEnvironmentsEvent : GameEvent
     public override void Execute()
     {
         base.Execute();
-        Debug.Log(envToSwitchTo);
-        EventSystem.SwapEnvironment(envToSwitchTo);
-
-        //Make this timed exactly when the environment has swapped
-        GameEventCompleted(this);
+        //Debug.Log(envToSwitchTo);
+        EventSystem.SwapEnvironment(envToSwitchTo, this);
     }
 }

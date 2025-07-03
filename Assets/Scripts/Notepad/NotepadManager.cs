@@ -37,7 +37,7 @@ public class NotepadManager : MonoBehaviour
         pageAnimator = newPageParent.GetComponent<Animator>();
     }
 
-    private void HandleResetNotepad(EnvironmentSwitchManager.Environments env)
+    private void HandleResetNotepad(EnvironmentSwitchManager.Environments env, GameEvent gameEvent)
     {
         Destroy(currPage);
 

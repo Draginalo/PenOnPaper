@@ -51,12 +51,12 @@ public class EnvironmentSwitchManager : MonoBehaviour
         }
     }
 
-    private void HandleEnvironmentSwap(Environments newEnv)
+    private void HandleEnvironmentSwap(Environments newEnv, GameEvent gameEvent)
     {
-        StartCoroutine(Co_DelaySwap(newEnv));
+        StartCoroutine(Co_DelaySwap(newEnv, gameEvent));
     }
 
-    private IEnumerator Co_DelaySwap(Environments newEnv)
+    private IEnumerator Co_DelaySwap(Environments newEnv, GameEvent gameEvent)
     {
         Debug.Log((int)newEnv);
         if (newEnv != Environments.NONE)
@@ -79,5 +79,7 @@ public class EnvironmentSwitchManager : MonoBehaviour
         }
 
         skyboxMat.SetTexture("_Tex", environments[(int)newEnv].skybox);
+
+        gameEvent.GameEventCompleted(gameEvent);
     }
 }

@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class LoadGameEventChains : GameEvent
 {
-    [SerializeField] List<GameEventChain> gameEventChains;
-    [SerializeField] GameObject gameEventChainsParent;
+    [SerializeField] private List<GameEventChain> gameEventChains;
+    [SerializeField] private GameObject gameEventChainsParent;
+    [SerializeField] private bool excecuteOnStart = false;
 
     private void Start()
     {
-        GameEventChain t = new GameEventChain();
-        t.SetEvents(new List<GameEvent> { this });
+        if (excecuteOnStart)
+        {
+            GameEventChain t = new GameEventChain();
+            t.SetEvents(new List<GameEvent> { this });
 
-        GameEventManager.instance.LoadAndExecuteEventChain(t);
+            GameEventManager.instance.LoadAndExecuteEventChain(t);
+        }
     }
 
     public override void Execute()
     {
         base.Execute();
+        gameEventChainsParent.SetActive(true);
         EventSystem.LoadEventChains(gameEventChains, gameEventChainsParent);
         GameEventCompleted(this);
     }

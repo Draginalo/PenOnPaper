@@ -3091,8 +3091,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
-  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4667,6 +4667,7 @@ MonoBehaviour:
   colorMultiple: 0
   vignetteMultiple: 1
   curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
 --- !u!114 &734250082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4740,6 +4741,7 @@ MonoBehaviour:
     componentParent: {fileID: 734250079}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 734250079}
+  excecuteOnStart: 0
 --- !u!4 &734250086
 Transform:
   m_ObjectHideFlags: 0
@@ -5314,7 +5316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -7430,7 +7432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1217093677
 Transform:
   m_ObjectHideFlags: 0
@@ -9482,7 +9484,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1542622255}
   - component: {fileID: 1542622254}
-  - component: {fileID: 1542622253}
   - component: {fileID: 1542622252}
   - component: {fileID: 1542622251}
   - component: {fileID: 1542622250}
@@ -9494,7 +9495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1542622249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9649,23 +9650,23 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.6059676
       value: 0.7284007
-      inSlope: 0.6974397
-      outSlope: 0.6974397
+      inSlope: -0.35096073
+      outSlope: -0.35096073
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.67869854
+      time: 0.65288943
       value: 0.4511462
-      inSlope: 1.960854
-      outSlope: 1.960854
+      inSlope: 0.91245365
+      outSlope: 0.91245365
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7124849
+      time: 0.6866758
       value: 0.7124419
       inSlope: 1.5933602
       outSlope: 1.5933602
@@ -9674,7 +9675,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.76523143
+      time: 0.7394223
       value: 0.4726011
       inSlope: 7.1228857
       outSlope: 7.1228857
@@ -9683,23 +9684,50 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 1
     - serializedVersion: 3
-      time: 0.78817815
-      value: 0.9338763
-      inSlope: 5.6412525
-      outSlope: 5.6412525
+      time: 0.77061516
+      value: 0.9965712
+      inSlope: 1.7165546
+      outSlope: 1.7165546
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5526468
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8018437
+      value: 0.9638345
+      inSlope: -0.06838408
+      outSlope: -0.06838408
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.84447145
-      value: 0.9995151
-      inSlope: 0.7947664
-      outSlope: 0.7947664
+      time: 0.8234081
+      value: 0.9987021
+      inSlope: 0.005910521
+      outSlope: 0.005910521
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.6151794
-      outWeight: 0.25474286
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.84
+      value: 1
+      inSlope: 0.035934493
+      outSlope: 0.035934493
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8648001
+      value: 0.9962158
+      inSlope: -0.68918204
+      outSlope: -0.68918204
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.562617
+      outWeight: 0.28077713
     - serializedVersion: 3
       time: 1
       value: 0
@@ -9714,8 +9742,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   blurrMultiple: 18
   colorMultiple: 0.5
-  vignetteMultiple: 120
+  vignetteMultiple: 100
   curveEvaluationSpeed: 0.1
+  markedAsCompletedTimeOnCurve: 0.84
 --- !u!114 &1542622251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9728,8 +9757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cbd0296bbe6694a9b209e150b9f415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 1
-  envToSwitchTo: 2
+  eventTrigger: 0
+  envToSwitchTo: 3
 --- !u!114 &1542622252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9743,19 +9772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
---- !u!114 &1542622253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542622248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4e4bd05527edb419b0a932d7356a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 0
 --- !u!114 &1542622254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9771,7 +9787,12 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1542622252}
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 1542622249}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   - eventChain:
@@ -9782,12 +9803,8 @@ MonoBehaviour:
     - {fileID: 1542622256}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
-    componentParent: {fileID: 1542622248}
-    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
+  excecuteOnStart: 0
 --- !u!4 &1542622255
 Transform:
   m_ObjectHideFlags: 0
@@ -10921,7 +10938,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1689450307}
   - component: {fileID: 1689450308}
-  - component: {fileID: 1689450306}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -10929,19 +10945,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1689450306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689450305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e55d029fcbcd9849b5f30ced8360be6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 2
 --- !u!4 &1689450307
 Transform:
   m_ObjectHideFlags: 0
@@ -11349,6 +11352,7 @@ MonoBehaviour:
   colorMultiple: 0
   vignetteMultiple: 1
   curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
 --- !u!114 &1741369358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11422,6 +11426,7 @@ MonoBehaviour:
     componentParent: {fileID: 1741369355}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1741369355}
+  excecuteOnStart: 0
 --- !u!4 &1741369362
 Transform:
   m_ObjectHideFlags: 0
@@ -12364,6 +12369,7 @@ MonoBehaviour:
   colorMultiple: 0
   vignetteMultiple: 1
   curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
 --- !u!114 &1875980095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12437,6 +12443,7 @@ MonoBehaviour:
     componentParent: {fileID: 1875980092}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1875980092}
+  excecuteOnStart: 0
 --- !u!4 &1875980099
 Transform:
   m_ObjectHideFlags: 0
@@ -14164,18 +14171,18 @@ GameObject:
   m_Component:
   - component: {fileID: 2049096254}
   - component: {fileID: 2049096255}
-  - component: {fileID: 2049096259}
   - component: {fileID: 2049096258}
   - component: {fileID: 2049096257}
   - component: {fileID: 2049096256}
   - component: {fileID: 2049096260}
+  - component: {fileID: 2049096261}
   m_Layer: 0
   m_Name: StartingGameEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2049096254
 Transform:
   m_ObjectHideFlags: 0
@@ -14207,8 +14214,17 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1689450306}
-    componentParent: {fileID: 1689450305}
+    - {fileID: 2049096256}
+    - {fileID: 2049096257}
+    componentParent: {fileID: 2049096250}
+    destroyParentComponent: 1
+  - eventChain:
+    - {fileID: 2049096260}
+    componentParent: {fileID: 2049096250}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 2049096261}
+    componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 1689450308}
@@ -14218,12 +14234,8 @@ MonoBehaviour:
     - {fileID: 2049096258}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 2049096256}
-    - {fileID: 2049096257}
-    componentParent: {fileID: 2049096250}
-    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2049096250}
+  excecuteOnStart: 1
 --- !u!114 &2049096256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14326,8 +14338,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   blurrMultiple: 15
   colorMultiple: 0
-  vignetteMultiple: 1
+  vignetteMultiple: 50
   curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
 --- !u!114 &2049096257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14355,19 +14368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
---- !u!114 &2049096259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049096250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4e4bd05527edb419b0a932d7356a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 0
 --- !u!114 &2049096260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14386,6 +14386,19 @@ MonoBehaviour:
   - {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
   - {fileID: 2477873707247255058, guid: 084c0821f22ed524598da97efd89b13b, type: 3}
   - {fileID: 7806719808546884800, guid: 05ea10d1584b795478bd5cafd07fd377, type: 3}
+--- !u!114 &2049096261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049096250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e55d029fcbcd9849b5f30ced8360be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
 --- !u!1001 &2059988636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20624,9 +20637,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: currGameEventChains.Array.data[0].componentParent
+      value: 
+      objectReference: {fileID: 2049096250}
+    - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: currGameEventChains.Array.data[0].eventChain.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7380201394913820790, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: currGameEventChains.Array.data[0].eventChain.Array.data[0]
+      value: 
+      objectReference: {fileID: 2049096255}
     - target: {fileID: 7651271246572502122, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -99,6 +99,8 @@ public class DrawingManager : MonoBehaviour
         currGameEventChains = gameEventChains;
 
         chainsParent.transform.SetParent(transform);
+
+        HandleNextEventChainTriger();
     }
 
     private void ActivateThingsToDraw()
@@ -162,7 +164,7 @@ public class DrawingManager : MonoBehaviour
         sketchPosIndex = 0;
     }
 
-    private void HandleResetNotepadPos(EnvironmentSwitchManager.Environments env)
+    private void HandleResetNotepadPos(EnvironmentSwitchManager.Environments env, GameEvent gameEvent)
     {
         HandleResetSketchPos();
     }

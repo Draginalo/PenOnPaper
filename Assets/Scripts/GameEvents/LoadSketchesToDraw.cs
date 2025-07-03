@@ -6,11 +6,6 @@ public class LoadSketchesToDraw : GameEvent
 {
     [SerializeField] List<GameObject> newSketchesToDraw;
 
-    private void Start()
-    {
-        Begin();
-    }
-
     public override void Execute()
     {
         base.Execute();
