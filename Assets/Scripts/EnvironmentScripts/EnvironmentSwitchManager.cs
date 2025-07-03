@@ -28,7 +28,8 @@ public class EnvironmentSwitchManager : MonoBehaviour
         CAMPSITE,
         LAKE,
         HOSPITAL,
-        GRAVEYARD
+        GRAVEYARD,
+        HOSPITAL2
     }
 
     private void OnEnable()
@@ -53,6 +54,7 @@ public class EnvironmentSwitchManager : MonoBehaviour
             }
         }
 
+        //Sets up baker to reset reflections when switching
         baker = gameObject.AddComponent<ReflectionProbe>();
         baker.cullingMask = 0;
         baker.refreshMode = ReflectionProbeRefreshMode.ViaScripting;
@@ -69,7 +71,6 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     private IEnumerator Co_DelaySwap(Environments newEnv, GameEvent gameEvent)
     {
-        Debug.Log((int)newEnv);
         if (newEnv != Environments.NONE)
         {
             yield return new WaitForSeconds(envDelayTime);
@@ -91,11 +92,14 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
         skyboxMat.SetTexture("_Tex", environments[(int)newEnv].skybox);
 
-        gameEvent.GameEventCompleted(gameEvent);
+        //Resets ambient lighting for new skybox texture
         DynamicGI.UpdateEnvironment();
 
+        //Resets reflections for new skybox texture
         baker.RenderProbe();
         yield return new WaitForEndOfFrame();
         RenderSettings.customReflectionTexture = baker.texture;
+
+        gameEvent.GameEventCompleted(gameEvent);
     }
 }

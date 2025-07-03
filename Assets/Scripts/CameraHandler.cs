@@ -7,6 +7,9 @@ public class CameraHandler : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _UpCam;
     [SerializeField] private CinemachineVirtualCamera _DowmCam;
+    [SerializeField] private GameObject _UpCamActivator;
+    [SerializeField] private GameObject _DownCamActivator;
+    [SerializeField] private float cameraSwitchTime = 0.3f;
     private bool currentlylookingDown = false;
 
     public static CameraHandler instance;
@@ -22,6 +25,8 @@ public class CameraHandler : MonoBehaviour
         }
 
         instance = this;
+
+        _UpCamActivator.SetActive(false);
     }
 
     public void SwitchToUpCam()
@@ -29,6 +34,8 @@ public class CameraHandler : MonoBehaviour
         _UpCam.MoveToTopOfPrioritySubqueue();
         EventSystem.CameraLookChange(true);
         currentlylookingDown = false;
+        _UpCamActivator.SetActive(false);
+        StartCoroutine(Co_DelayEnableButton(_DownCamActivator));
     }
 
     public void SwitchToDownCam()
@@ -36,5 +43,13 @@ public class CameraHandler : MonoBehaviour
         _DowmCam.MoveToTopOfPrioritySubqueue();
         EventSystem.CameraLookChange(false);
         currentlylookingDown = true;
+        _DownCamActivator.SetActive(false);
+        StartCoroutine(Co_DelayEnableButton(_UpCamActivator));
+    }
+
+    private IEnumerator Co_DelayEnableButton(GameObject buttonToEnable)
+    {
+        yield return new WaitForSeconds(cameraSwitchTime);
+        buttonToEnable.SetActive(true);
     }
 }

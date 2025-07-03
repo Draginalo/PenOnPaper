@@ -8,6 +8,14 @@ public class LoadGameEventChains : GameEvent
     [SerializeField] private GameObject gameEventChainsParent;
     [SerializeField] private bool excecuteOnStart = false;
 
+    private void Awake()
+    {
+        if (excecuteOnStart)
+        {
+            this.enabled = true;
+        }
+    }
+
     private void Start()
     {
         if (excecuteOnStart)
