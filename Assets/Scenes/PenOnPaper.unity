@@ -9489,6 +9489,7 @@ GameObject:
   - component: {fileID: 1542622250}
   - component: {fileID: 1542622249}
   - component: {fileID: 1542622256}
+  - component: {fileID: 1542622257}
   m_Layer: 0
   m_Name: StartingGameEvents (1)
   m_TagString: Untagged
@@ -9791,16 +9792,20 @@ MonoBehaviour:
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   - eventChain:
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
-    componentParent: {fileID: 1542622248}
-    destroyParentComponent: 0
-  - eventChain:
     - {fileID: 1293880074}
     componentParent: {fileID: 1293880071}
     destroyParentComponent: 0
   - eventChain:
+    - {fileID: 1542622257}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
+  - eventChain:
     - {fileID: 1542622256}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
@@ -9835,6 +9840,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 2
   m_DeerToSpawn: {fileID: 7332128739026219402, guid: f00f1b3d1f7fc7b4a90990f3537b6641, type: 3}
+--- !u!114 &1542622257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542622248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e55d029fcbcd9849b5f30ced8360be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
 --- !u!1 &1554267007
 GameObject:
   m_ObjectHideFlags: 0
@@ -11713,7 +11731,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.81960785, g: 0.7231981, b: 0.2823529, a: 1}
+  m_Color: {r: 1, g: 0.81751823, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnvironmentSwitchManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnvironmentSwitchManager : MonoBehaviour
     [SerializeField] private float envDelayTime = 0.15f;
 
     [SerializeField] private Material skyboxMat;
+
+    private ReflectionProbe baker;
 
     [Serializable]
     private struct EnvironmentData
@@ -49,6 +52,14 @@ public class EnvironmentSwitchManager : MonoBehaviour
                 break;
             }
         }
+
+        baker = gameObject.AddComponent<ReflectionProbe>();
+        baker.cullingMask = 0;
+        baker.refreshMode = ReflectionProbeRefreshMode.ViaScripting;
+        baker.mode = ReflectionProbeMode.Realtime;
+        baker.timeSlicingMode = ReflectionProbeTimeSlicingMode.NoTimeSlicing;
+
+        RenderSettings.defaultReflectionMode = DefaultReflectionMode.Custom;
     }
 
     private void HandleEnvironmentSwap(Environments newEnv, GameEvent gameEvent)
@@ -81,5 +92,10 @@ public class EnvironmentSwitchManager : MonoBehaviour
         skyboxMat.SetTexture("_Tex", environments[(int)newEnv].skybox);
 
         gameEvent.GameEventCompleted(gameEvent);
+        DynamicGI.UpdateEnvironment();
+
+        baker.RenderProbe();
+        yield return new WaitForEndOfFrame();
+        RenderSettings.customReflectionTexture = baker.texture;
     }
 }

@@ -1088,6 +1088,8 @@ GameObject:
   - component: {fileID: 7965500571990321968}
   - component: {fileID: 9123784346701233101}
   - component: {fileID: 9011108074191041564}
+  - component: {fileID: 3740064680462853116}
+  - component: {fileID: 7592715272498803011}
   m_Layer: 0
   m_Name: deer
   m_TagString: Untagged
@@ -1151,6 +1153,40 @@ MonoBehaviour:
     renderer: {fileID: 7233903923930905503}
   highlightColor: {r: 2, g: 1.5767493, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 40735fae434abbd4b90c07941ff4f5eb, type: 3}
+--- !u!114 &3740064680462853116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332128739026219402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514d1d2c630b6a640b74d81f4d960de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9123784346701233101}
+--- !u!65 &7592715272498803011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332128739026219402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.65007985, y: 1.3211048, z: 1.6874878}
+  m_Center: {x: 0.010292113, y: 0.65043926, z: 0.27375945}
 --- !u!1 &7508502328810264872
 GameObject:
   m_ObjectHideFlags: 0
