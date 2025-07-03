@@ -78,16 +78,16 @@ MonoBehaviour:
   active: 0
   blurrStrength:
     m_OverrideState: 1
-    m_Value: 1.82
+    m_Value: 1.95
   colorStrength:
     m_OverrideState: 1
-    m_Value: 0.853
+    m_Value: 0.1
   vignetteSpread:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.47
   vignetteStrength:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 10
 --- !u!114 &7489554263053961075
 MonoBehaviour:
   m_ObjectHideFlags: 3

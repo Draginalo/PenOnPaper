@@ -3091,8 +3091,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
+  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
+  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9787,12 +9787,12 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
+    - {fileID: 1542622249}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   - eventChain:
-    - {fileID: 1542622249}
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   - eventChain:
@@ -14216,6 +14216,7 @@ MonoBehaviour:
   - eventChain:
     - {fileID: 2049096256}
     - {fileID: 2049096257}
+    - {fileID: 1542622254}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 1
   - eventChain:
