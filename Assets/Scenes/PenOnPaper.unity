@@ -445,7 +445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &119781413
 Transform:
   m_ObjectHideFlags: 0
@@ -3851,6 +3851,11 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 590773021}
+    - {fileID: 2064146513}
+    componentParent: {fileID: 590773017}
+    destroyParentComponent: 1
+  - eventChain:
     - {fileID: 590773018}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
@@ -3858,11 +3863,6 @@ MonoBehaviour:
     - {fileID: 225828279}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 590773021}
-    - {fileID: 2064146513}
-    componentParent: {fileID: 590773017}
-    destroyParentComponent: 1
   - eventChain:
     - {fileID: 590773022}
     componentParent: {fileID: 590773017}
@@ -3872,7 +3872,7 @@ MonoBehaviour:
     componentParent: {fileID: 590773017}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 590773017}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &590773024
 Transform:
   m_ObjectHideFlags: 0
@@ -5440,7 +5440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -6498,18 +6498,26 @@ MonoBehaviour:
   environments:
   - envOBJ: {fileID: 0}
     skybox: {fileID: 8900000, guid: d6ebebfa67e6e7840b98f08817c73666, type: 3}
+    transitionDarkness: 0
   - envOBJ: {fileID: 864968027}
     skybox: {fileID: 8900000, guid: e05f699048296f741b9be275da273623, type: 3}
+    transitionDarkness: 0
   - envOBJ: {fileID: 1217093676}
     skybox: {fileID: 8900000, guid: 54b13707ddadd9c45b6de6cd9d402264, type: 3}
+    transitionDarkness: 0
   - envOBJ: {fileID: 919132148975604337}
     skybox: {fileID: 8900000, guid: 9d1368f75264764408d2f80eda953c91, type: 3}
+    transitionDarkness: 0
   - envOBJ: {fileID: 119781412}
     skybox: {fileID: 8900000, guid: 28e167372345eba4584204e6a721cf9c, type: 3}
+    transitionDarkness: 0.65
   - envOBJ: {fileID: 1070870757}
     skybox: {fileID: 8900000, guid: 9d1368f75264764408d2f80eda953c91, type: 3}
+    transitionDarkness: 0
   envDelayTime: 0.15
+  envCrossFadeTime: 0.1
   skyboxMat: {fileID: 2100000, guid: a002f3f3b54f16f419082683adb9edd9, type: 2}
+  mat: {fileID: 2100000, guid: 3b90dbb08d960714b9fa86c6061ebecc, type: 2}
 --- !u!1 &1019764315
 GameObject:
   m_ObjectHideFlags: 0
@@ -9623,7 +9631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1542622249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9938,7 +9946,7 @@ MonoBehaviour:
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &1542622255
 Transform:
   m_ObjectHideFlags: 0
@@ -12113,7 +12121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1875980093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13993,7 +14001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2049096254
 Transform:
   m_ObjectHideFlags: 0
@@ -14301,7 +14309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2064146508
 MonoBehaviour:
   m_ObjectHideFlags: 0
