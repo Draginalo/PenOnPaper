@@ -16,7 +16,7 @@ public class BlurRenderPass : ScriptableRenderPass
         //Gets blurr settings from all volumes
         blurSettings = VolumeManager.instance.stack.GetComponent<BlurSettings>();
 
-        renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
+        renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
 
         if (blurSettings != null && blurSettings.IsActive())
         {

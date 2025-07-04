@@ -27,6 +27,9 @@ public static class EventSystem
     public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;
     public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment, GameEvent gameEvent) => OnSwapEnvironments?.Invoke(newEnvironment, gameEvent);
 
+    public static event UnityAction OnSpawnDoctor;
+    public static void SpawnDoctor() => OnSpawnDoctor?.Invoke();
+
     //Possible combine this with the on sketch complete event with a bool perameter to only have one event
     public static event UnityAction OnTriggerNextEventChain;
     public static void TriggerNextEventChain() => OnTriggerNextEventChain?.Invoke();

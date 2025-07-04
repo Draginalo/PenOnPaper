@@ -7844,16 +7844,16 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 2cc17f8d51ba31c4ab906210101426e9, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
+  m_TreeBillboardDistance: 5
+  m_TreeCrossFadeLength: 50
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 300
+  m_DetailObjectDistance: 1000
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
-  m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_HeightmapMaximumLOD: 1
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -7870,7 +7870,7 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
-  m_EnableHeightmapRayTracing: 1
+  m_EnableHeightmapRayTracing: 0
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
 --- !u!1 &1274416847
@@ -9616,6 +9616,7 @@ GameObject:
   - component: {fileID: 1542622249}
   - component: {fileID: 1542622256}
   - component: {fileID: 1542622257}
+  - component: {fileID: 1542622258}
   m_Layer: 0
   m_Name: StartingGameEvents (1)
   m_TagString: Untagged
@@ -9653,7 +9654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 2
+  eventTrigger: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -9705,35 +9706,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.28666997
       value: 0.81526715
-      inSlope: 1.7854643
-      outSlope: 1.7854643
+      inSlope: -0.41268253
+      outSlope: -0.41268253
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3610813
-      value: 0.50919986
-      inSlope: 5.4510593
-      outSlope: 5.4510593
+      time: 0.36107525
+      value: 0.18211728
+      inSlope: 13.299824
+      outSlope: 13.299824
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.37725434
-      value: 0.75204283
-      inSlope: 6.3746524
-      outSlope: 6.3746524
-      tangentMode: 34
+      value: 0.75015074
+      inSlope: 6.4105425
+      outSlope: 6.4105425
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.16053921
     - serializedVersion: 3
       time: 0.46860185
       value: 0.5450498
-      inSlope: 6.973689
-      outSlope: 6.973689
+      inSlope: 6.9840455
+      outSlope: 6.9840455
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -9777,17 +9778,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.6059676
       value: 0.7284007
-      inSlope: -0.35096073
-      outSlope: -0.35096073
+      inSlope: -5.405864
+      outSlope: -5.405864
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.65288943
-      value: 0.4511462
-      inSlope: 0.91245365
-      outSlope: 0.91245365
+      time: 0.64581877
+      value: 0.09003794
+      inSlope: -0.39247656
+      outSlope: -0.39247656
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -9795,8 +9796,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.6866758
       value: 0.7124419
-      inSlope: 1.5933602
-      outSlope: 1.5933602
+      inSlope: 5.3433332
+      outSlope: 5.3433332
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -9914,12 +9915,6 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
-    - {fileID: 1875980098}
-    componentParent: {fileID: 1542622248}
-    destroyParentComponent: 0
-  - eventChain:
     - {fileID: 1542622249}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
@@ -9933,6 +9928,13 @@ MonoBehaviour:
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 1542622256}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 1542622258}
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
+    - {fileID: 1875980098}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
@@ -9980,6 +9982,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+--- !u!114 &1542622258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542622248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a95fd93000f4342ae371e5cbc1db0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
 --- !u!1 &1554267007
 GameObject:
   m_ObjectHideFlags: 0
