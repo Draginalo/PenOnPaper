@@ -15,6 +15,11 @@ public class GameEventChain
         eventChain = events;
     }
 
+    public void AddEventToEnd(GameEvent gameEvent)
+    {
+        eventChain.Add(gameEvent);
+    }
+
     public List<GameEvent> GetEventChain()
     {
         return eventChain;

@@ -445,7 +445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &119781413
 Transform:
   m_ObjectHideFlags: 0
@@ -3672,7 +3672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &590773018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3851,11 +3851,6 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 590773021}
-    - {fileID: 2064146513}
-    componentParent: {fileID: 590773017}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 590773018}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
@@ -3863,6 +3858,11 @@ MonoBehaviour:
     - {fileID: 225828279}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 590773021}
+    - {fileID: 2064146513}
+    componentParent: {fileID: 590773017}
+    destroyParentComponent: 1
   - eventChain:
     - {fileID: 590773022}
     componentParent: {fileID: 590773017}
@@ -3872,7 +3872,7 @@ MonoBehaviour:
     componentParent: {fileID: 590773017}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 590773017}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!4 &590773024
 Transform:
   m_ObjectHideFlags: 0
@@ -5440,7 +5440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -9915,6 +9915,13 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 1542622258}
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
+    - {fileID: 1875980098}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
+  - eventChain:
     - {fileID: 1542622249}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
@@ -9930,15 +9937,8 @@ MonoBehaviour:
     - {fileID: 1542622256}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 1542622258}
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
-    - {fileID: 1875980098}
-    componentParent: {fileID: 1542622248}
-    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!4 &1542622255
 Transform:
   m_ObjectHideFlags: 0
@@ -13993,7 +13993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2049096254
 Transform:
   m_ObjectHideFlags: 0

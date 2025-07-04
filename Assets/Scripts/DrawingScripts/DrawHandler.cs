@@ -283,6 +283,9 @@ public class DrawHandler : MonoBehaviour
     {
         if (followingGameEvents.ComponentParent != null)
         {
+            TriggerNextEventChain triggerNextEventChain = followingGameEvents.ComponentParent.AddComponent<TriggerNextEventChain>();
+            followingGameEvents.AddEventToEnd(triggerNextEventChain);
+
             GameEventManager.instance.LoadAndExecuteEventChain(followingGameEvents);
 
             //Attaches game event components to game event manager to make sure the components don't get destroyed
