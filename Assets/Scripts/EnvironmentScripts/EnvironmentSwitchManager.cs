@@ -35,7 +35,8 @@ public class EnvironmentSwitchManager : MonoBehaviour
         LAKE,
         HOSPITAL,
         GRAVEYARD,
-        HOSPITAL2
+        HOSPITAL2,
+        HOSPITAL_VOID
     }
 
     private void OnEnable()
@@ -92,7 +93,7 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     private void HandleEnvironmentSwap(Environments newEnv, GameEvent gameEvent)
     {
-        if (newEnv != Environments.NONE)
+        if (newEnv != Environments.NONE && newEnv != Environments.HOSPITAL_VOID)
         {
             takeScreenshot = true;
         }
@@ -111,7 +112,7 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     private IEnumerator Co_DelaySwap(Environments newEnv, GameEvent gameEvent)
     {
-        if (newEnv != Environments.NONE)
+        if (newEnv != Environments.NONE && newEnv != Environments.HOSPITAL_VOID)
         {
             yield return new WaitForSeconds(envDelayTime);
 
@@ -130,6 +131,12 @@ public class EnvironmentSwitchManager : MonoBehaviour
             if (currEnv != null)
             {
                 currEnv.SetActive(false);
+            }
+
+            if (newEnv != Environments.NONE)
+            {
+                currEnv = environments[(int)newEnv].envOBJ;
+                currEnv.SetActive(true);
             }
         }
 

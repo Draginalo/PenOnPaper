@@ -22,6 +22,9 @@ public static class EventSystem
     public static event UnityAction OnSketchCompleted;
     public static void SketchCompleted() => OnSketchCompleted?.Invoke();
 
+    public static event UnityAction<GameObject> OnSpawnSketch;
+    public static void SpawnSketch(GameObject nextSketch) => OnSpawnSketch?.Invoke(nextSketch);
+
     //Notepad events
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
@@ -45,4 +48,10 @@ public static class EventSystem
 
     public static event UnityAction OnOpenHospitalDoor;
     public static void OpenHospitalDoor() => OnOpenHospitalDoor?.Invoke();
+
+    public static event UnityAction<AnimationCurve, float, float, float> OnSetLightIntensity;
+    public static void SetLightIntensity(AnimationCurve newCurve, float maxIntensity, float newRange, float evaluationSpeed) => OnSetLightIntensity?.Invoke(newCurve, maxIntensity, newRange, evaluationSpeed);
+
+    public static event UnityAction OnActivateHospitalVoidEnv;
+    public static void ActivateHospitalVoidEnv() => OnActivateHospitalVoidEnv?.Invoke();
 }

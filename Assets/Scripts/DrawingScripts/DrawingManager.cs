@@ -43,6 +43,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage += HandleResetSketchPos;
         EventSystem.OnSwapEnvironments += HandleResetNotepadPos;
+        EventSystem.OnSpawnSketch += HandleSpawnNextSketch;
         //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
 
@@ -55,6 +56,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage -= HandleResetSketchPos;
         EventSystem.OnSwapEnvironments -= HandleResetNotepadPos;
+        EventSystem.OnSpawnSketch -= HandleSpawnNextSketch;
         //EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
 
@@ -62,7 +64,10 @@ public class DrawingManager : MonoBehaviour
 
     public static void AddObjectToDraw(DrawHandler sketchScript, HighlightScript thingToDrawScript)
     {
-        sketchToObjectDictionary.Add(sketchScript, thingToDrawScript);
+        if (!sketchToObjectDictionary.ContainsKey(sketchScript))
+        {
+            sketchToObjectDictionary.Add(sketchScript, thingToDrawScript);
+        }
     }
 
     public static void RemoveObjectToDraw(DrawHandler sketchScript)

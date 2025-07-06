@@ -50,6 +50,8 @@ public class DrawHandler : MonoBehaviour
     [Tooltip("The game events to occure following the completion of the sketch")]
     [SerializeField] private GameEventChain followingGameEvents;
 
+    [SerializeField] private bool triggerSketchCompletion = true;
+
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
 
@@ -283,8 +285,11 @@ public class DrawHandler : MonoBehaviour
     {
         if (followingGameEvents.ComponentParent != null)
         {
-            TriggerNextEventChain triggerNextEventChain = followingGameEvents.ComponentParent.AddComponent<TriggerNextEventChain>();
-            followingGameEvents.AddEventToEnd(triggerNextEventChain);
+            if (triggerSketchCompletion)
+            {
+                TriggerNextEventChain triggerNextEventChain = followingGameEvents.ComponentParent.AddComponent<TriggerNextEventChain>();
+                followingGameEvents.AddEventToEnd(triggerNextEventChain);
+            }
 
             GameEventManager.instance.LoadAndExecuteEventChain(followingGameEvents);
 

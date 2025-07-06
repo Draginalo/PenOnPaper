@@ -18,4 +18,13 @@ public class DoctorScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void StealHeart()
+    {
+        GameObject heart = GameObject.FindGameObjectWithTag("Heart");
+        if (heart != null)
+        {
+            heart.transform.SetParent(transform);
+        }
+    }
 }
