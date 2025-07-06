@@ -8,7 +8,6 @@ public class TriggerNextEventChain : GameEvent
 
         EventSystem.TriggerNextEventChain();
 
-        //Make this timed exactly when the environment has swapped
         GameEventCompleted(this);
     }
 }

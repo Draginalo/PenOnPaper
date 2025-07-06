@@ -13,6 +13,9 @@ public static class EventSystem
     public static event UnityAction OnActivateSketchChoosing;
     public static void ActivateSketchChoosing() => OnActivateSketchChoosing?.Invoke();
 
+    public static event UnityAction OnDeActivateSketchChoosing;
+    public static void DeActivateSketchChoosing() => OnDeActivateSketchChoosing?.Invoke();
+
     public static event UnityAction OnSketchHalfComplete;
     public static void SketchHalfComplete() => OnSketchHalfComplete?.Invoke();
 
@@ -39,4 +42,7 @@ public static class EventSystem
 
     public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
     public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
+
+    public static event UnityAction OnOpenHospitalDoor;
+    public static void OpenHospitalDoor() => OnOpenHospitalDoor?.Invoke();
 }

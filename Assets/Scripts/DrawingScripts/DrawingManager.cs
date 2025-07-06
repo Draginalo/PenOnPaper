@@ -37,6 +37,7 @@ public class DrawingManager : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnActivateSketchChoosing += ActivateThingsToDraw;
+        EventSystem.OnDeActivateSketchChoosing += DeactivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain += HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains += LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
@@ -48,6 +49,7 @@ public class DrawingManager : MonoBehaviour
     private void OnDisable()
     {
         EventSystem.OnActivateSketchChoosing -= ActivateThingsToDraw;
+        EventSystem.OnDeActivateSketchChoosing -= DeactivateThingsToDraw;
         EventSystem.OnTriggerNextEventChain -= HandleNextEventChainTriger;
         EventSystem.OnLoadEventChains -= LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
@@ -223,6 +225,12 @@ public class DrawingManager : MonoBehaviour
                 {
                     return sketchToDraw;
                 }
+            }
+
+            ClickableObject possibleClickableScript = thingToDrawScript.gameObject.GetComponent<ClickableObject>();
+            if (possibleClickableScript != null)
+            {
+                possibleClickableScript.Clicked();
             }
         }
 

@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
   - component: {fileID: 6663071328765507513}
-  - component: {fileID: 1812080174060862360}
+  - component: {fileID: 154150485422495403}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -377,10 +377,10 @@ MonoBehaviour:
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
   followingGameEvents:
     eventChain:
-    - {fileID: 1812080174060862360}
+    - {fileID: 154150485422495403}
     componentParent: {fileID: 3611650364959769581}
     destroyParentComponent: 0
---- !u!114 &1812080174060862360
+--- !u!114 &154150485422495403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,11 +389,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3611650364959769581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4803ec5dde65fdf4aa3e57fcec683c9f, type: 3}
+  m_Script: {fileID: 11500000, guid: a98525754e1f60a4ba0a75ad0747bf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+  animationToTrigger: StartGraveAni
+  enableRootMotion: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  startingRotation: {x: 0, y: 0, z: 0}
+  useAnimationToTriggerCompletion: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,4 +15,26 @@ public class AnimationHandler : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void SetClickableActive()
+    {
+        HighlightScript possibleScript = gameObject.GetComponent<HighlightScript>();
+        if (possibleScript != null)
+        {
+            possibleScript.SetHighlightStrength(1.0f);
+        }
+
+        EventSystem.ActivateSketchChoosing();
+    }
+
+    private void SetClickableDeActive()
+    {
+        HighlightScript possibleScript = gameObject.GetComponent<HighlightScript>();
+        if (possibleScript != null)
+        {
+            possibleScript.SetHighlightStrength(0.0f);
+        }
+
+        EventSystem.DeActivateSketchChoosing();
+    }
 }

@@ -9,7 +9,6 @@ public class SpawnDeerEvent : GameEvent
         base.Execute();
         Instantiate(m_DeerToSpawn);
 
-        //Make this timed exactly when the environment has swapped
         GameEventCompleted(this);
     }
 }
