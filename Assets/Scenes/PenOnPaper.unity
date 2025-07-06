@@ -3375,8 +3375,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
-  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5642,7 +5642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -7062,7 +7062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
@@ -14348,7 +14348,7 @@ MonoBehaviour:
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2049096250}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!114 &2049096256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14601,6 +14601,11 @@ GameObject:
   - component: {fileID: 2064146516}
   - component: {fileID: 2064146518}
   - component: {fileID: 2064146519}
+  - component: {fileID: 2064146522}
+  - component: {fileID: 2064146521}
+  - component: {fileID: 2064146520}
+  - component: {fileID: 2064146523}
+  - component: {fileID: 2064146524}
   m_Layer: 0
   m_Name: StartingGameEvents (4)
   m_TagString: Untagged
@@ -14882,7 +14887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cbd0296bbe6694a9b209e150b9f415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 1
+  eventTrigger: 0
   envToSwitchTo: 0
 --- !u!114 &2064146512
 MonoBehaviour:
@@ -14921,9 +14926,17 @@ MonoBehaviour:
     - {fileID: 2064146518}
     - {fileID: 2064146510}
     - {fileID: 2064146519}
-    - {fileID: 2064146511}
+    - {fileID: 2064146522}
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 1
+  - eventChain:
+    - {fileID: 2064146520}
+    - {fileID: 2064146524}
+    - {fileID: 2064146521}
+    - {fileID: 2064146511}
+    - {fileID: 2064146523}
+    componentParent: {fileID: 2064146507}
+    destroyParentComponent: 0
   - eventChain:
     - {fileID: 2064146508}
     componentParent: {fileID: 370387641}
@@ -14937,7 +14950,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
@@ -15028,6 +15041,271 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+--- !u!114 &2064146520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8895df944aec7604392021e59e87a38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  m_ShakeStrength: 0.2
+  m_ShakeSpeed: 0.1
+--- !u!114 &2064146521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  VignetteCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 29.956423
+      outSlope: 29.956423
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.03305567
+      value: 0.99022967
+      inSlope: 0.102310814
+      outSlope: 0.102310814
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.47805205
+    - serializedVersion: 3
+      time: 0.07865226
+      value: 0.52615243
+      inSlope: 0.092305236
+      outSlope: 0.092305236
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.114130825
+      value: 1.0117102
+      inSlope: -0.6828252
+      outSlope: -0.6828252
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4758891
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.16729882
+      value: 1.007844
+      inSlope: -0.4518978
+      outSlope: -0.4518978
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25535232
+      value: 0.46747935
+      inSlope: -0.050853718
+      outSlope: -0.050853718
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.9160705
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.30654034
+      value: 0.197254
+      inSlope: 1.26985
+      outSlope: 1.26985
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.37725434
+      value: 0.75015074
+      inSlope: 6.4105425
+      outSlope: 6.4105425
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.16053921
+    - serializedVersion: 3
+      time: 0.46860185
+      value: 0.5450498
+      inSlope: 6.9840455
+      outSlope: 6.9840455
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4961117
+      value: 0.99107707
+      inSlope: 1.175614
+      outSlope: 1.175614
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.24366885
+    - serializedVersion: 3
+      time: 0.53298295
+      value: 0.65025544
+      inSlope: -0.6347348
+      outSlope: -0.6347348
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5444022
+      value: 0.74434996
+      inSlope: 1.2308965
+      outSlope: 1.2308965
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.58138615
+      value: 0.60040677
+      inSlope: -4.0671973
+      outSlope: -4.0671973
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.64075285
+      value: 0.34855235
+      inSlope: 0.7226572
+      outSlope: 0.7226572
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6897363
+      value: 0.6271539
+      inSlope: 3.3897963
+      outSlope: 3.3897963
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.753482
+      value: 0.69675946
+      inSlope: 5.6963634
+      outSlope: 5.6963634
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8069096
+      value: 0.8487413
+      inSlope: -0.06838408
+      outSlope: -0.06838408
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8470405
+      value: 0.80563444
+      inSlope: 0.035934493
+      outSlope: 0.035934493
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8648001
+      value: 0.9962158
+      inSlope: 0.7164379
+      outSlope: 0.7164379
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.562617
+      outWeight: 0.5143721
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.32285035
+      outSlope: -0.32285035
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5304553
+      outWeight: 0.85530365
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blurrMultiple: 18
+  colorMultiple: 0.7
+  vignetteMultiple: 100
+  curveEvaluationSpeed: 0.25
+  markedAsCompletedTimeOnCurve: 0.84
+--- !u!114 &2064146522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97434457f6f37645b6534aaa2235faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  delay: 2
+--- !u!114 &2064146523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb1bd13f4bd03e48970c9e0470484f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+--- !u!114 &2064146524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98525754e1f60a4ba0a75ad0747bf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+  animationToTrigger: StartHospitalJumpscare
+  enableRootMotion: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  startingRotation: {x: 0, y: 0, z: 0}
+  useAnimationToTriggerCompletion: 0
 --- !u!1 &2132928566
 GameObject:
   m_ObjectHideFlags: 0
@@ -21068,13 +21346,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4925977987054206205, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: m_Range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925977987054206205, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5879432057473390584, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6272870258011870500, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.4
+      value: 4.91
       objectReference: {fileID: 0}
     - target: {fileID: 6853722405248316065, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: m_IsActive

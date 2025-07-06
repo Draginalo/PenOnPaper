@@ -92,7 +92,11 @@ public class EnvironmentSwitchManager : MonoBehaviour
 
     private void HandleEnvironmentSwap(Environments newEnv, GameEvent gameEvent)
     {
-        takeScreenshot = true;
+        if (newEnv != Environments.NONE)
+        {
+            takeScreenshot = true;
+        }
+
         StartCoroutine(Co_DelaySwap(newEnv, gameEvent));
     }
 

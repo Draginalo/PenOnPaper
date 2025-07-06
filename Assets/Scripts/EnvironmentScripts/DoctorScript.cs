@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DoctorScript : MonoBehaviour
+{
+    private void OnEnable()
+    {
+        EventSystem.OnSwapEnvironments += DestroyDoc;
+    }
+
+    private void OnDisable()
+    {
+        EventSystem.OnSwapEnvironments -= DestroyDoc;
+    }
+
+    private void DestroyDoc(EnvironmentSwitchManager.Environments env, GameEvent gameEvent)
+    {
+        Destroy(gameObject);
+    }
+}
