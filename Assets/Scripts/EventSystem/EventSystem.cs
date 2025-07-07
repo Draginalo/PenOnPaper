@@ -29,6 +29,9 @@ public static class EventSystem
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
+    public static event UnityAction OnClearNotepadPage;
+    public static void ClearNotepadPage() => OnClearNotepadPage?.Invoke();
+
     //Environment events
     public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;
     public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment, GameEvent gameEvent) => OnSwapEnvironments?.Invoke(newEnvironment, gameEvent);
@@ -46,8 +49,8 @@ public static class EventSystem
     public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
     public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
 
-    public static event UnityAction OnOpenHospitalDoor;
-    public static void OpenHospitalDoor() => OnOpenHospitalDoor?.Invoke();
+    public static event UnityAction<bool> OnOpenHospitalDoor;
+    public static void OpenHospitalDoor(bool slowOpen) => OnOpenHospitalDoor?.Invoke(slowOpen);
 
     public static event UnityAction<AnimationCurve, float, float, float> OnSetLightIntensity;
     public static void SetLightIntensity(AnimationCurve newCurve, float maxIntensity, float newRange, float evaluationSpeed) => OnSetLightIntensity?.Invoke(newCurve, maxIntensity, newRange, evaluationSpeed);
@@ -60,4 +63,7 @@ public static class EventSystem
 
     public static event UnityAction OnStartFinalConfrontation;
     public static void StartFinalConfrontation() => OnStartFinalConfrontation?.Invoke();
+
+    public static event UnityAction OnStopOpening;
+    public static void StopOpening() => OnStopOpening?.Invoke();
 }

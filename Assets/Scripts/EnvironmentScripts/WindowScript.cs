@@ -9,11 +9,13 @@ public class WindowScript : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnOpenWindow += OpenWindow;
+        EventSystem.OnStopOpening += ResetWindow;
     }
 
     private void OnDisable()
     {
         EventSystem.OnOpenWindow -= OpenWindow;
+        EventSystem.OnStopOpening -= ResetWindow;
     }
 
     private void OpenWindow()
@@ -23,6 +25,8 @@ public class WindowScript : MonoBehaviour
 
     private void ResetWindow()
     {
+        m_Animator.Rebind();
+        m_Animator.Update(0f);
         m_Animator.enabled = false;
     }
 }

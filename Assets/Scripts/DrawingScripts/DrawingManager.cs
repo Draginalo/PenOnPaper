@@ -42,7 +42,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadEventChains += LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw += LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage += HandleResetSketchPos;
-        EventSystem.OnSwapEnvironments += HandleResetNotepadPos;
+        EventSystem.OnClearNotepadPage += HandleResetNotepadPos;
         EventSystem.OnSpawnSketch += HandleSpawnNextSketch;
         //EventSystem.OnSketchCompleted += TurnOffHighlight;
     }
@@ -55,7 +55,7 @@ public class DrawingManager : MonoBehaviour
         EventSystem.OnLoadEventChains -= LoadGameEventChains;
         EventSystem.OnLoadSketchesToDraw -= LoadSketchesToDraw;
         EventSystem.OnFlipNotepadPage -= HandleResetSketchPos;
-        EventSystem.OnSwapEnvironments -= HandleResetNotepadPos;
+        EventSystem.OnClearNotepadPage -= HandleResetNotepadPos;
         EventSystem.OnSpawnSketch -= HandleSpawnNextSketch;
         //EventSystem.OnSketchCompleted -= TurnOffHighlight;
     }
@@ -171,7 +171,7 @@ public class DrawingManager : MonoBehaviour
         sketchPosIndex = 0;
     }
 
-    private void HandleResetNotepadPos(EnvironmentSwitchManager.Environments env, GameEvent gameEvent)
+    private void HandleResetNotepadPos()
     {
         HandleResetSketchPos();
     }
@@ -203,19 +203,22 @@ public class DrawingManager : MonoBehaviour
 
     private void HandleSpawnNextSketch(GameObject nextSketch)
     {
-        GameObject sketchOBJ = Instantiate(nextSketch, _NotepadManager.CurrentPage.transform);
-        sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.localPosition.y, sketchPositions[sketchPosIndex].y);
-        sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-        sketchPosIndex++;
-
-        HighlightScript possibleScript = CheckForConnectingObject(nextSketch.GetComponentInChildren<DrawHandler>());
-        if (possibleScript != null)
+        if (sketchPosIndex < sketchPositions.Length)
         {
-            //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
-            Destroy(possibleScript);
-        }
+            GameObject sketchOBJ = Instantiate(nextSketch, _NotepadManager.CurrentPage.transform);
+            sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.localPosition.y, sketchPositions[sketchPosIndex].y);
+            sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+            sketchPosIndex++;
 
-        sketchesToDraw.Remove(nextSketch);
+            HighlightScript possibleScript = CheckForConnectingObject(nextSketch.GetComponentInChildren<DrawHandler>());
+            if (possibleScript != null)
+            {
+                //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
+                Destroy(possibleScript);
+            }
+
+            sketchesToDraw.Remove(nextSketch);
+        }
     }
 
     private GameObject CheckForClickedObject(RaycastHit hitOBJ)

@@ -51,6 +51,7 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private GameEventChain followingGameEvents;
 
     [SerializeField] private bool triggerSketchCompletion = true;
+    [SerializeField] private bool triggerStopOpening = false;
 
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
@@ -271,6 +272,11 @@ public class DrawHandler : MonoBehaviour
         gameObject.GetComponent<Renderer>().material = finalCanvasMaterial;
         gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap", finalSketchTexture);
         gameObject.transform.localEulerAngles += new Vector3(-90, 0, 0);
+
+        if (triggerStopOpening)
+        {
+            EventSystem.StopOpening();
+        }
     }
 
     private IEnumerator Co_DelaySketchChangeVFXDone(float delay)

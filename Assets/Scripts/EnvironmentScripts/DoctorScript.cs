@@ -7,14 +7,21 @@ public class DoctorScript : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnSwapEnvironments += DestroyDoc;
+        EventSystem.OnStopOpening += DestroyDoc;
     }
 
     private void OnDisable()
     {
         EventSystem.OnSwapEnvironments -= DestroyDoc;
+        EventSystem.OnStopOpening -= DestroyDoc;
     }
 
     private void DestroyDoc(EnvironmentSwitchManager.Environments env, GameEvent gameEvent)
+    {
+        Destroy(gameObject);
+    }
+
+    private void DestroyDoc()
     {
         Destroy(gameObject);
     }

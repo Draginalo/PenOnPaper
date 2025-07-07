@@ -6,7 +6,7 @@ public class OpenHospitalDoor : GameEvent
     {
         base.Execute();
 
-        EventSystem.OpenHospitalDoor();
+        EventSystem.OpenHospitalDoor(false);
         
         GameEventCompleted(this);
     }

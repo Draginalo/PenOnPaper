@@ -7,7 +7,8 @@ public class SwapEnvironmentsEvent : GameEvent
     public override void Execute()
     {
         base.Execute();
-        //Debug.Log(envToSwitchTo);
+
         EventSystem.SwapEnvironment(envToSwitchTo, this);
+        EventSystem.ClearNotepadPage();
     }
 }

@@ -9379,6 +9379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+  m_WindowSketch: {fileID: 2477873707247255058, guid: b18dca3716cb8ff439468c0a55fe01df, type: 3}
+  m_DoorSketch: {fileID: 2477873707247255058, guid: d02d330328d8ae64aaa5165782b4130e, type: 3}
 --- !u!4 &1070919366
 Transform:
   m_ObjectHideFlags: 0
