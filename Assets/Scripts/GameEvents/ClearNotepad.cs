@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class ClearNotepad : GameEvent
 {
+    private bool mHasBeenExcecuted = false;
+    private bool mHasCompleted = false;
     public override void Execute()
     {
         base.Execute();
-
+        mHasBeenExcecuted = true;
+        EventSystem.ClearNotepadPage();
         GameEventCompleted(this);
+        mHasCompleted = true;
     }
 
-    //This is because both completing the event and clearing the notepad can destroy this script before the both lines excecute
+    //This is because both completing the event and clearing the notepad can destroy this script
+    //before the both lines excecute (meaning the GameEventCompleted function would not be called before the script is destroyed)
     private void OnDestroy()
     {
-        EventSystem.ClearNotepadPage();
+        if (!mHasCompleted && mHasBeenExcecuted)
+        {
+            GameEventCompleted(this);
+        }
     }
 }

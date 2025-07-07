@@ -56,11 +56,14 @@ public class GameEventChain
 
     public void CleanupChain()
     {
-        for (int i = 0; i < eventChain.Count; i++)
+        if (eventChain != null)
         {
-            RemoveCurrentEvent();
-        }
+            for (int i = 0; i < eventChain.Count; i++)
+            {
+                RemoveCurrentEvent();
+            }
 
-        //Destroy(this);
+            //Destroy(this);
+        }
     }
 }

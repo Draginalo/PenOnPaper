@@ -8,6 +8,9 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private GameObject m_WindowSketch;
     [SerializeField] private GameObject m_DoorSketch;
 
+    //This is to not make a new chain within the functions which will go out of scope after run and deleted (before events run)
+    private GameEventChain nextEventsChain = new();
+
     private void OnEnable()
     {
         EventSystem.OnStartFinalConfrontation += OpenDoor;
@@ -19,39 +22,53 @@ public class FinalConfrontationManager : MonoBehaviour
         EventSystem.OnStartFinalConfrontation -= OpenDoor;
     }
 
+    private void Start()
+    {
+        nextEventsChain.SetEvents(new List<GameEvent> { });
+    }
+    private void Update()
+    {
+        Debug.Log(nextEventsChain.GetEventChain().Count);
+    }
+
     private void OpenWindow()
     {
-        EventSystem.ClearNotepadPage();
-        GameEventChain newChain = new GameEventChain();
+        nextEventsChain.CleanupChain();
         SpawnDoctorWithAnimation newEvent = gameObject.AddComponent<SpawnDoctorWithAnimation>();
         newEvent.animationToTrigger = "OpenWindow";
         newEvent.m_Doctor = m_Doctor;
-        newChain.AddEventToEnd(newEvent);
+        nextEventsChain.AddEventToEnd(newEvent);
+
+        ClearNotepad clearEvent = gameObject.AddComponent<ClearNotepad>();
+        clearEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+        nextEventsChain.AddEventToEnd(clearEvent);
 
         SpawnNextSketch newSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
-        newSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+        newSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.NONE);
         newSketchEvent.SetSketch(m_WindowSketch);
-        newChain.AddEventToEnd(newSketchEvent);
+        nextEventsChain.AddEventToEnd(newSketchEvent);
 
-        GameEventManager.instance.LoadAndExecuteEventChain(newChain);
+        GameEventManager.instance.LoadAndExecuteEventChain(nextEventsChain);
         EventSystem.OpenWindow();
     }
 
     private void OpenDoor()
     {
-        EventSystem.ClearNotepadPage();
-        GameEventChain newChain = new GameEventChain();
+        nextEventsChain.CleanupChain();
         SpawnDoctorWithAnimation newEvent = gameObject.AddComponent<SpawnDoctorWithAnimation>();
         newEvent.animationToTrigger = "OpenDoor";
         newEvent.m_Doctor = m_Doctor;
-        newChain.AddEventToEnd(newEvent);
+
+        ClearNotepad clearEvent = gameObject.AddComponent<ClearNotepad>();
+        clearEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
 
         SpawnNextSketch newSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
-        newSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+        newSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.NONE);
         newSketchEvent.SetSketch(m_DoorSketch);
-        newChain.AddEventToEnd(newSketchEvent);
 
-        GameEventManager.instance.LoadAndExecuteEventChain(newChain);
+        nextEventsChain.SetEvents(new List<GameEvent> { newEvent, clearEvent, newSketchEvent });
+
+        GameEventManager.instance.LoadAndExecuteEventChain(nextEventsChain);
         EventSystem.OpenHospitalDoor(true);
     }
 }
