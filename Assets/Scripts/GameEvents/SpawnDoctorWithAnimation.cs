@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SpawnDoctorWithAnimation : GameEvent
 {
-    [SerializeField] private GameObject m_Doctor;
-    [SerializeField] private string animationToTrigger;
+    public GameObject m_Doctor;
+    public string animationToTrigger;
     [SerializeField] private bool enableRootMotion;
     [SerializeField] private Vector3 startingPosition;
     [SerializeField] private Vector3 startingRotation;

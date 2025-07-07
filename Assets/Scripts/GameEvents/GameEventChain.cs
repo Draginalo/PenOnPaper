@@ -17,6 +17,11 @@ public class GameEventChain
 
     public void AddEventToEnd(GameEvent gameEvent)
     {
+        if (eventChain == null)
+        {
+            eventChain = new();
+        }
+
         eventChain.Add(gameEvent);
     }
 

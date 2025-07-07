@@ -54,4 +54,10 @@ public static class EventSystem
 
     public static event UnityAction OnActivateHospitalVoidEnv;
     public static void ActivateHospitalVoidEnv() => OnActivateHospitalVoidEnv?.Invoke();
+
+    public static event UnityAction OnOpenWindow;
+    public static void OpenWindow() => OnOpenWindow?.Invoke();
+
+    public static event UnityAction OnStartFinalConfrontation;
+    public static void StartFinalConfrontation() => OnStartFinalConfrontation?.Invoke();
 }
