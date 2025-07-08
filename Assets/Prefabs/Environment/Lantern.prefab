@@ -241,7 +241,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  preserveRange: 1
+  preserveMaxRange: 1
   preserveIntensity: 1
 --- !u!1 &6371886542163447356
 GameObject:
@@ -532,5 +532,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  preserveRange: 0
+  preserveMaxRange: 0
   preserveIntensity: 0

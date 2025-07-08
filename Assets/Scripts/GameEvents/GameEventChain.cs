@@ -8,7 +8,7 @@ public class GameEventChain
 {
     [SerializeField] private List<GameEvent> eventChain;
     [SerializeField] private GameObject componentParent;
-    [SerializeField] private bool destroyParentComponent = true;
+    public bool destroyParentComponent = true;
 
     public void SetEvents(List<GameEvent> events)
     {
@@ -58,7 +58,8 @@ public class GameEventChain
     {
         if (eventChain != null)
         {
-            for (int i = 0; i < eventChain.Count; i++)
+            int originalCount = eventChain.Count;
+            for (int i = 0; i < originalCount; i++)
             {
                 RemoveCurrentEvent();
             }

@@ -8,12 +8,12 @@ public class HospitalVoidScript : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.OnActivateHospitalVoidEnv += ActivateEnv;
+        EventSystem.OnToggleActivateHospitalVoidEnv += ToggleActivateEnv;
     }
 
     private void OnDisable()
     {
-        EventSystem.OnActivateHospitalVoidEnv -= ActivateEnv;
+        EventSystem.OnToggleActivateHospitalVoidEnv -= ToggleActivateEnv;
     }
 
     private void Start()
@@ -21,8 +21,9 @@ public class HospitalVoidScript : MonoBehaviour
         envParent.SetActive(false);
     }
 
-    private void ActivateEnv()
+    private void ToggleActivateEnv()
     {
-        envParent.SetActive(true);
+        envParent.SetActive(!envParent.activeInHierarchy);
     }
+
 }

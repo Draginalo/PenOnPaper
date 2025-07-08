@@ -8,7 +8,7 @@ public class CampfireScript : MonoBehaviour
     [SerializeField] private float maxIntensity;
     [SerializeField] private float curveEvaluationSpeed;
     [SerializeField] private AnimationCurve lightIntensityCurve;
-    [SerializeField] private bool preserveRange = false;
+    [SerializeField] private bool preserveMaxRange = false;
     [SerializeField] private bool preserveIntensity = false;
     private float currTime = 0;
     private bool runningOtherLightIntensity = false;
@@ -17,19 +17,29 @@ public class CampfireScript : MonoBehaviour
     private float originalIntensity;
     private float prevRange;
     private float newRange;
+    private float originalRange;
     private float otherCurveEvaluationSpeed;
     private AnimationCurve otherLightIntensityCurve;
 
     private float transitionTime = 0.2f;
+    private bool destroyAfterSwitch = false;
+    private SetLightIntesityEvent currEvent;
 
     private void OnEnable()
     {
         EventSystem.OnSetLightIntensity += HandleOtherLightIntensity;
+        EventSystem.OnFinishFinalConfrontation += DestroyOnConfrontationFinish;
     }
 
     private void OnDisable()
     {
         EventSystem.OnSetLightIntensity -= HandleOtherLightIntensity;
+        EventSystem.OnFinishFinalConfrontation -= DestroyOnConfrontationFinish;
+    }
+
+    private void Start()
+    {
+        originalIntensity = campfireLight.range;
     }
 
     private void FixedUpdate()
@@ -46,32 +56,58 @@ public class CampfireScript : MonoBehaviour
         }
     }
 
-    private void HandleOtherLightIntensity(AnimationCurve newCurve, float newMaxIntensity, float newRange, float newEvaluationSpeed)
+    private void HandleOtherLightIntensity(SetLightIntesityEvent gameEvent)
     {
         runningOtherLightIntensity = true;
-        otherCurveEvaluationSpeed = newEvaluationSpeed;
-        otherLightIntensityCurve = newCurve;
+        otherCurveEvaluationSpeed = gameEvent.curveEvaluationSpeed;
+        otherLightIntensityCurve = gameEvent.curve;
 
         if (!preserveIntensity)
         {
-            otherMaxIntensity = newMaxIntensity;
+            otherMaxIntensity = gameEvent.maxIntensity;
         }
 
-        this.newRange = newRange;
+        if (preserveMaxRange)
+        {
+            if (newRange < originalIntensity)
+            {
+                this.newRange = gameEvent.newRange;
+            }
+            else
+            {
+                this.newRange = originalRange;
+            }
+        }
+        else
+        {
+            this.newRange = gameEvent.newRange;
+        }
+
         prevRange = campfireLight.range;
         originalIntensity = campfireLight.intensity;
         currTime = 0;
+        currEvent = gameEvent;
+
+        if (currEvent.markedAsCompletedTimeOnCurve == 0)
+        {
+            currEvent.GameEventCompleted(currEvent);
+            currEvent = null;
+        }
+
         StartCoroutine(Co_TransitionToOtherLightIntensity());
     }
 
     private bool RunLightIntensity()
     {
         campfireLight.intensity = otherMaxIntensity * otherLightIntensityCurve.Evaluate(currTime * otherCurveEvaluationSpeed);
-        if (!preserveRange)
-        {
-            campfireLight.range = Mathf.Lerp(prevRange, newRange, currTime * otherCurveEvaluationSpeed);
-        }
+        campfireLight.range = Mathf.Lerp(prevRange, newRange, currTime * otherCurveEvaluationSpeed);
         currTime += Time.deltaTime;
+
+        if (currEvent != null && currTime * otherCurveEvaluationSpeed >= currEvent.markedAsCompletedTimeOnCurve)
+        {
+            currEvent.GameEventCompleted(currEvent);
+            currEvent = null;
+        }
 
         return currTime * otherCurveEvaluationSpeed >= 1;
     }
@@ -97,7 +133,7 @@ public class CampfireScript : MonoBehaviour
         yield return new WaitUntil(RunLightIntensity);
         currTime = 0;
 
-        StartCoroutine(Co_TransitionToFromLightIntensity());
+        StartCoroutine(Co_TransitionFromLightIntensity());
     }
 
     private IEnumerator Co_TransitionToOtherLightIntensity()
@@ -108,10 +144,20 @@ public class CampfireScript : MonoBehaviour
         StartCoroutine(Co_ExecuteOtherLightIntensity());
     }
 
-    private IEnumerator Co_TransitionToFromLightIntensity()
+    private IEnumerator Co_TransitionFromLightIntensity()
     {
         yield return new WaitUntil(RunFromOtherLightIntensity);
         currTime = 0;
         runningOtherLightIntensity = false;
+
+        if (destroyAfterSwitch)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void DestroyOnConfrontationFinish()
+    {
+        destroyAfterSwitch = true;
     }
 }

@@ -8,13 +8,14 @@ public class SetLightIntesityEvent : GameEvent
     public float maxIntensity;
     public float newRange;
     public float curveEvaluationSpeed;
+    public float markedAsCompletedTimeOnCurve = 0.0f;
 
     public override void Execute()
     {
         base.Execute();
         
-        EventSystem.SetLightIntensity(curve, maxIntensity, newRange, curveEvaluationSpeed);
+        EventSystem.SetLightIntensity(this);
 
-        GameEventCompleted(this);
+        //GameEventCompleted(this);
     }
 }

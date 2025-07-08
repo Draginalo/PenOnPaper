@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpawnNextSketch : GameEvent
 {
     [SerializeField] private GameObject m_NextSketchToSpawn;
+    public bool isIndipendent = false;
 
     public void SetSketch(GameObject sketch)
     {
@@ -13,7 +14,7 @@ public class SpawnNextSketch : GameEvent
    public override void Execute()
     {
         base.Execute();
-        EventSystem.SpawnSketch(m_NextSketchToSpawn);
+        EventSystem.SpawnSketch(m_NextSketchToSpawn, isIndipendent);
         GameEventCompleted(this);
     }
 }

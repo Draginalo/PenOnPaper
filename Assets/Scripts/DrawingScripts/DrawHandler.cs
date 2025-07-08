@@ -17,7 +17,8 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private Material drawingCanvasMaterial;
     [SerializeField] private Material finalCanvasMaterial;
 
-    [SerializeField] private Texture2D generatedTexture;
+    private Texture2D generatedTexture;
+    private Material generatedMaterial;
     [SerializeField] private Texture2D currDrawTemplateTexture;
     [SerializeField] private Texture2D finalSketchTexture;
 
@@ -71,7 +72,10 @@ public class DrawHandler : MonoBehaviour
         generatedTexture = new Texture2D(totalPixelsY, totalPixelsX, TextureFormat.RGBA32, false);
         generatedTexture.filterMode = FilterMode.Point;
 
-        drawingCanvasMaterial.SetTexture("_BaseMap", generatedTexture);
+        generatedMaterial = new Material(drawingCanvasMaterial);
+        generatedMaterial.SetTexture("_BaseMap", generatedTexture);
+
+        gameObject.GetComponent<MeshRenderer>().material = generatedMaterial;
 
         xDrawMult = totalPixelsX / (_BottomRightPoint.localPosition.x - _TopLeftPoint.localPosition.x);
         yDrawMult = totalPixelsY / (_BottomRightPoint.localPosition.y - _TopLeftPoint.localPosition.y);
@@ -104,31 +108,34 @@ public class DrawHandler : MonoBehaviour
 
         if (Physics.Raycast(drawRay, out hit, _RaycastDistence))
         {
-            drawPoint.position = hit.point;
-            currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
-            currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
-
-            //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
-            int flippedCurrXPixel = totalPixelsX - currXPixel;
-
-            //Checks if you can draw there based on template texture
-            if (currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel) != Color.clear)
+            if (hit.collider.gameObject == gameObject)
             {
-                //Handles logic if starting to draw for the first time
-                if (!startedDrawing)
+                drawPoint.position = hit.point;
+                currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
+                currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
+
+                //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
+                int flippedCurrXPixel = totalPixelsX - currXPixel;
+
+                //Checks if you can draw there based on template texture
+                if (currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel) != Color.clear)
                 {
-                    if (StartDrawingSplineCheck())
+                    //Handles logic if starting to draw for the first time
+                    if (!startedDrawing)
+                    {
+                        if (StartDrawingSplineCheck())
+                        {
+                            HandleDrawingLogic();
+                            return;
+                        }
+                    }
+
+                    //Handles logic if continueing the drawing 
+                    if (pressedLastFrame || colorMap[currXPixel * totalPixelsY + currYPixel] != Color.clear)
                     {
                         HandleDrawingLogic();
                         return;
                     }
-                }
-
-                //Handles logic if continueing the drawing 
-                if (pressedLastFrame || colorMap[currXPixel * totalPixelsY + currYPixel] != Color.clear)
-                {
-                    HandleDrawingLogic();
-                    return;
                 }
             }
         }
@@ -264,11 +271,6 @@ public class DrawHandler : MonoBehaviour
         VisualEffect vfx = Instantiate(_CompleteVFX, transform.parent).GetComponent<VisualEffect>();
         vfx.SetTexture("DrawTexture", generatedTexture);
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
-        //vfx.transform.SetParent(null);
-        //vfx.transform.localScale = new Vector3(_CompleteVFXSize, _CompleteVFXSize, _CompleteVFXSize);
-        //vfx.transform.SetParent(transform);
-
-        EventSystem.SketchCompleted();
 
         if (handleFollowingEvents == WhenToHandleFollowingEvents.IMEDIATELY)
         {
@@ -336,5 +338,11 @@ public class DrawHandler : MonoBehaviour
         Vector3 diference = worldSpaceKnotLocation - drawPoint.position;
 
         return diference.sqrMagnitude <= minDistToSplinePoints;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(generatedMaterial);
+        Destroy(generatedTexture);
     }
 }

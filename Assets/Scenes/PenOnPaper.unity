@@ -9382,6 +9382,7 @@ MonoBehaviour:
   m_WindowSketch: {fileID: 2477873707247255058, guid: b18dca3716cb8ff439468c0a55fe01df, type: 3}
   m_DoorSketch: {fileID: 2477873707247255058, guid: d02d330328d8ae64aaa5165782b4130e, type: 3}
   m_LanternSketch: {fileID: 2477873707247255058, guid: a6a98b7a1c368f64c908fe84d492507c, type: 3}
+  m_FinalSketch: {fileID: 2477873707247255058, guid: 8d314aca9d872084e8e8b1b5188d379c, type: 3}
 --- !u!4 &1070919366
 Transform:
   m_ObjectHideFlags: 0
@@ -16319,6 +16320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 1
   m_NextSketchToSpawn: {fileID: 2477873707247255058, guid: 90f2ef4774ed5d9418d3ba1d8180feb4, type: 3}
+  isIndipendent: 0
 --- !u!114 &1926488623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16504,6 +16506,7 @@ MonoBehaviour:
   maxIntensity: 40
   newRange: 45
   curveEvaluationSpeed: 1
+  markedAsCompletedTimeOnCurve: 0.4
 --- !u!114 &1926488628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16530,7 +16533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
-  delay: 0.4
+  delay: 0
 --- !u!114 &1926488630
 MonoBehaviour:
   m_ObjectHideFlags: 0

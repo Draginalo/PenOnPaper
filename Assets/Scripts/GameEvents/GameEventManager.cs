@@ -31,7 +31,8 @@ public class GameEventManager : MonoBehaviour
 
     public void LoadAndExecuteEventChain(GameEventChain gameEventsToExecute)
     {
-        if (currGameEvents != null && currGameEvents.GetEventChain().Count > 0)
+        //The last check is for if the same reference is being loaded (because if you load the reference that already exists it will just remove all events instead of preserving and starting the chain)
+        if (currGameEvents != null && currGameEvents.GetEventChain().Count > 0 && gameEventsToExecute != currGameEvents)
         {
             currGameEvents.CleanupChain();
             //Destroy(currGameEvents);
@@ -71,7 +72,7 @@ public class GameEventManager : MonoBehaviour
         }
         else if (!isCurentEvent)
         {
-            eventCompleted.Cleanup(true);
+            eventCompleted.Cleanup(eventCompleted.GetDestroyParent());
         }
     }
 }

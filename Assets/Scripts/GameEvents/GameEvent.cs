@@ -5,6 +5,7 @@ using static DrawingManager;
 public class GameEvent : MonoBehaviour
 {
     [SerializeField] protected DrawingCompleteTrigger eventTrigger;
+    private bool destroyParent = false;
 
     private void OnEnable()
     {
@@ -21,9 +22,19 @@ public class GameEvent : MonoBehaviour
         this.enabled = false; 
     }
 
+    public void SetIndipendentEventNotDestroyParent()
+    {
+        destroyParent = false;
+    }
+
     public void SetEventTrigger(DrawingCompleteTrigger eventTrigger)
     {
         this.eventTrigger = eventTrigger;
+    }
+
+    public bool GetDestroyParent()
+    {
+        return destroyParent;
     }
 
     protected virtual void OnLookChanging(bool lookingUp)

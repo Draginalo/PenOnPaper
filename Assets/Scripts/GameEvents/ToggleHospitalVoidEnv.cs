@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RevealHospitalVoidEnv : GameEvent
+public class ToggleHospitalVoidEnv : GameEvent
 {
     public override void Execute()
     {
         base.Execute();
 
-        EventSystem.ActivateHospitalVoidEnv();
+        EventSystem.ToggleActivateHospitalVoidEnv();
 
         GameEventCompleted(this);
     }
