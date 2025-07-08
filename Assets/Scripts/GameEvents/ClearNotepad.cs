@@ -17,6 +17,7 @@ public class ClearNotepad : GameEvent
     //before the both lines excecute (meaning the GameEventCompleted function would not be called before the script is destroyed)
     private void OnDestroy()
     {
+        ////THIS HAS BUGS IF ON A SKETCH THAT GETS DESTROYED. FIX
         if (!mHasCompleted && mHasBeenExcecuted)
         {
             GameEventCompleted(this);

@@ -51,7 +51,15 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private GameEventChain followingGameEvents;
 
     [SerializeField] private bool triggerSketchCompletion = true;
-    [SerializeField] private bool triggerStopOpening = false;
+    [SerializeField] private WhenToHandleFollowingEvents handleFollowingEvents = WhenToHandleFollowingEvents.AFTER_WHOLE_COMPLETION_VFX;
+    private bool finishedDrawing = false;
+
+    public enum WhenToHandleFollowingEvents
+    {
+        IMEDIATELY,
+        AFTER_FLASH,
+        AFTER_WHOLE_COMPLETION_VFX
+    }
 
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
@@ -79,7 +87,7 @@ public class DrawHandler : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && !finishedDrawing)
         {
             CalculatePixelToBeDrawnAt();
         }
@@ -235,8 +243,6 @@ public class DrawHandler : MonoBehaviour
             {
                 //Finished drawing
                 HandleCompletion();
-
-
             }
         }
     }
@@ -249,10 +255,11 @@ public class DrawHandler : MonoBehaviour
         return;
     }
 
-    private void HandleCompletion()
+    protected virtual void HandleCompletion()
     {
         Destroy(nextPointMarker.gameObject);
         Destroy(gameObject.GetComponent<MeshCollider>());
+        finishedDrawing = true;
 
         VisualEffect vfx = Instantiate(_CompleteVFX, transform.parent).GetComponent<VisualEffect>();
         vfx.SetTexture("DrawTexture", generatedTexture);
@@ -262,6 +269,12 @@ public class DrawHandler : MonoBehaviour
         //vfx.transform.SetParent(transform);
 
         EventSystem.SketchCompleted();
+
+        if (handleFollowingEvents == WhenToHandleFollowingEvents.IMEDIATELY)
+        {
+            HandleGameEvents();
+        }
+
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
         StartCoroutine(Co_DelaySketchChangeVFXDone(vfx.GetFloat("Delay") - vfx.GetFloat("BeforeSpawnTime") + vfx.GetFloat("FinalMaxLifetime")));
     }
@@ -273,9 +286,9 @@ public class DrawHandler : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap", finalSketchTexture);
         gameObject.transform.localEulerAngles += new Vector3(-90, 0, 0);
 
-        if (triggerStopOpening)
+        if (handleFollowingEvents == WhenToHandleFollowingEvents.AFTER_FLASH)
         {
-            EventSystem.StopOpening();
+            HandleGameEvents();
         }
     }
 
@@ -283,7 +296,11 @@ public class DrawHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        HandleGameEvents();
+        if (handleFollowingEvents == WhenToHandleFollowingEvents.AFTER_WHOLE_COMPLETION_VFX)
+        {
+            HandleGameEvents();
+        }
+
         Destroy(this);
     }
 

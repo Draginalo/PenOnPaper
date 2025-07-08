@@ -66,4 +66,7 @@ public static class EventSystem
 
     public static event UnityAction OnStopOpening;
     public static void StopOpening() => OnStopOpening?.Invoke();
+
+    public static event UnityAction OnRepairLight;
+    public static void RepairLight() => OnRepairLight?.Invoke();
 }

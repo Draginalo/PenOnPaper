@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362043220487431962}
   m_Layer: 0
-  m_Name: HeartSketch
+  m_Name: LanternRepairSketch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,9 +249,9 @@ GameObject:
   - component: {fileID: 2115805245090539716}
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
-  - component: {fileID: 6663071328765507513}
-  - component: {fileID: 5107375495068399530}
-  - component: {fileID: 2201117065266883721}
+  - component: {fileID: 5979383521193499886}
+  - component: {fileID: 4149015878451989612}
+  - component: {fileID: 2702866239626963999}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -347,7 +347,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6663071328765507513
+--- !u!114 &5979383521193499886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,19 +356,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3611650364959769581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a55f209905f07a40b569e05681c87d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1416209e17c7f2040ae01713bc2b01c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 1
+--- !u!114 &4149015878451989612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7181bf29a501bd429eacb3a6b6f32b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   totalPixelsX: 512
   totalPixelsY: 512
-  brushSize: 10
+  brushSize: 8
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 552b73edcdc314d4cbbe0d7e7039118d, type: 3}
-  finalSketchTexture: {fileID: 2800000, guid: 88aaa8d7ddde9804ca493ba336db8470, type: 3}
+  finalSketchTexture: {fileID: 0}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -378,13 +391,12 @@ MonoBehaviour:
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
   followingGameEvents:
     eventChain:
-    - {fileID: 5107375495068399530}
-    - {fileID: 2201117065266883721}
+    - {fileID: 2702866239626963999}
     componentParent: {fileID: 3611650364959769581}
-    destroyParentComponent: 0
+    destroyParentComponent: 1
   triggerSketchCompletion: 0
-  handleFollowingEvents: 1
---- !u!114 &5107375495068399530
+  handleFollowingEvents: 0
+--- !u!114 &2702866239626963999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,25 +405,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 3611650364959769581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501380985deb2ca4e8b49e566ea37e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 2
-  m_ObjectToSpawn: {fileID: 6458183345700689718, guid: aa5fd8e0d331ca04280e911644a8d420, type: 3}
---- !u!114 &2201117065266883721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611650364959769581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97434457f6f37645b6534aaa2235faa, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e2960b8bc8dde24faab2b234cc7e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
-  delay: 2
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxIntensity: 45
+  newRange: 45
+  curveEvaluationSpeed: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

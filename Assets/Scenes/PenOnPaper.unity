@@ -4360,8 +4360,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
+  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
+  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9381,6 +9381,7 @@ MonoBehaviour:
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   m_WindowSketch: {fileID: 2477873707247255058, guid: b18dca3716cb8ff439468c0a55fe01df, type: 3}
   m_DoorSketch: {fileID: 2477873707247255058, guid: d02d330328d8ae64aaa5165782b4130e, type: 3}
+  m_LanternSketch: {fileID: 2477873707247255058, guid: a6a98b7a1c368f64c908fe84d492507c, type: 3}
 --- !u!4 &1070919366
 Transform:
   m_ObjectHideFlags: 0

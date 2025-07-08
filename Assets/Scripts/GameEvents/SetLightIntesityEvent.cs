@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SetLightIntesityEvent : GameEvent
 {
-    [SerializeField] private AnimationCurve curve;
-    [SerializeField] private float maxIntensity;
-    [SerializeField] private float newRange;
-    [SerializeField] private float curveEvaluationSpeed;
+    public AnimationCurve curve;
+    public float maxIntensity;
+    public float newRange;
+    public float curveEvaluationSpeed;
 
     public override void Execute()
     {
