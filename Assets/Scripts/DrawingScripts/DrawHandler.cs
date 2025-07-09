@@ -65,6 +65,25 @@ public class DrawHandler : MonoBehaviour
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
 
+    private void OnEnable()
+    {
+        EventSystem.OnDeactivateAllOtherSketches += HandleOnDisable;
+    }
+
+    private void OnDisable()
+    {
+        EventSystem.OnDeactivateAllOtherSketches -= HandleOnDisable;
+    }
+
+    private void HandleOnDisable(DrawHandler initiator)
+    {
+        if (this != initiator)
+        {
+            Destroy(nextPointMarker.gameObject);
+            this.enabled = false;
+        }
+    }
+
     private void Start()
     {
         colorMap = new Color[totalPixelsX * totalPixelsY];

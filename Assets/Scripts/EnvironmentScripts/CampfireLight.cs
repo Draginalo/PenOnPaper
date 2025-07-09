@@ -141,6 +141,11 @@ public class CampfireScript : MonoBehaviour
         yield return new WaitUntil(RunToOtherLightIntensity);
         currTime = 0;
 
+        if (destroyAfterSwitch)
+        {
+            Destroy(gameObject);
+        }
+
         StartCoroutine(Co_ExecuteOtherLightIntensity());
     }
 
@@ -149,11 +154,6 @@ public class CampfireScript : MonoBehaviour
         yield return new WaitUntil(RunFromOtherLightIntensity);
         currTime = 0;
         runningOtherLightIntensity = false;
-
-        if (destroyAfterSwitch)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void DestroyOnConfrontationFinish()

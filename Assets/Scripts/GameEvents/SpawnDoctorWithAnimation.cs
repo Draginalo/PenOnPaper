@@ -9,6 +9,7 @@ public class SpawnDoctorWithAnimation : GameEvent
     [SerializeField] private Vector3 startingPosition;
     [SerializeField] private Vector3 startingRotation;
     [SerializeField] private bool useAnimationToTriggerCompletion;
+    [SerializeField] private bool deactivateSmokeEffect;
     private GameObject mDoctorInstance;
 
     public override void Execute()
@@ -25,6 +26,11 @@ public class SpawnDoctorWithAnimation : GameEvent
         }
 
         animator.applyRootMotion = enableRootMotion;
+
+        if (deactivateSmokeEffect)
+        {
+            mDoctorInstance.GetComponent<DoctorScript>().DeactivateSmokeEffect();
+        }
 
         EventSystem.SpawnDoctor();
 

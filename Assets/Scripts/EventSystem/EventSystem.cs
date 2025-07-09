@@ -22,6 +22,9 @@ public static class EventSystem
     public static event UnityAction<GameObject, bool> OnSpawnSketch;
     public static void SpawnSketch(GameObject nextSketch, bool isIndipendent) => OnSpawnSketch?.Invoke(nextSketch, isIndipendent);
 
+    public static event UnityAction<DrawHandler> OnDeactivateAllOtherSketches;
+    public static void DeactivateAllOtherSketches(DrawHandler initiator) => OnDeactivateAllOtherSketches?.Invoke(initiator);
+
     //Notepad events
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
@@ -36,16 +39,6 @@ public static class EventSystem
     public static event UnityAction OnSpawnDoctor;
     public static void SpawnDoctor() => OnSpawnDoctor?.Invoke();
 
-    //Possible combine this with the on sketch complete event with a bool perameter to only have one event
-    public static event UnityAction OnTriggerNextEventChain;
-    public static void TriggerNextEventChain() => OnTriggerNextEventChain?.Invoke();
-
-    public static event UnityAction<List<GameEventChain>, GameObject> OnLoadEventChains;
-    public static void LoadEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent) => OnLoadEventChains?.Invoke(gameEventChains, chainsParent);
-
-    public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
-    public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
-
     public static event UnityAction<bool> OnOpenHospitalDoor;
     public static void OpenHospitalDoor(bool slowOpen) => OnOpenHospitalDoor?.Invoke(slowOpen);
 
@@ -58,6 +51,16 @@ public static class EventSystem
     public static event UnityAction OnOpenWindow;
     public static void OpenWindow() => OnOpenWindow?.Invoke();
 
+    //Possible combine this with the on sketch complete event with a bool perameter to only have one event
+    public static event UnityAction OnTriggerNextEventChain;
+    public static void TriggerNextEventChain() => OnTriggerNextEventChain?.Invoke();
+
+    public static event UnityAction<List<GameEventChain>, GameObject> OnLoadEventChains;
+    public static void LoadEventChains(List<GameEventChain> gameEventChains, GameObject chainsParent) => OnLoadEventChains?.Invoke(gameEventChains, chainsParent);
+
+    public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
+    public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
+
     public static event UnityAction OnStartFinalConfrontation;
     public static void StartFinalConfrontation() => OnStartFinalConfrontation?.Invoke();
 
@@ -69,4 +72,7 @@ public static class EventSystem
 
     public static event UnityAction OnRepairLight;
     public static void RepairLight() => OnRepairLight?.Invoke();
+
+    public static event UnityAction OnSliceDoctor;
+    public static void SliceDoctor() => OnSliceDoctor?.Invoke();
 }

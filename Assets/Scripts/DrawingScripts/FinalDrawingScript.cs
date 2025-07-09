@@ -8,5 +8,6 @@ public class FinalDrawingScript : DrawHandler
     {
         base.HandleCompletion();
         EventSystem.FinishFinalConfrontation();
+        EventSystem.DeactivateAllOtherSketches(this);
     }
 }

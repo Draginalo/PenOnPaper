@@ -132,9 +132,10 @@ public class FinalConfrontationManager : MonoBehaviour
 
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
         lightEvent.curve = AnimationCurve.EaseInOut(0, 1, 1, 0);
-        lightEvent.curveEvaluationSpeed = 0.2f;
+        lightEvent.curveEvaluationSpeed = 10f;
         lightEvent.maxIntensity = 0;
         lightEvent.newRange = 0;
+        lightEvent.markedAsCompletedTimeOnCurve = 0.1f;
         lightEvent.SetIndipendentEventNotDestroyParent();
         lightEvent.enabled = true;
         lightEvent.Begin();
