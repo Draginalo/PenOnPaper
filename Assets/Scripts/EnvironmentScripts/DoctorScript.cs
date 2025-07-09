@@ -7,6 +7,7 @@ public class DoctorScript : MonoBehaviour
     [SerializeField] private GameObject mLeftArmToSliceOff;
     [SerializeField] private GameObject mRightArmToSliceOff;
     [SerializeField] private GameObject mSmokeEffect;
+    [SerializeField] private Texture2D m_HeartGoneTex;
     private int sliceIndex = 0;
 
     private void OnEnable()
@@ -58,6 +59,7 @@ public class DoctorScript : MonoBehaviour
                 mLeftArmToSliceOff.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
                 break;
             case 2:
+                gameObject.GetComponentInChildren<Renderer>().materials[1].SetTexture("_MainTex", m_HeartGoneTex);
                 break;
         }
 

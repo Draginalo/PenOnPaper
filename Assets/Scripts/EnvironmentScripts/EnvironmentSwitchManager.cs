@@ -42,18 +42,18 @@ public class EnvironmentSwitchManager : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnSwapEnvironments += HandleEnvironmentSwap;
-        RenderPipelineManager.endCameraRendering += test;
+        RenderPipelineManager.endCameraRendering += TakeSnapshotOfCamView;
     }
 
     private void OnDisable()
     {
         EventSystem.OnSwapEnvironments -= HandleEnvironmentSwap;
-        RenderPipelineManager.endCameraRendering -= test;
+        RenderPipelineManager.endCameraRendering -= TakeSnapshotOfCamView;
     }
 
-    private void test(ScriptableRenderContext context, Camera cam)
+    private void TakeSnapshotOfCamView(ScriptableRenderContext context, Camera cam)
     {
-        if (takeScreenshot)
+        if (takeScreenshot) //Figure out a better and more efficient way to do this
         {
             screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGBA32, false);
 

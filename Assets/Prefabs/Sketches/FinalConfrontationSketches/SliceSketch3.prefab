@@ -251,6 +251,9 @@ GameObject:
   - component: {fileID: 8053844794381059487}
   - component: {fileID: 6663071328765507513}
   - component: {fileID: 1556776979584801166}
+  - component: {fileID: 8567040903602582418}
+  - component: {fileID: 7942850925525345152}
+  - component: {fileID: 923695121740419749}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -377,6 +380,9 @@ MonoBehaviour:
   followingGameEvents:
     eventChain:
     - {fileID: 1556776979584801166}
+    - {fileID: 8567040903602582418}
+    - {fileID: 7942850925525345152}
+    - {fileID: 923695121740419749}
     componentParent: {fileID: 3611650364959769581}
     destroyParentComponent: 0
   triggerSketchCompletion: 0
@@ -394,6 +400,185 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+--- !u!114 &8567040903602582418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501380985deb2ca4e8b49e566ea37e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  m_ObjectToSpawn: {fileID: 8503221991043595229, guid: 2fbfe3b810e00914db2f5f60dbf2b412, type: 3}
+  mDeactivateParentAnimation: 0
+  useAnimationToTriggerCompletion: 1
+--- !u!114 &7942850925525345152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  VignetteCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.033087537
+      value: 0.91252416
+      inSlope: 1.1002704
+      outSlope: 1.1002704
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2508466
+      outWeight: 0.059577137
+    - serializedVersion: 3
+      time: 0.10192994
+      value: 0.25425223
+      inSlope: 0.035979852
+      outSlope: 0.035979852
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.20083621
+      value: 0.5114744
+      inSlope: -0.18041448
+      outSlope: -0.18041448
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26476267
+      value: 0.32770148
+      inSlope: -0.8048274
+      outSlope: -0.8048274
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40479374
+      value: 0.3903437
+      inSlope: -0.794865
+      outSlope: -0.794865
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.48440343
+      value: 0.13709028
+      inSlope: -1.4142224
+      outSlope: -1.4142224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.63950616
+      value: 0.13786492
+      inSlope: -0.32933325
+      outSlope: -0.32933325
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.76187897
+      value: 0.07753348
+      inSlope: -0.708891
+      outSlope: -0.708891
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blurrMultiple: 15
+  colorMultiple: 0.4
+  vignetteMultiple: 100
+  curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
+--- !u!114 &923695121740419749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7152665b003ca244db286b35f2097282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6759223
+      value: 1.0108883
+      inSlope: 0.61900336
+      outSlope: 0.61900336
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1054648
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.4868246
+      outSlope: -0.4868246
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5018125
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fadeColor: {r: 1, g: 1, b: 1, a: 0}
+  curveEvaluationSpeed: 0.5
+  fadeMat: {fileID: -876546973899608171, guid: 5bb727a60c2bbf0438f3622345888070, type: 3}
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

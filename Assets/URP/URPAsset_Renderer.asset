@@ -38,7 +38,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 2155428209027758661}
   - {fileID: -3481113159067237318}
-  m_RendererFeatureMap: 45baf441899ee91d3a04dc8a069ab0cf
+  - {fileID: 1334700465271239369}
+  m_RendererFeatureMap: 45baf441899ee91d3a04dc8a069ab0cfc9720a6a00cf8512
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_CopyDepthMode: 1
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &1334700465271239369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6548c3889f9fc64298e9b29407ef0d2, type: 3}
+  m_Name: ColorFade
+  m_EditorClassIdentifier: 
+  m_Active: 1
 --- !u!114 &2155428209027758661
 MonoBehaviour:
   m_ObjectHideFlags: 0

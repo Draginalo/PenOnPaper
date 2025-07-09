@@ -47,6 +47,23 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-2344604455566131978
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0064ea949de1b144593eafcbfc1f3216, type: 3}
+  m_Name: ColorFadeSettings
+  m_EditorClassIdentifier: 
+  active: 0
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  lerpValue:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +80,7 @@ MonoBehaviour:
   - {fileID: -7202864242665995617}
   - {fileID: 1443110887644493360}
   - {fileID: 7489554263053961075}
+  - {fileID: -2344604455566131978}
 --- !u!114 &1443110887644493360
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -78,10 +96,10 @@ MonoBehaviour:
   active: 0
   blurrStrength:
     m_OverrideState: 1
-    m_Value: 1.95
+    m_Value: 0
   colorStrength:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.033
   vignetteSpread:
     m_OverrideState: 1
     m_Value: 0.47
