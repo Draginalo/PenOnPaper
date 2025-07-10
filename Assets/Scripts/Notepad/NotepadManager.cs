@@ -7,6 +7,7 @@ public class NotepadManager : MonoBehaviour
     [SerializeField] private GameObject _NotepadPage;
     [SerializeField] private GameObject currPage;
     [SerializeField] private Animator pageAnimator;
+    [SerializeField] private GameObject indipendentSketchOBJ;
 
     public GameObject CurrentPage {  get { return currPage; } }
 
@@ -37,12 +38,21 @@ public class NotepadManager : MonoBehaviour
         pageAnimator = newPageParent.GetComponent<Animator>();
     }
 
-    private void HandleResetNotepad()
+    private void HandleResetNotepad(bool clearIndipendentSketches)
     {
         Destroy(currPage);
 
         GameObject newPageParent = Instantiate(_NotepadPage, transform);
         currPage = newPageParent.transform.GetChild(0).gameObject;
         pageAnimator = newPageParent.GetComponent<Animator>();
+
+        if (clearIndipendentSketches)
+        {
+            int childCount = indipendentSketchOBJ.transform.childCount;
+            for (int i = 0; i < childCount; i++)
+            {
+                Destroy(indipendentSketchOBJ.transform.GetChild(i).gameObject);
+            }
+        }
     }
 }

@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class ClearNotepad : GameEvent
 {
+    [SerializeField] private bool clearIndipendentSketches = false;
     private bool mHasBeenExcecuted = false;
     private bool mHasCompleted = false;
     public override void Execute()
     {
         base.Execute();
         mHasBeenExcecuted = true;
-        EventSystem.ClearNotepadPage();
+        EventSystem.ClearNotepadPage(clearIndipendentSketches);
         GameEventCompleted(this);
         mHasCompleted = true;
     }

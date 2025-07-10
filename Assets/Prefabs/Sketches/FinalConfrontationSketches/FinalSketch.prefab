@@ -421,6 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 0
   m_ObjectToSpawn: {fileID: 4335383904310023756, guid: 0a9dd7174ed17124fa7b060f01d2f8d3, type: 3}
+  mDeactivateParentAnimation: 0
+  useAnimationToTriggerCompletion: 0
 --- !u!114 &5508542423011541094
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,8 @@ public class DrawingManager : MonoBehaviour
     [SerializeField] private Vector2[] sketchPositions;
     private int sketchPosIndex = 0;
 
+    [SerializeField] private GameObject indipendentSketchOBJ;
+
     private float _RaycastDistence = 1000.0f;
     private bool ThingsToDrawActivated = false;
 
@@ -169,7 +171,7 @@ public class DrawingManager : MonoBehaviour
         sketchPosIndex = 0;
     }
 
-    private void HandleResetNotepadPos()
+    private void HandleResetNotepadPos(bool clearIndipendentSketches)
     {
         HandleResetSketchPos();
     }
@@ -228,7 +230,7 @@ public class DrawingManager : MonoBehaviour
             return;
         }
 
-        sketchOBJ = Instantiate(nextSketch, transform);
+        sketchOBJ = Instantiate(nextSketch, indipendentSketchOBJ.transform);
         sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
     }
 

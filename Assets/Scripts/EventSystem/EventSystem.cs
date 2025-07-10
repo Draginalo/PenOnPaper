@@ -29,8 +29,8 @@ public static class EventSystem
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
-    public static event UnityAction OnClearNotepadPage;
-    public static void ClearNotepadPage() => OnClearNotepadPage?.Invoke();
+    public static event UnityAction<bool> OnClearNotepadPage;
+    public static void ClearNotepadPage(bool clearIndipendentSketches) => OnClearNotepadPage?.Invoke(clearIndipendentSketches);
 
     //Environment events
     public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;
@@ -50,6 +50,9 @@ public static class EventSystem
 
     public static event UnityAction OnOpenWindow;
     public static void OpenWindow() => OnOpenWindow?.Invoke();
+
+    public static event UnityAction OnTurnOffHospitalSign;
+    public static void TurnOffHospitalSign() => OnTurnOffHospitalSign?.Invoke();
 
     //Possible combine this with the on sketch complete event with a bool perameter to only have one event
     public static event UnityAction OnTriggerNextEventChain;
@@ -75,4 +78,7 @@ public static class EventSystem
 
     public static event UnityAction OnSliceDoctor;
     public static void SliceDoctor() => OnSliceDoctor?.Invoke();
+
+    public static event UnityAction OnStartCredits;
+    public static void StartCredits() => OnStartCredits?.Invoke();
 }
