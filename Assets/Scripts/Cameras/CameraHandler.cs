@@ -2,11 +2,13 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraHandler : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _UpCam;
     [SerializeField] private CinemachineVirtualCamera _DowmCam;
+    [SerializeField] private CinemachineVirtualCamera _EndCam;
     [SerializeField] private GameObject _UpCamActivator;
     [SerializeField] private GameObject _DownCamActivator;
     [SerializeField] private float cameraSwitchTime = 0.3f;
@@ -34,6 +36,11 @@ public class CameraHandler : MonoBehaviour
         instance = this;
 
         _UpCamActivator.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        
     }
 
     public void SwitchToUpCam()
@@ -105,5 +112,12 @@ public class CameraHandler : MonoBehaviour
                 StartCoroutine(Co_MoveCamToNewPos(true));
             }
         }
+    }
+
+    public void HandleEndCamSequence(GameEvent possibleGameEvent)
+    {
+        _EndCam.MoveToTopOfPrioritySubqueue();
+        _EndCam.GetComponent<Animator>().enabled = true;
+        _EndCam.GetComponent<AnimationHandler>().sourceGameEvent = possibleGameEvent;
     }
 }

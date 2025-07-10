@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 8567040903602582418}
   - component: {fileID: 7942850925525345152}
   - component: {fileID: 923695121740419749}
+  - component: {fileID: 8371033620266638611}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -383,6 +384,7 @@ MonoBehaviour:
     - {fileID: 8567040903602582418}
     - {fileID: 7942850925525345152}
     - {fileID: 923695121740419749}
+    - {fileID: 8371033620266638611}
     componentParent: {fileID: 3611650364959769581}
     destroyParentComponent: 0
   triggerSketchCompletion: 0
@@ -578,7 +580,22 @@ MonoBehaviour:
     m_RotationOrder: 4
   fadeColor: {r: 1, g: 1, b: 1, a: 0}
   curveEvaluationSpeed: 0.5
+  markedAsCompletedTimeOnCurve: 0.9
   fadeMat: {fileID: -876546973899608171, guid: 5bb727a60c2bbf0438f3622345888070, type: 3}
+--- !u!114 &8371033620266638611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97434457f6f37645b6534aaa2235faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  delay: 0
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

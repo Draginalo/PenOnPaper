@@ -16,6 +16,17 @@ public class AnimationHandler : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void DestroyAnimationComponent()
+    {
+        if (sourceGameEvent != null)
+        {
+            sourceGameEvent.GameEventCompleted(sourceGameEvent);
+        }
+
+        Destroy(gameObject.GetComponent<Animator>());
+        Destroy(this);
+    }
+
     private void SetClickableActive()
     {
         HighlightScript possibleScript = gameObject.GetComponent<HighlightScript>();
