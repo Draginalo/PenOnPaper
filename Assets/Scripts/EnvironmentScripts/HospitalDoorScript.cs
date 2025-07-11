@@ -14,13 +14,13 @@ public class HospitalDoorScript : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnOpenHospitalDoor += HandleOpenDoor;
-        EventSystem.OnStopOpening += ResetDoor;
+        EventSystem.OnFixConfrontationIssue += ResetDoor;
     }
 
     private void OnDisable()
     {
         EventSystem.OnOpenHospitalDoor -= HandleOpenDoor;
-        EventSystem.OnStopOpening -= ResetDoor;
+        EventSystem.OnFixConfrontationIssue -= ResetDoor;
     }
 
     private void HandleOpenDoor(bool slowOpen)
@@ -30,7 +30,7 @@ public class HospitalDoorScript : MonoBehaviour
         m_Animator.SetBool("SlowOpen", slowOpen);
     }
 
-    private void ResetDoor()
+    private void ResetDoor(FinalConfrontationManager.Issues issueFixed)
     {
         m_Animator.Rebind();
         m_Animator.Update(0f);

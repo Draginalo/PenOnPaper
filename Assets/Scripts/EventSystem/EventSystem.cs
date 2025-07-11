@@ -70,11 +70,8 @@ public static class EventSystem
     public static event UnityAction OnFinishFinalConfrontation;
     public static void FinishFinalConfrontation() => OnFinishFinalConfrontation?.Invoke();
 
-    public static event UnityAction OnStopOpening;
-    public static void StopOpening() => OnStopOpening?.Invoke();
-
-    public static event UnityAction OnRepairLight;
-    public static void RepairLight() => OnRepairLight?.Invoke();
+    public static event UnityAction<FinalConfrontationManager.Issues> OnFixConfrontationIssue;
+    public static void FixConfrontationIssue(FinalConfrontationManager.Issues issueFixed) => OnFixConfrontationIssue?.Invoke(issueFixed);
 
     public static event UnityAction OnSliceDoctor;
     public static void SliceDoctor() => OnSliceDoctor?.Invoke();

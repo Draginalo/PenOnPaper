@@ -10491,6 +10491,8 @@ MonoBehaviour:
   m_LanternSketch: {fileID: 2477873707247255058, guid: a6a98b7a1c368f64c908fe84d492507c, type: 3}
   m_FinalSketch: {fileID: 2477873707247255058, guid: 8d314aca9d872084e8e8b1b5188d379c, type: 3}
   m_IntroImage: {fileID: 2477873707247255058, guid: 4d9d32c469afeb64e992a7eda089a2bb, type: 3}
+  m_PlankBlock: {fileID: 4390381446198983931, guid: 0010877f9e2cd6441bcd7a4aa1f72860, type: 3}
+  m_DoorLock: {fileID: 2590445058024146272, guid: 627273fe0f041224fb1ed4a80110774e, type: 3}
   loseFaintEvent: {fileID: 1070919367}
 --- !u!4 &1070919366
 Transform:

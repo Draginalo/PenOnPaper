@@ -13,14 +13,14 @@ public class DoctorScript : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnSwapEnvironments += DestroyDoc;
-        EventSystem.OnStopOpening += DestroyDoc;
+        EventSystem.OnFixConfrontationIssue += DestroyDoc;
         EventSystem.OnSliceDoctor += HandleSlice;
     }
 
     private void OnDisable()
     {
         EventSystem.OnSwapEnvironments -= DestroyDoc;
-        EventSystem.OnStopOpening -= DestroyDoc;
+        EventSystem.OnFixConfrontationIssue -= DestroyDoc;
         EventSystem.OnSliceDoctor -= HandleSlice;
     }
 
@@ -29,7 +29,7 @@ public class DoctorScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void DestroyDoc()
+    private void DestroyDoc(FinalConfrontationManager.Issues issueFixed)
     {
         Destroy(gameObject);
     }

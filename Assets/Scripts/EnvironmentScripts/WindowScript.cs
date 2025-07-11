@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static FinalConfrontationManager;
 
 public class WindowScript : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class WindowScript : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.OnOpenWindow += OpenWindow;
-        EventSystem.OnStopOpening += ResetWindow;
+        EventSystem.OnFixConfrontationIssue += ResetWindow;
     }
 
     private void OnDisable()
     {
         EventSystem.OnOpenWindow -= OpenWindow;
-        EventSystem.OnStopOpening -= ResetWindow;
+        EventSystem.OnFixConfrontationIssue -= ResetWindow;
     }
 
     private void OpenWindow()
@@ -23,7 +24,7 @@ public class WindowScript : MonoBehaviour
         m_Animator.enabled = true;
     }
 
-    private void ResetWindow()
+    private void ResetWindow(FinalConfrontationManager.Issues issueFixed)
     {
         m_Animator.Rebind();
         m_Animator.Update(0f);

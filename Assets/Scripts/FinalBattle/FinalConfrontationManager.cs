@@ -12,21 +12,32 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private GameObject m_LanternSketch;
     [SerializeField] private GameObject m_FinalSketch;
     [SerializeField] private GameObject m_IntroImage;
+    [SerializeField] private GameObject m_PlankBlock;
+    [SerializeField] private GameObject m_DoorLock;
     [SerializeField] private FaintEvent loseFaintEvent;
     private int scriptedNumber = 0;
     private bool confrontationOver = false;
     private Coroutine nextConfrontationEvent;
     private Coroutine loseBattleCoroutine;
+    private GameObject currDoorLock;
+    private GameObject currWindowPlanks;
 
     //This is to not make a new chain within the functions which will go out of scope after run and deleted (before events run)
     private GameEventChain nextEventsChain = new();
+
+    public enum Issues
+    {
+        WINDOW,
+        DOOR,
+        LANTERN,
+        ALL
+    }
 
     private void OnEnable()
     {
         EventSystem.OnStartFinalConfrontation += StartFinalConfrontation;
         EventSystem.OnFinishFinalConfrontation += FinishFinalConfrontation;
-        EventSystem.OnStopOpening += HandleFixIssue;
-        EventSystem.OnRepairLight += HandleFixIssue;
+        EventSystem.OnFixConfrontationIssue += HandleFixIssue;
     }
 
     private void OnDisable()
@@ -34,8 +45,7 @@ public class FinalConfrontationManager : MonoBehaviour
     {
         EventSystem.OnStartFinalConfrontation -= StartFinalConfrontation;
         EventSystem.OnFinishFinalConfrontation -= FinishFinalConfrontation;
-        EventSystem.OnStopOpening -= HandleFixIssue;
-        EventSystem.OnRepairLight -= HandleFixIssue;
+        EventSystem.OnFixConfrontationIssue -= HandleFixIssue;
     }
 
     private void OpenWindow()
@@ -155,7 +165,7 @@ public class FinalConfrontationManager : MonoBehaviour
         confrontationOver = true;
 
         //To reset window animations and destroy doctor
-        EventSystem.StopOpening();
+        EventSystem.FixConfrontationIssue(Issues.ALL);
 
         if (nextConfrontationEvent != null)
         {
@@ -201,7 +211,7 @@ public class FinalConfrontationManager : MonoBehaviour
         confrontationOver = true;
 
         //To reset window animations and destroy doctor
-        EventSystem.StopOpening();
+        EventSystem.FixConfrontationIssue(Issues.ALL);
 
         if (nextConfrontationEvent != null)
         {
@@ -209,6 +219,8 @@ public class FinalConfrontationManager : MonoBehaviour
         }
 
         EventSystem.ClearNotepadPage(true);
+
+        HandleDestroyPotentialFix(Issues.ALL);
 
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
         lightEvent.curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -247,13 +259,51 @@ public class FinalConfrontationManager : MonoBehaviour
         returnFaint.Begin();
     }
 
-    private void HandleFixIssue()
+    private void HandleFixIssue(Issues issueFixed)
     {
+        HandleSpawnFix(issueFixed);
+
         if (!confrontationOver)
         {
             HandleReturnFaintEffect();
 
             HandleNextEvent();
+        }
+    }
+
+    private void HandleSpawnFix(Issues issueFixed)
+    {
+        switch (issueFixed)
+        {
+            case Issues.DOOR:
+                currDoorLock = Instantiate(m_DoorLock);
+                break;
+            case Issues.WINDOW:
+                currWindowPlanks = Instantiate(m_PlankBlock);
+                break;
+        }
+    }
+
+    private void HandleDestroyPotentialFix(Issues issue)
+    {
+        switch (issue)
+        {
+            case Issues.DOOR:
+                if (currDoorLock != null)
+                {
+                    Destroy(currDoorLock);
+                }
+                break;
+            case Issues.WINDOW:
+                if (currWindowPlanks != null)
+                {
+                    Destroy(currWindowPlanks);
+                }
+                break;
+            case Issues.ALL:
+                HandleDestroyPotentialFix(Issues.DOOR);
+                HandleDestroyPotentialFix(Issues.WINDOW);
+                break;
         }
     }
 
@@ -292,6 +342,8 @@ public class FinalConfrontationManager : MonoBehaviour
 
     private void PickEvent(int nextEvent)
     {
+        HandleDestroyPotentialFix((Issues)nextEvent);
+
         switch (nextEvent)
         {
             case 0:
