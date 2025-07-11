@@ -4976,8 +4976,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
-  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5707,11 +5707,6 @@ MonoBehaviour:
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
   - eventChain:
-    - {fileID: 590773021}
-    - {fileID: 2064146513}
-    componentParent: {fileID: 590773017}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 225828279}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
@@ -5723,6 +5718,11 @@ MonoBehaviour:
     - {fileID: 590773019}
     componentParent: {fileID: 590773017}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 590773021}
+    - {fileID: 2064146513}
+    componentParent: {fileID: 590773017}
+    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 590773017}
   excecuteOnStart: 0
 --- !u!4 &590773024
@@ -13435,6 +13435,7 @@ GameObject:
   - component: {fileID: 1389880252}
   - component: {fileID: 1389880251}
   - component: {fileID: 1389880253}
+  - component: {fileID: 1389880254}
   m_Layer: 0
   m_Name: Circle.004
   m_TagString: Untagged
@@ -13525,6 +13526,27 @@ MonoBehaviour:
     renderer: {fileID: 1389880251}
   highlightColor: {r: 3.9532669, g: 3.9999998, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 4fbde426f46e8ef4299e0ced050e3fc9, type: 3}
+--- !u!65 &1389880254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389880249}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.60014457, y: 2.1759953, z: 1.9127839}
+  m_Center: {x: 0.00000047683716, y: 0.0000013709071, z: 0.9563925}
 --- !u!1 &1391713065
 GameObject:
   m_ObjectHideFlags: 0
@@ -18030,11 +18052,6 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1875980095}
-    - {fileID: 590773023}
-    componentParent: {fileID: 1875980092}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 1875980093}
     componentParent: {fileID: 1409614222}
     destroyParentComponent: 0
@@ -18050,6 +18067,11 @@ MonoBehaviour:
     - {fileID: 1875980100}
     componentParent: {fileID: 1875980092}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 1875980095}
+    - {fileID: 590773023}
+    componentParent: {fileID: 1875980092}
+    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 1875980092}
   excecuteOnStart: 0
 --- !u!4 &1875980099
@@ -21193,7 +21215,6 @@ MonoBehaviour:
   eventTrigger: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: a2335d7c9060ef64b941d4a87468112d, type: 3}
-  - {fileID: 2477873707247255058, guid: 2dfa79f32d402ba409807084e58e8982, type: 3}
   - {fileID: 2477873707247255058, guid: ced60857f242f8343a7f88e0f0a8cf51, type: 3}
   - {fileID: 2477873707247255058, guid: 4fbde426f46e8ef4299e0ced050e3fc9, type: 3}
 --- !u!114 &2064146509
@@ -21483,6 +21504,18 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 2064146508}
+    componentParent: {fileID: 370387641}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 370387642}
+    componentParent: {fileID: 370387641}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 2064146512}
+    componentParent: {fileID: 2064146507}
+    destroyParentComponent: 0
+  - eventChain:
     - {fileID: 2064146515}
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
@@ -21504,18 +21537,6 @@ MonoBehaviour:
     - {fileID: 1926488623}
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 1
-  - eventChain:
-    - {fileID: 2064146508}
-    componentParent: {fileID: 370387641}
-    destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 370387642}
-    componentParent: {fileID: 370387641}
-    destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 2064146512}
-    componentParent: {fileID: 2064146507}
-    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
   excecuteOnStart: 0
 --- !u!4 &2064146514

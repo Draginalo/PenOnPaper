@@ -166,6 +166,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
+        HandleDestroyPotentialFix(Issues.ALL);
 
         if (nextConfrontationEvent != null)
         {
@@ -212,6 +213,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
+        HandleDestroyPotentialFix(Issues.ALL);
 
         if (nextConfrontationEvent != null)
         {
@@ -219,8 +221,6 @@ public class FinalConfrontationManager : MonoBehaviour
         }
 
         EventSystem.ClearNotepadPage(true);
-
-        HandleDestroyPotentialFix(Issues.ALL);
 
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
         lightEvent.curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
