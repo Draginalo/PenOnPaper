@@ -13,8 +13,31 @@ public class FaintEvent : GameEvent
     BlurSettings blurSettings;
     private float currTime = 0;
     private bool markedDone = false;
+    public bool overideCleanup = false;
+
+    private Coroutine coroutine;
 
     private Material vignetteMat;
+
+    public float BlurrMultiple { get { return blurrMultiple; } set { blurrMultiple = value; } }
+    public float ColorMultiple { get { return colorMultiple; } set { colorMultiple = value; } }
+    public float VignetteMultiple { get { return vignetteMultiple; } set { vignetteMultiple = value; } }
+    public float CurveEvaluationSpeed { get { return curveEvaluationSpeed; } set { curveEvaluationSpeed = value; } }
+
+    public float GetCurrTime()
+    {
+        return currTime;
+    }
+
+    public float GetCurrValue()
+    {
+        return VignetteCurve.Evaluate(currTime * curveEvaluationSpeed);
+    }
+
+    public void SetCurve(AnimationCurve newCurve)
+    {
+        VignetteCurve = newCurve;
+    }
 
     public override void Execute()
     {
@@ -28,13 +51,23 @@ public class FaintEvent : GameEvent
         }
 
 
-        StartCoroutine(Co_RunFaintEffect());
+        coroutine = StartCoroutine(Co_RunFaintEffect());
     }
 
     public override void GameEventCompleted(GameEvent eventCompleted)
     {
         base.GameEventCompleted(eventCompleted);
         markedDone = true;
+    }
+
+    public void ResetEvent()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+
+        currTime = 0;
     }
 
     public override void Cleanup(bool destroyParentComponent)
@@ -50,7 +83,10 @@ public class FaintEvent : GameEvent
             blurSettings.active = false;
         }
 
-        base.Cleanup(true);
+        if (!overideCleanup)
+        {
+            base.Cleanup(true);
+        }
     }
 
     private bool FaintFinished()

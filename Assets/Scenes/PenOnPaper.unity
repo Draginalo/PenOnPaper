@@ -4976,8 +4976,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 9.6, z: -4.1}
+  m_LocalRotation: {x: -0.000000012344529, y: -0.00000001999593, z: -9.691871e-16, w: 1}
+  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5660,6 +5660,7 @@ MonoBehaviour:
   vignetteMultiple: 1
   curveEvaluationSpeed: 0.2
   markedAsCompletedTimeOnCurve: 1
+  overideCleanup: 0
 --- !u!114 &590773021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10464,6 +10465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070919366}
   - component: {fileID: 1070919365}
+  - component: {fileID: 1070919367}
   m_Layer: 0
   m_Name: FinalConfrontationManager
   m_TagString: Untagged
@@ -10488,6 +10490,8 @@ MonoBehaviour:
   m_DoorSketch: {fileID: 2477873707247255058, guid: d02d330328d8ae64aaa5165782b4130e, type: 3}
   m_LanternSketch: {fileID: 2477873707247255058, guid: a6a98b7a1c368f64c908fe84d492507c, type: 3}
   m_FinalSketch: {fileID: 2477873707247255058, guid: 8d314aca9d872084e8e8b1b5188d379c, type: 3}
+  m_IntroImage: {fileID: 2477873707247255058, guid: 4d9d32c469afeb64e992a7eda089a2bb, type: 3}
+  loseFaintEvent: {fileID: 1070919367}
 --- !u!4 &1070919366
 Transform:
   m_ObjectHideFlags: 0
@@ -10503,6 +10507,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1070919367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070919364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  VignetteCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 1
+      inSlope: 1.807096
+      outSlope: 1.807096
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -1.823263
+      outSlope: -1.823263
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blurrMultiple: 15
+  colorMultiple: 0.4
+  vignetteMultiple: 100
+  curveEvaluationSpeed: 0.0625
+  markedAsCompletedTimeOnCurve: 10
+  overideCleanup: 1
 --- !u!1 &1093943767
 GameObject:
   m_ObjectHideFlags: 0
@@ -14672,6 +14728,7 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 0.1
   markedAsCompletedTimeOnCurve: 0.84
+  overideCleanup: 0
 --- !u!114 &1542622251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17928,6 +17985,7 @@ MonoBehaviour:
   vignetteMultiple: 1
   curveEvaluationSpeed: 0.2
   markedAsCompletedTimeOnCurve: 1
+  overideCleanup: 0
 --- !u!114 &1875980095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18360,6 +18418,7 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 2
   markedAsCompletedTimeOnCurve: 0.5
+  overideCleanup: 0
 --- !u!114 &1926488627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18458,7 +18517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9990d2dcdab74bc4693c302beb8f14b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 2
+  eventTrigger: 1
+  intro: 1
 --- !u!114 &1926488631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20873,6 +20933,7 @@ MonoBehaviour:
   vignetteMultiple: 50
   curveEvaluationSpeed: 0.2
   markedAsCompletedTimeOnCurve: 1
+  overideCleanup: 0
 --- !u!114 &2049096257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21377,6 +21438,7 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 0.1
   markedAsCompletedTimeOnCurve: 0.84
+  overideCleanup: 0
 --- !u!114 &2064146511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21755,6 +21817,7 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 0.25
   markedAsCompletedTimeOnCurve: 1
+  overideCleanup: 0
 --- !u!114 &2064146522
 MonoBehaviour:
   m_ObjectHideFlags: 0

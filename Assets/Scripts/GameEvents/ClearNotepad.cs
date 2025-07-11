@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ClearNotepad : GameEvent
 {
-    [SerializeField] private bool clearIndipendentSketches = false;
+    public bool clearIndipendentSketches = false;
     private bool mHasBeenExcecuted = false;
     private bool mHasCompleted = false;
     public override void Execute()

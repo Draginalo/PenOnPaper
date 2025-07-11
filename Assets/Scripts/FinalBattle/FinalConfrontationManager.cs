@@ -11,9 +11,12 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private GameObject m_DoorSketch;
     [SerializeField] private GameObject m_LanternSketch;
     [SerializeField] private GameObject m_FinalSketch;
+    [SerializeField] private GameObject m_IntroImage;
+    [SerializeField] private FaintEvent loseFaintEvent;
     private int scriptedNumber = 0;
     private bool confrontationOver = false;
     private Coroutine nextConfrontationEvent;
+    private Coroutine loseBattleCoroutine;
 
     //This is to not make a new chain within the functions which will go out of scope after run and deleted (before events run)
     private GameEventChain nextEventsChain = new();
@@ -22,8 +25,8 @@ public class FinalConfrontationManager : MonoBehaviour
     {
         EventSystem.OnStartFinalConfrontation += StartFinalConfrontation;
         EventSystem.OnFinishFinalConfrontation += FinishFinalConfrontation;
-        EventSystem.OnStopOpening += HandleNextEvent;
-        EventSystem.OnRepairLight += HandleNextEvent;
+        EventSystem.OnStopOpening += HandleFixIssue;
+        EventSystem.OnRepairLight += HandleFixIssue;
     }
 
     private void OnDisable()
@@ -31,8 +34,8 @@ public class FinalConfrontationManager : MonoBehaviour
     {
         EventSystem.OnStartFinalConfrontation -= StartFinalConfrontation;
         EventSystem.OnFinishFinalConfrontation -= FinishFinalConfrontation;
-        EventSystem.OnStopOpening -= HandleNextEvent;
-        EventSystem.OnRepairLight -= HandleNextEvent;
+        EventSystem.OnStopOpening -= HandleFixIssue;
+        EventSystem.OnRepairLight -= HandleFixIssue;
     }
 
     private void OpenWindow()
@@ -100,8 +103,34 @@ public class FinalConfrontationManager : MonoBehaviour
         GameEventManager.instance.LoadAndExecuteEventChain(nextEventsChain);
     }
 
-    private void StartFinalConfrontation()
+    private void StartFinalConfrontation(bool intro)
     {
+        if (intro)
+        {
+            StartFinalConfrontation secondFinalConfrontation = gameObject.AddComponent<StartFinalConfrontation>();
+            secondFinalConfrontation.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_UP);
+            secondFinalConfrontation.intro = false;
+            secondFinalConfrontation.SetIndipendentEventNotDestroyParent();
+            secondFinalConfrontation.enabled = true;
+            secondFinalConfrontation.Begin();
+
+            SpawnNextSketch introTextEvent = gameObject.AddComponent<SpawnNextSketch>();
+            introTextEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.NONE);
+            introTextEvent.SetSketch(m_IntroImage);
+            introTextEvent.isIndipendent = true;
+            introTextEvent.SetIndipendentEventNotDestroyParent();
+            introTextEvent.enabled = true;
+            introTextEvent.Begin();
+
+            ClearNotepad clearEvent = gameObject.AddComponent<ClearNotepad>();
+            clearEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+            clearEvent.clearIndipendentSketches = true;
+            clearEvent.SetIndipendentEventNotDestroyParent();
+            clearEvent.enabled = true;
+            clearEvent.Begin();
+            return;
+        }
+
         nextEventsChain.destroyParentComponent = false;
 
         SpawnNextSketch newSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
@@ -112,6 +141,9 @@ public class FinalConfrontationManager : MonoBehaviour
         newSketchEvent.SetIndipendentEventNotDestroyParent();
         newSketchEvent.enabled = true;
         newSketchEvent.Begin();
+
+        confrontationOver = false;
+        loseFaintEvent.SetIndipendentEventNotDestroyParent();
 
         HandleNextEvent();
     }
@@ -130,6 +162,15 @@ public class FinalConfrontationManager : MonoBehaviour
             StopCoroutine(nextConfrontationEvent);
         }
 
+        if (loseBattleCoroutine != null)
+        {
+            StopCoroutine(loseBattleCoroutine);
+        }
+
+        HandleReturnFaintEffect();
+
+        Destroy(loseFaintEvent);
+
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
         lightEvent.curve = AnimationCurve.EaseInOut(0, 1, 1, 0);
         lightEvent.curveEvaluationSpeed = 10f;
@@ -147,17 +188,96 @@ public class FinalConfrontationManager : MonoBehaviour
         clearEvent.Begin();
     }
 
-    private void HandleNextEvent()
+    private IEnumerator Co_DelayHandleLose()
+    {
+        yield return new WaitForSeconds(15f);
+        HandleLose();
+    }
+
+    private void HandleLose()
+    {
+        nextEventsChain.CleanupChain();
+
+        confrontationOver = true;
+
+        //To reset window animations and destroy doctor
+        EventSystem.StopOpening();
+
+        if (nextConfrontationEvent != null)
+        {
+            StopCoroutine(nextConfrontationEvent);
+        }
+
+        EventSystem.ClearNotepadPage(true);
+
+        SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
+        lightEvent.curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        lightEvent.curveEvaluationSpeed = 5f;
+        lightEvent.maxIntensity = 45;
+        lightEvent.newRange = 45;
+
+        HandleReturnFaintEffect();
+
+        loseFaintEvent.ResetEvent();
+
+        //scriptedNumber = 0;
+
+        StartFinalConfrontation introFinalConfrontation = gameObject.AddComponent<StartFinalConfrontation>();
+        introFinalConfrontation.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+        introFinalConfrontation.intro = true;
+        introFinalConfrontation.SetIndipendentEventNotDestroyParent();
+        introFinalConfrontation.enabled = true;
+        introFinalConfrontation.Begin();
+    }
+
+    private void HandleReturnFaintEffect()
+    {
+        FaintEvent returnFaint = gameObject.AddComponent<FaintEvent>();
+        returnFaint.SetCurve(AnimationCurve.EaseInOut(0, loseFaintEvent.GetCurrValue(), 1, 0));
+        returnFaint.BlurrMultiple = loseFaintEvent.BlurrMultiple;
+        returnFaint.ColorMultiple = loseFaintEvent.ColorMultiple;
+        returnFaint.VignetteMultiple = loseFaintEvent.VignetteMultiple;
+        returnFaint.CurveEvaluationSpeed = 0.8f;
+
+        loseFaintEvent.ResetEvent();
+        loseFaintEvent.enabled = false;
+
+        returnFaint.SetIndipendentEventNotDestroyParent();
+        returnFaint.enabled = true;
+        returnFaint.Begin();
+    }
+
+    private void HandleFixIssue()
     {
         if (!confrontationOver)
         {
-            nextConfrontationEvent = StartCoroutine(Co_PickNextEventWithRandomDelay());
+            HandleReturnFaintEffect();
+
+            HandleNextEvent();
         }
+    }
+
+    private void HandleNextEvent()
+    {
+        if (loseBattleCoroutine != null)
+        {
+            StopCoroutine(loseBattleCoroutine);
+        }
+
+        //if (!confrontationOver)
+        //{
+        nextConfrontationEvent = StartCoroutine(Co_PickNextEventWithRandomDelay());
+        //}
     }
 
     private IEnumerator Co_PickNextEventWithRandomDelay()
     {
         yield return new WaitForSeconds(Random.Range(3, 9));
+
+        loseBattleCoroutine = StartCoroutine(Co_DelayHandleLose());
+
+        loseFaintEvent.enabled = true;
+        loseFaintEvent.Begin();
 
         if (scriptedNumber < 3)
         {

@@ -79,7 +79,11 @@ public class DrawHandler : MonoBehaviour
     {
         if (this != initiator)
         {
-            Destroy(nextPointMarker.gameObject);
+            if (nextPointMarker != null)
+            {
+                Destroy(nextPointMarker.gameObject);
+            }
+
             this.enabled = false;
         }
     }

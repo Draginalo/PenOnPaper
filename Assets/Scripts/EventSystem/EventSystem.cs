@@ -64,8 +64,8 @@ public static class EventSystem
     public static event UnityAction<List<GameObject>> OnLoadSketchesToDraw;
     public static void LoadSketchesToDraw(List<GameObject> sketchesToDraw) => OnLoadSketchesToDraw?.Invoke(sketchesToDraw);
 
-    public static event UnityAction OnStartFinalConfrontation;
-    public static void StartFinalConfrontation() => OnStartFinalConfrontation?.Invoke();
+    public static event UnityAction<bool> OnStartFinalConfrontation;
+    public static void StartFinalConfrontation(bool intro) => OnStartFinalConfrontation?.Invoke(intro);
 
     public static event UnityAction OnFinishFinalConfrontation;
     public static void FinishFinalConfrontation() => OnFinishFinalConfrontation?.Invoke();
