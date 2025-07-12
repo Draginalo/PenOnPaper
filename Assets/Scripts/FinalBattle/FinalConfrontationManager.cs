@@ -21,6 +21,7 @@ public class FinalConfrontationManager : MonoBehaviour
     private Coroutine loseBattleCoroutine;
     private GameObject currDoorLock;
     private GameObject currWindowPlanks;
+    private float loseTime = 20;
 
     //This is to not make a new chain within the functions which will go out of scope after run and deleted (before events run)
     private GameEventChain nextEventsChain = new();
@@ -201,7 +202,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
     private IEnumerator Co_DelayHandleLose()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(loseTime);
         HandleLose();
     }
 

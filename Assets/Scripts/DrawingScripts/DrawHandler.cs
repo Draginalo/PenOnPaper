@@ -257,16 +257,16 @@ public class DrawHandler : MonoBehaviour
             else
             {
                 //Checks if close enough to ending point
-                worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
-                diference = worldSpaceKnotLocation - drawPoint.position;
-                if (diference.sqrMagnitude <= minDistToSplinePoints && startingKnotCount - drawSpline.Spline.Count > 2)
-                {
-                    drawSpline.Spline.RemoveAt(drawSpline.Spline.Count - 1);
-                    if (drawSpline.Spline.Count != 0)
-                    {
-                        nextPointMarker.HandleMoveNextMarker((Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
-                    }
-                }
+                //worldSpaceKnotLocation = (Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
+                //diference = worldSpaceKnotLocation - drawPoint.position;
+                //if (diference.sqrMagnitude <= minDistToSplinePoints && startingKnotCount - drawSpline.Spline.Count > 2)
+                //{
+                //    drawSpline.Spline.RemoveAt(drawSpline.Spline.Count - 1);
+                //    if (drawSpline.Spline.Count != 0)
+                //    {
+                //        nextPointMarker.HandleMoveNextMarker((Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
+                //    }
+                //}
             }
 
             if (drawSpline.Spline.Count == 0)
