@@ -29,8 +29,8 @@ public static class EventSystem
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);
 
-    public static event UnityAction<bool> OnClearNotepadPage;
-    public static void ClearNotepadPage(bool clearIndipendentSketches) => OnClearNotepadPage?.Invoke(clearIndipendentSketches);
+    public static event UnityAction<bool, GameObject> OnClearNotepadPage;
+    public static void ClearNotepadPage(bool clearIndipendentSketches, GameObject initiatingSketch) => OnClearNotepadPage?.Invoke(clearIndipendentSketches, initiatingSketch);
 
     //Environment events
     public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;

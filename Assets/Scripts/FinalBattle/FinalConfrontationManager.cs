@@ -221,7 +221,7 @@ public class FinalConfrontationManager : MonoBehaviour
             StopCoroutine(nextConfrontationEvent);
         }
 
-        EventSystem.ClearNotepadPage(true);
+        EventSystem.ClearNotepadPage(true, null);
 
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
         lightEvent.curve = AnimationCurve.EaseInOut(0, 0, 1, 1);

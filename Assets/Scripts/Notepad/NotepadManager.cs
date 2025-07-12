@@ -38,7 +38,7 @@ public class NotepadManager : MonoBehaviour
         pageAnimator = newPageParent.GetComponent<Animator>();
     }
 
-    private void HandleResetNotepad(bool clearIndipendentSketches)
+    private void HandleResetNotepad(bool clearIndipendentSketches, GameObject initiatingSketch)
     {
         Destroy(currPage);
 
@@ -51,7 +51,11 @@ public class NotepadManager : MonoBehaviour
             int childCount = indipendentSketchOBJ.transform.childCount;
             for (int i = 0; i < childCount; i++)
             {
-                Destroy(indipendentSketchOBJ.transform.GetChild(i).gameObject);
+                //Check for not clearing the initiating sketch if it is assigned
+                if (initiatingSketch == null || indipendentSketchOBJ.transform.GetChild(i).gameObject != initiatingSketch)
+                {
+                    Destroy(indipendentSketchOBJ.transform.GetChild(i).gameObject);
+                }
             }
         }
     }

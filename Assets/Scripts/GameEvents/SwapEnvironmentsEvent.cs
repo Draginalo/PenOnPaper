@@ -9,6 +9,6 @@ public class SwapEnvironmentsEvent : GameEvent
         base.Execute();
 
         EventSystem.SwapEnvironment(envToSwitchTo, this);
-        EventSystem.ClearNotepadPage(true);
+        EventSystem.ClearNotepadPage(true, null);
     }
 }

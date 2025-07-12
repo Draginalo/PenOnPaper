@@ -59,7 +59,7 @@ public class DoctorScript : MonoBehaviour
                 mLeftArmToSliceOff.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
                 break;
             case 2:
-                gameObject.GetComponentInChildren<Renderer>().materials[1].SetTexture("_MainTex", m_HeartGoneTex);
+                gameObject.GetComponentInChildren<Renderer>().materials[1].SetTexture("_UnlitTex", m_HeartGoneTex);
                 break;
         }
 

@@ -31,6 +31,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 9f6dc58f6e081c045bbc9b1f84cb473d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _UnlitTex:
+        m_Texture: {fileID: 2800000, guid: b9e7be6f8519d6b47876ca968bf71fbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AmbientOcclusion: 0.7

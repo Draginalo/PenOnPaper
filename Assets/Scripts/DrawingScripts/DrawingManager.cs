@@ -171,7 +171,7 @@ public class DrawingManager : MonoBehaviour
         sketchPosIndex = 0;
     }
 
-    private void HandleResetNotepadPos(bool clearIndipendentSketches)
+    private void HandleResetNotepadPos(bool clearIndipendentSketches, GameObject initiatingSketch)
     {
         HandleResetSketchPos();
     }
@@ -231,7 +231,11 @@ public class DrawingManager : MonoBehaviour
         }
 
         sketchOBJ = Instantiate(nextSketch, indipendentSketchOBJ.transform);
-        sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
+        DrawHandler sketchHandler = sketchOBJ.GetComponentInChildren<DrawHandler>();
+        if (sketchHandler != null)
+        {
+            sketchHandler.MainCam = _MainCamera;
+        }
     }
 
     private GameObject CheckForClickedObject(RaycastHit hitOBJ)

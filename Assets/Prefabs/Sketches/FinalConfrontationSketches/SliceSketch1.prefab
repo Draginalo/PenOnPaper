@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
   - component: {fileID: 6663071328765507513}
+  - component: {fileID: 9075612580385190394}
   - component: {fileID: 8844136488708147708}
   - component: {fileID: 1909387477473328393}
   m_Layer: 0
@@ -377,12 +378,28 @@ MonoBehaviour:
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
   followingGameEvents:
     eventChain:
+    - {fileID: 9075612580385190394}
     - {fileID: 8844136488708147708}
     - {fileID: 1909387477473328393}
     componentParent: {fileID: 3611650364959769581}
     destroyParentComponent: 0
   triggerSketchCompletion: 0
-  handleFollowingEvents: 0
+  handleFollowingEvents: 1
+--- !u!114 &9075612580385190394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1416209e17c7f2040ae01713bc2b01c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  clearIndipendentSketches: 1
+  doNotClearSelf: 1
 --- !u!114 &8844136488708147708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +428,7 @@ MonoBehaviour:
   eventTrigger: 1
   m_NextSketchToSpawn: {fileID: 2477873707247255058, guid: 923c8721b46e7604c989743825e38d10, type: 3}
   isIndipendent: 1
+  m_Image: {fileID: 0}
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,13 +3,28 @@ using UnityEngine;
 public class ClearNotepad : GameEvent
 {
     public bool clearIndipendentSketches = false;
+    public bool doNotClearSelf = false;
     private bool mHasBeenExcecuted = false;
     private bool mHasCompleted = false;
     public override void Execute()
     {
         base.Execute();
         mHasBeenExcecuted = true;
-        EventSystem.ClearNotepadPage(clearIndipendentSketches);
+
+        GameObject parent = null;
+        if (doNotClearSelf)
+        {
+            if (transform.parent != null)
+            {
+                parent = transform.parent.gameObject;
+            }
+            else
+            {
+                parent = gameObject;
+            }
+        }
+
+        EventSystem.ClearNotepadPage(clearIndipendentSketches, parent);
         GameEventCompleted(this);
         mHasCompleted = true;
     }

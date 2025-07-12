@@ -376,6 +376,7 @@ MonoBehaviour:
   _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
   followingGameEvents:
     eventChain:
+    - {fileID: 6036105954484798597}
     - {fileID: 100601442851963742}
     - {fileID: 7229335604753011061}
     - {fileID: 3236914156329299036}
@@ -384,7 +385,7 @@ MonoBehaviour:
     componentParent: {fileID: 3665717554447443365}
     destroyParentComponent: 1
   triggerSketchCompletion: 0
-  handleFollowingEvents: 0
+  handleFollowingEvents: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6971924051373485257}
+  - component: {fileID: 6036105954484798597}
   - component: {fileID: 5716777041377073989}
   - component: {fileID: 3032270995087183749}
   - component: {fileID: 3236914156329299036}
@@ -452,6 +454,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1362043220487431962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6036105954484798597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665717554447443365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1416209e17c7f2040ae01713bc2b01c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  clearIndipendentSketches: 1
+  doNotClearSelf: 1
 --- !u!114 &5716777041377073989
 MonoBehaviour:
   m_ObjectHideFlags: 0
