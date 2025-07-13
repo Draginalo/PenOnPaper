@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,6 +43,8 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private SplineContainer drawSpline;
     private float minDistToSplinePoints = 0.0025f;
     private int startingKnotCount;
+    private Vector2Int lastSplinePoint;
+    private Vector2Int secondLastSplinePoint;
 
     [SerializeField] private GameObject _NextPointMarker;
     private DrawingMarkerHandler nextPointMarker;
@@ -108,6 +111,10 @@ public class DrawHandler : MonoBehaviour
         nextPointMarker.transform.position = (Vector3)(drawSpline.Spline[0].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position;
 
         startingKnotCount = drawSpline.Spline.Count;
+        Vector3 mappedLastPoint = transform.parent.InverseTransformPoint((Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 1].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
+        Vector3 mapped2NDLastPoint = transform.parent.InverseTransformPoint((Vector3)(drawSpline.Spline[drawSpline.Spline.Count - 2].Position * drawSpline.transform.lossyScale.x) + drawSpline.transform.position);
+        lastSplinePoint = new Vector2Int((int)((mappedLastPoint.x - _TopLeftPoint.localPosition.x) * xDrawMult), (int)((mappedLastPoint.y - _TopLeftPoint.localPosition.y) * yDrawMult));
+        secondLastSplinePoint = new Vector2Int((int)((mapped2NDLastPoint.x - _TopLeftPoint.localPosition.x) * xDrawMult), (int)((mapped2NDLastPoint.y - _TopLeftPoint.localPosition.y) * yDrawMult));
 
         ClearDrawTexture();
     }
@@ -285,8 +292,20 @@ public class DrawHandler : MonoBehaviour
         return;
     }
 
+    private void HandleDrawLastSegment()
+    {
+        int dist = (int)Mathf.Sqrt((lastSplinePoint.x - secondLastSplinePoint.x) * (lastSplinePoint.x - secondLastSplinePoint.x) + (lastSplinePoint.y - secondLastSplinePoint.y) * (lastSplinePoint.y - secondLastSplinePoint.y));
+        for (int i = 1; i <= dist; i++)
+        {
+            DrawPixels((i * lastSplinePoint.x + (dist - i) * secondLastSplinePoint.x) / dist, (i * lastSplinePoint.y + (dist - i) * secondLastSplinePoint.y) / dist);
+        }
+        SetDrawingTexture();
+    }
+
     protected virtual void HandleCompletion()
     {
+        HandleDrawLastSegment();
+
         Destroy(nextPointMarker.gameObject);
         Destroy(gameObject.GetComponent<MeshCollider>());
         finishedDrawing = true;
