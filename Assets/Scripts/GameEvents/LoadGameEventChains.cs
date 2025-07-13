@@ -20,11 +20,16 @@ public class LoadGameEventChains : GameEvent
     {
         if (excecuteOnStart)
         {
-            GameEventChain t = new GameEventChain();
-            t.SetEvents(new List<GameEvent> { this });
-
-            GameEventManager.instance.LoadAndExecuteEventChain(t);
+            LoadSelf();
         }
+    }
+
+    public void LoadSelf()
+    {
+        GameEventChain t = new GameEventChain();
+        t.SetEvents(new List<GameEvent> { this });
+
+        GameEventManager.instance.LoadAndExecuteEventChain(t);
     }
 
     public override void Execute()

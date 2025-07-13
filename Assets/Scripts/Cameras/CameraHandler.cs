@@ -13,6 +13,7 @@ public class CameraHandler : MonoBehaviour
     [SerializeField] private GameObject _DownCamActivator;
     [SerializeField] private float cameraSwitchTime = 0.3f;
     private bool currentlylookingDown = false;
+    private CinemachineBrain camBrain;
 
     private Vector3 originalCamPos;
     private Vector3 targetPos;
@@ -36,6 +37,7 @@ public class CameraHandler : MonoBehaviour
         instance = this;
 
         _UpCamActivator.SetActive(false);
+        camBrain = GetComponent<CinemachineBrain>();
     }
 
     private void OnDisable()
@@ -119,5 +121,17 @@ public class CameraHandler : MonoBehaviour
         _EndCam.MoveToTopOfPrioritySubqueue();
         _EndCam.GetComponent<Animator>().enabled = true;
         _EndCam.GetComponent<AnimationHandler>().sourceGameEvent = possibleGameEvent;
+    }
+
+    public bool IsTransitioning()
+    {
+        return camBrain.IsBlending;
+    }
+
+    public void SetActiveCameraActivators(bool topActive, bool bottomActive)
+    {
+        _UpCamActivator.transform.parent.parent.gameObject.SetActive(true);
+        _UpCamActivator.SetActive(topActive);
+        _DownCamActivator.SetActive(bottomActive);
     }
 }
