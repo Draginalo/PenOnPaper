@@ -9,6 +9,7 @@ public class BirdScript : ClickableObject
     public override void Clicked()
     {
         animator.SetBool("ScareAway", true);
+        CameraHandler.instance.SetActiveCameraActivators(false, false);
     }
 
     public void TriggerNextEventChain()

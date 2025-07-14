@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using static DrawingManager;
@@ -5,6 +6,7 @@ using static DrawingManager;
 public class GameEvent : MonoBehaviour
 {
     [SerializeField] protected DrawingCompleteTrigger eventTrigger;
+    [SerializeField] private float executionDelay = 0;
     protected bool destroyParent = false;
 
     private void OnEnable()
@@ -54,6 +56,9 @@ public class GameEvent : MonoBehaviour
             case DrawingCompleteTrigger.NONE:
                 Execute();
                 break;
+            case DrawingCompleteTrigger.EXECUTE_AFTER_SET_TIME:
+                StartCoroutine(Co_DelayExecution());
+                break;
             default:
                 break;
         }
@@ -73,5 +78,11 @@ public class GameEvent : MonoBehaviour
         }
 
         Destroy(this);
+    }
+
+    private IEnumerator Co_DelayExecution()
+    {
+        yield return new WaitForSeconds(executionDelay);
+        Execute();
     }
 }

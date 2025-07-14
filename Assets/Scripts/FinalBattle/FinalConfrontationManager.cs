@@ -167,7 +167,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
-        HandleDestroyPotentialFix(Issues.ALL);
+        HandleDestroyPotentialFix(Issues.ALL, true);
 
         if (nextConfrontationEvent != null)
         {
@@ -214,7 +214,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
-        HandleDestroyPotentialFix(Issues.ALL);
+        HandleDestroyPotentialFix(Issues.ALL, true);
 
         if (nextConfrontationEvent != null)
         {
@@ -227,7 +227,7 @@ public class FinalConfrontationManager : MonoBehaviour
         lightEvent.curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         lightEvent.curveEvaluationSpeed = 5f;
         lightEvent.maxIntensity = 45;
-        lightEvent.newRange = 45;
+        lightEvent.newRange = 60;
 
         HandleReturnFaintEffect();
 
@@ -285,25 +285,45 @@ public class FinalConfrontationManager : MonoBehaviour
         }
     }
 
-    private void HandleDestroyPotentialFix(Issues issue)
+    private void HandleDestroyPotentialFix(Issues issue, bool instantlyDestroy)
     {
         switch (issue)
         {
             case Issues.DOOR:
                 if (currDoorLock != null)
                 {
-                    Destroy(currDoorLock);
+                    if (instantlyDestroy)
+                    {
+                        Destroy(currDoorLock);
+                        return;
+                    }
+
+                    DropPhysics[] physicsScripts = currDoorLock.GetComponentsInChildren<DropPhysics>();
+                    foreach (DropPhysics physicsScript in physicsScripts)
+                    {
+                        physicsScript.enabled = true;
+                    }
                 }
                 break;
             case Issues.WINDOW:
                 if (currWindowPlanks != null)
                 {
-                    Destroy(currWindowPlanks);
+                    if (instantlyDestroy)
+                    {
+                        Destroy(currWindowPlanks);
+                        return;
+                    }
+
+                    DropPhysics[] physicsScripts = currWindowPlanks.GetComponentsInChildren<DropPhysics>();
+                    foreach (DropPhysics physicsScript in physicsScripts)
+                    {
+                        physicsScript.enabled = true;
+                    }
                 }
                 break;
             case Issues.ALL:
-                HandleDestroyPotentialFix(Issues.DOOR);
-                HandleDestroyPotentialFix(Issues.WINDOW);
+                HandleDestroyPotentialFix(Issues.DOOR, instantlyDestroy);
+                HandleDestroyPotentialFix(Issues.WINDOW, instantlyDestroy);
                 break;
         }
     }
@@ -343,7 +363,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
     private void PickEvent(int nextEvent)
     {
-        HandleDestroyPotentialFix((Issues)nextEvent);
+        HandleDestroyPotentialFix((Issues)nextEvent, false);
 
         switch (nextEvent)
         {

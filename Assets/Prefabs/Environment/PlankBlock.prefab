@@ -96,8 +96,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7330844523327289871}
   m_SourcePrefab: {fileID: 100100000, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+--- !u!1 &3518815550941187373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+  m_PrefabInstance: {fileID: 4329139878952792188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7330844523327289871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518815550941187373}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c3c035ed497264f881fa9065277680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGravity: {x: 0, y: -1, z: 0}
+  destroysAtKillFloor: 1
 --- !u!4 &4296021405617100695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
@@ -166,8 +188,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7470248516096209909}
   m_SourcePrefab: {fileID: 100100000, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+--- !u!1 &8312269587018706932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c200d20734e9c194db8229a4827c55ef, type: 3}
+  m_PrefabInstance: {fileID: 9194790196917654181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7470248516096209909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312269587018706932}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c3c035ed497264f881fa9065277680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGravity: {x: 0, y: -2, z: 0}
+  destroysAtKillFloor: 1
 --- !u!4 &8651640879741154638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c200d20734e9c194db8229a4827c55ef, type: 3}

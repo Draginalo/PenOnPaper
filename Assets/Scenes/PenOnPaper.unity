@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &32475281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &33479808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &225828280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2154,6 +2157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!4 &225828281
 Transform:
   m_ObjectHideFlags: 0
@@ -3853,6 +3857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &370387643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3866,6 +3871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!4 &370387644
 Transform:
   m_ObjectHideFlags: 0
@@ -6073,6 +6079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: bde588869adee614182283d991ed6a25, type: 3}
   - {fileID: 2477873707247255058, guid: 9f7d52d5f069f5540a158703a9b3cc71, type: 3}
@@ -6091,6 +6098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &590773020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6104,6 +6112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -6210,6 +6219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   envToSwitchTo: 5
 --- !u!114 &590773022
 MonoBehaviour:
@@ -6224,6 +6234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &590773023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6237,6 +6248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
     - {fileID: 590773018}
@@ -10033,6 +10045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   fadeCurve:
     serializedVersion: 2
     m_Curve:
@@ -11407,7 +11420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
@@ -11528,6 +11541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -12678,7 +12692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1220098246
 Transform:
   m_ObjectHideFlags: 0
@@ -13510,6 +13524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &1299862964
 GameObject:
   m_ObjectHideFlags: 0
@@ -14904,6 +14919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!4 &1409614224
 Transform:
   m_ObjectHideFlags: 0
@@ -14932,6 +14948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &1422262451
 GameObject:
   m_ObjectHideFlags: 0
@@ -15876,6 +15893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: fc93262f0a7dfb44994f6bbe68e072b7, type: 3}
   - {fileID: 2477873707247255058, guid: 15e47902cb4902246b3e59003b2c2826, type: 3}
@@ -15894,6 +15912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -16126,6 +16145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   envToSwitchTo: 3
 --- !u!114 &1542622252
 MonoBehaviour:
@@ -16140,6 +16160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &1542622254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16153,6 +16174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
     - {fileID: 1542622258}
@@ -16208,6 +16230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
   m_DeerToSpawn: {fileID: 7332128739026219402, guid: f00f1b3d1f7fc7b4a90990f3537b6641, type: 3}
 --- !u!114 &1542622257
 MonoBehaviour:
@@ -16222,6 +16245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &1542622258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16235,6 +16259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   animationToTrigger: 
   enableRootMotion: 1
@@ -17779,6 +17804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &1700968645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0259d4ebb40429a4f87b530d13c0316e, type: 3}
@@ -19573,7 +19599,6 @@ GameObject:
   - component: {fileID: 1875980098}
   - component: {fileID: 1875980096}
   - component: {fileID: 1875980095}
-  - component: {fileID: 1875980094}
   - component: {fileID: 1875980093}
   - component: {fileID: 1875980100}
   m_Layer: 0
@@ -19596,117 +19621,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: 7daefcadd3a31f24d9f460be2664b7c3, type: 3}
   - {fileID: 2477873707247255058, guid: 3fba4a7bcd8643842b0eb78f754bc003, type: 3}
   - {fileID: 2477873707247255058, guid: 59c3681cd31d01f4d83f9011818457c3, type: 3}
   - {fileID: 2477873707247255058, guid: ea07d3cc36ea6024b9170e23b83eb1e7, type: 3}
---- !u!114 &1875980094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875980092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 1
-  VignetteCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 9.300989
-      outSlope: 9.300989
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.10275462
-      value: 0.95571965
-      inSlope: 3.4409869
-      outSlope: 3.4409869
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.30564436
-      value: 0.46492624
-      inSlope: 0.09210241
-      outSlope: 0.09210241
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.39691418
-      value: 0.7025217
-      inSlope: -0.88536465
-      outSlope: -0.88536465
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5421082
-      value: 0.067450464
-      inSlope: 0.06291318
-      outSlope: 0.06291318
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.6996756
-      value: 0.77646863
-      inSlope: -0.86597395
-      outSlope: -0.86597395
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.79194504
-      value: 0.20147109
-      inSlope: 1.8768706
-      outSlope: 1.8768706
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.87157106
-      value: 0.996574
-      inSlope: 1.1128671
-      outSlope: 1.1128671
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -7.759731
-      outSlope: -7.759731
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  blurrMultiple: 15
-  colorMultiple: 0
-  vignetteMultiple: 1
-  curveEvaluationSpeed: 0.2
-  markedAsCompletedTimeOnCurve: 1
-  overideCleanup: 0
 --- !u!114 &1875980095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19720,6 +19640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   envToSwitchTo: 4
 --- !u!114 &1875980096
 MonoBehaviour:
@@ -19734,6 +19655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &1875980098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19747,6 +19669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
     - {fileID: 1875980093}
@@ -19800,6 +19723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &1887137853
 GameObject:
   m_ObjectHideFlags: 0
@@ -19980,6 +19904,7 @@ GameObject:
   - component: {fileID: 1926488635}
   - component: {fileID: 1926488636}
   - component: {fileID: 1926488637}
+  - component: {fileID: 1926488638}
   m_Layer: 0
   m_Name: StartingGameEvents (5)
   m_TagString: Untagged
@@ -20000,6 +19925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   m_NextSketchToSpawn: {fileID: 2477873707247255058, guid: 90f2ef4774ed5d9418d3ba1d8180feb4, type: 3}
   isIndipendent: 0
   m_Image: {fileID: 0}
@@ -20017,8 +19943,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 1926488638}
     - {fileID: 1926488622}
     componentParent: {fileID: 1926488621}
     destroyParentComponent: 0
@@ -20044,7 +19972,7 @@ MonoBehaviour:
     componentParent: {fileID: 1926488621}
     destroyParentComponent: 1
   gameEventChainsParent: {fileID: 1926488621}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &1926488624
 Transform:
   m_ObjectHideFlags: 0
@@ -20074,6 +20002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   animationToTrigger: StealHeart
   enableRootMotion: 0
@@ -20094,6 +20023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -20155,6 +20085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   curve:
     serializedVersion: 2
     m_Curve:
@@ -20197,8 +20128,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxIntensity: 40
-  newRange: 45
+  maxIntensity: 45
+  newRange: 60
   curveEvaluationSpeed: 1
   markedAsCompletedTimeOnCurve: 0.4
 --- !u!114 &1926488628
@@ -20214,6 +20145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &1926488629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20227,6 +20159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   delay: 0
 --- !u!114 &1926488630
 MonoBehaviour:
@@ -20241,6 +20174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   intro: 1
 --- !u!114 &1926488631
 MonoBehaviour:
@@ -20255,6 +20189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   envToSwitchTo: 7
 --- !u!114 &1926488632
 MonoBehaviour:
@@ -20269,6 +20204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &1926488634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20282,6 +20218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &1926488635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20295,6 +20232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   fadeCurve:
     serializedVersion: 2
     m_Curve:
@@ -20354,6 +20292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   envToSwitchTo: 0
 --- !u!114 &1926488637
 MonoBehaviour:
@@ -20368,6 +20307,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
+--- !u!114 &1926488638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926488621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ea3af87b147ef45b9e7143ba1cfbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 3
+  executionDelay: 4
+  enableUpPanel: 0
+  enableDownPanel: 1
 --- !u!1001 &1942711011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22845,6 +22801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
     - {fileID: 2049096260}
@@ -22883,6 +22840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -22989,6 +22947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   envToSwitchTo: 2
 --- !u!114 &2049096258
 MonoBehaviour:
@@ -23003,6 +22962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &2049096260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23016,6 +22976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: b5b6449408b62f843a2eaafd381418ed, type: 3}
   - {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
@@ -23034,6 +22995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!1 &2050836083
 GameObject:
   m_ObjectHideFlags: 0
@@ -23211,6 +23173,8 @@ GameObject:
   - component: {fileID: 2064146520}
   - component: {fileID: 2064146523}
   - component: {fileID: 2064146524}
+  - component: {fileID: 2064146526}
+  - component: {fileID: 2064146525}
   m_Layer: 0
   m_Name: StartingGameEvents (4)
   m_TagString: Untagged
@@ -23231,6 +23195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: a2335d7c9060ef64b941d4a87468112d, type: 3}
   - {fileID: 2477873707247255058, guid: ced60857f242f8343a7f88e0f0a8cf51, type: 3}
@@ -23248,6 +23213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &2064146510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23261,6 +23227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -23493,6 +23460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   envToSwitchTo: 6
 --- !u!114 &2064146512
 MonoBehaviour:
@@ -23507,6 +23475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
 --- !u!114 &2064146513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23520,6 +23489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   gameEventChains:
   - eventChain:
     - {fileID: 2064146515}
@@ -23556,7 +23526,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
@@ -23586,6 +23556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
   m_BirdToSpawn: {fileID: 302182308369732526, guid: 65d38e113ae0e034d840ebd3af85f670, type: 3}
 --- !u!114 &2064146516
 MonoBehaviour:
@@ -23600,6 +23571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &2064146517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23613,6 +23585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   animationToTrigger: StartHospitalIntro
   enableRootMotion: 0
@@ -23633,6 +23606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   m_ShakeStrength: 0.1
   m_ShakeSpeed: 0.1
 --- !u!114 &2064146519
@@ -23648,6 +23622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &2064146520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23661,6 +23636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   m_ShakeStrength: 0.2
   m_ShakeSpeed: 0.1
 --- !u!114 &2064146521
@@ -23676,6 +23652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -23872,6 +23849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   delay: 2
 --- !u!114 &2064146523
 MonoBehaviour:
@@ -23886,6 +23864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
 --- !u!114 &2064146524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23899,6 +23878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   animationToTrigger: StartHospitalJumpscare
   enableRootMotion: 0
@@ -23906,6 +23886,38 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 0, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 0
+--- !u!114 &2064146525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ea3af87b147ef45b9e7143ba1cfbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  enableUpPanel: 0
+  enableDownPanel: 1
+--- !u!114 &2064146526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ea3af87b147ef45b9e7143ba1cfbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  enableUpPanel: 0
+  enableDownPanel: 0
 --- !u!1 &2099362072
 GameObject:
   m_ObjectHideFlags: 0

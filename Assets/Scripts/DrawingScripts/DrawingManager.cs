@@ -10,7 +10,8 @@ public class DrawingManager : MonoBehaviour
     {
         NONE,
         LOOKING_DOWN,
-        LOOKING_UP
+        LOOKING_UP,
+        EXECUTE_AFTER_SET_TIME
     }
 
     //[Serializable]

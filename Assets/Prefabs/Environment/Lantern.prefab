@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   campfireLight: {fileID: 8139428140312736136}
-  maxIntensity: 50
+  maxIntensity: 60
   curveEvaluationSpeed: 0.2
   lightIntensityCurve:
     serializedVersion: 2
