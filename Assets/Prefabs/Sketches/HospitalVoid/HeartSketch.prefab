@@ -374,7 +374,7 @@ MonoBehaviour:
   _RaycastDistence: 30
   drawSpline: {fileID: 6929228159023656924}
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
-  _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
+  _CompleteVFX: {fileID: 953012722598039772, guid: 3cf616c1f4667b44384086b9b5becd4e, type: 3}
   followingGameEvents:
     eventChain:
     - {fileID: 5107375495068399530}

@@ -22847,15 +22847,15 @@ MonoBehaviour:
   eventTrigger: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 2049096260}
+    componentParent: {fileID: 2049096250}
+    destroyParentComponent: 0
+  - eventChain:
     - {fileID: 2049096256}
     - {fileID: 2049096257}
     - {fileID: 1542622254}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 1
-  - eventChain:
-    - {fileID: 2049096260}
-    componentParent: {fileID: 2049096250}
-    destroyParentComponent: 0
   - eventChain:
     - {fileID: 2049096261}
     componentParent: {fileID: 2049096250}

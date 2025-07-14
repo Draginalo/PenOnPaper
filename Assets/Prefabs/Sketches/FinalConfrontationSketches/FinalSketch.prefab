@@ -378,7 +378,7 @@ MonoBehaviour:
   _RaycastDistence: 30
   drawSpline: {fileID: 6929228159023656924}
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
-  _CompleteVFX: {fileID: 953012722598039772, guid: 6372026dd61eaf24db522d10d0a2686b, type: 3}
+  _CompleteVFX: {fileID: 953012722598039772, guid: 3cf616c1f4667b44384086b9b5becd4e, type: 3}
   followingGameEvents:
     eventChain:
     - {fileID: 1144735744432514315}
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 1
   clearIndipendentSketches: 1
+  doNotClearSelf: 0
 --- !u!114 &2602018116689853039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,6 +471,7 @@ MonoBehaviour:
   m_NextSketchToSpawn: {fileID: 2471977802249514734, guid: cf0edd5da52c0c44cb073324925a4e85, type: 3}
   isIndipendent: 1
   m_Image: {fileID: 2800000, guid: ca809577d904b27409cd6f3c95a10d4f, type: 3}
+  newSize: {x: 0, y: 0, z: 0}
 --- !u!114 &5525967611509136968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +488,7 @@ MonoBehaviour:
   m_NextSketchToSpawn: {fileID: 2477873707247255058, guid: 2f9d411d65e25e34e918029587dfa9fb, type: 3}
   isIndipendent: 1
   m_Image: {fileID: 0}
+  newSize: {x: 0, y: 0, z: 0}
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0
