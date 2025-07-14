@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CreditsScript : MonoBehaviour
 {
     [SerializeField] private GameObject[] creditImages;
+    [SerializeField] private ColorFadeEvent finalFadeEvent;
     private int creditsIndex = 0;
     private float creditDuration = 3;
 
@@ -16,6 +18,12 @@ public class CreditsScript : MonoBehaviour
     private void OnDisable()
     {
         EventSystem.OnStartCredits -= BeginCredits;
+    }
+
+    private void Start()
+    {
+        ////For testing
+        //BeginCredits();
     }
 
     private void BeginCredits()
@@ -44,7 +52,21 @@ public class CreditsScript : MonoBehaviour
         }
         else
         {
-            //RestartGame
+            finalFadeEvent.SetIndipendentEventNotDestroyParent();
+            finalFadeEvent.enabled = true;
+            finalFadeEvent.Begin();
+            StartCoroutine(Co_WaitUntilFadeFinished());
         }
+    }
+
+    private bool FadeDone()
+    {
+        return finalFadeEvent.GetIsDone();
+    }
+
+    private IEnumerator Co_WaitUntilFadeFinished()
+    {
+        yield return new WaitUntil(FadeDone);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

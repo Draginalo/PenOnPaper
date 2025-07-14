@@ -5,7 +5,7 @@ using static DrawingManager;
 public class GameEvent : MonoBehaviour
 {
     [SerializeField] protected DrawingCompleteTrigger eventTrigger;
-    private bool destroyParent = false;
+    protected bool destroyParent = false;
 
     private void OnEnable()
     {

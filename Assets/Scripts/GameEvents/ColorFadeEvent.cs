@@ -47,7 +47,7 @@ public class ColorFadeEvent : GameEvent
             colorFadeSettings.active = false;
         }
 
-        base.Cleanup(true);
+        base.Cleanup(destroyParent);
     }
 
     private bool FaintFinished()
@@ -69,5 +69,10 @@ public class ColorFadeEvent : GameEvent
     {
         yield return new WaitUntil(FaintFinished);
         HandleEffectDone();
+    }
+
+    public bool GetIsDone()
+    {
+        return markedDone;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SketchImageHandler : MonoBehaviour
 {
     public Texture2D image;
-    [SerializeField] private Vector3 size;
+    public Vector3 size;
     [SerializeField] private Material finalCanvasMaterial;
 
     // Start is called before the first frame update
