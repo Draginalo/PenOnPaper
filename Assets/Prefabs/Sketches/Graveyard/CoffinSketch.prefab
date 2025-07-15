@@ -380,7 +380,7 @@ MonoBehaviour:
     componentParent: {fileID: 3611650364959769581}
     destroyParentComponent: 0
   triggerSketchCompletion: 1
-  handleFollowingEvents: 2
+  handleFollowingEvents: 1
 --- !u!114 &154150485422495403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
   m_Doctor: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
   animationToTrigger: StartGraveAni
   enableRootMotion: 0

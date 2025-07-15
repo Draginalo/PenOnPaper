@@ -55,7 +55,7 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private GameEventChain followingGameEvents;
 
     [SerializeField] private bool triggerSketchCompletion = true;
-    [SerializeField] private WhenToHandleFollowingEvents handleFollowingEvents = WhenToHandleFollowingEvents.AFTER_WHOLE_COMPLETION_VFX;
+    [SerializeField] private WhenToHandleFollowingEvents handleFollowingEvents = WhenToHandleFollowingEvents.AFTER_FLASH;
     private bool finishedDrawing = false;
 
     public enum WhenToHandleFollowingEvents

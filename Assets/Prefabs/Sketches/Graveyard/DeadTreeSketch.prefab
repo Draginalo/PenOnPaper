@@ -378,7 +378,7 @@ MonoBehaviour:
     componentParent: {fileID: 0}
     destroyParentComponent: 1
   triggerSketchCompletion: 1
-  handleFollowingEvents: 2
+  handleFollowingEvents: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

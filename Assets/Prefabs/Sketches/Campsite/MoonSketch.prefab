@@ -658,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 0
+  executionDelay: 0
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -747,7 +748,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   blurrMultiple: 15
   colorMultiple: 0
+  vignetteMultiple: 100
   curveEvaluationSpeed: 0.2
+  markedAsCompletedTimeOnCurve: 1
+  overideCleanup: 0
 --- !u!114 &4387832006327995145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   envToSwitchTo: 0
 --- !u!1 &1299414599595114325
 GameObject:
@@ -920,7 +925,6 @@ MonoBehaviour:
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
-  generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: f288ef16859bc1e42ab04c04098d9d31, type: 3}
   finalSketchTexture: {fileID: 2800000, guid: 36c00d36e5ef04f4885dd1223e126aa5, type: 3}
   _TopLeftPoint: {fileID: 3291188820301064696}
@@ -934,6 +938,8 @@ MonoBehaviour:
     eventChain: []
     componentParent: {fileID: 0}
     destroyParentComponent: 1
+  triggerSketchCompletion: 1
+  handleFollowingEvents: 1
 --- !u!1 &2651387071254323114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1096,6 @@ MonoBehaviour:
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 0}
-  generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
   finalSketchTexture: {fileID: 0}
   _TopLeftPoint: {fileID: 3291188820301064696}
@@ -1104,6 +1109,8 @@ MonoBehaviour:
     eventChain: []
     componentParent: {fileID: 0}
     destroyParentComponent: 1
+  triggerSketchCompletion: 1
+  handleFollowingEvents: 2
 --- !u!1 &4903599326846733470
 GameObject:
   m_ObjectHideFlags: 0

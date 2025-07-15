@@ -24,6 +24,11 @@ public class GameEvent : MonoBehaviour
         this.enabled = false; 
     }
 
+    public void SetDelayTimer(float delay)
+    {
+        executionDelay = delay;
+    }
+
     public void SetIndipendentEventNotDestroyParent()
     {
         destroyParent = false;

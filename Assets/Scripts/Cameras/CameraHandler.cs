@@ -23,6 +23,7 @@ public class CameraHandler : MonoBehaviour
     private float shakeTime;
 
     public static CameraHandler instance;
+    private Coroutine swapCoroutine;
 
     public bool CurrentlyLookingDown { get { return currentlylookingDown; } }
 
@@ -48,19 +49,19 @@ public class CameraHandler : MonoBehaviour
     public void SwitchToUpCam()
     {
         _UpCam.MoveToTopOfPrioritySubqueue();
-        EventSystem.CameraLookChange(true);
         currentlylookingDown = false;
         _UpCamActivator.SetActive(false);
-        StartCoroutine(Co_DelayEnableButton(_DownCamActivator));
+        swapCoroutine = StartCoroutine(Co_DelayEnableButton(_DownCamActivator));
+        EventSystem.CameraLookChange(true);
     }
 
     public void SwitchToDownCam()
     {
         _DowmCam.MoveToTopOfPrioritySubqueue();
-        EventSystem.CameraLookChange(false);
         currentlylookingDown = true;
         _DownCamActivator.SetActive(false);
-        StartCoroutine(Co_DelayEnableButton(_UpCamActivator));
+        swapCoroutine = StartCoroutine(Co_DelayEnableButton(_UpCamActivator));
+        EventSystem.CameraLookChange(false);
     }
 
     private IEnumerator Co_DelayEnableButton(GameObject buttonToEnable)
@@ -130,6 +131,11 @@ public class CameraHandler : MonoBehaviour
 
     public void SetActiveCameraActivators(bool topActive, bool bottomActive)
     {
+        if (swapCoroutine != null)
+        {
+            StopCoroutine(swapCoroutine);
+        }
+
         _UpCamActivator.transform.parent.parent.gameObject.SetActive(true);
         _UpCamActivator.SetActive(topActive);
         _DownCamActivator.SetActive(bottomActive);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class CreditsScript : MonoBehaviour
 {
-    [SerializeField] private GameObject[] creditImages;
+    [SerializeField] private CreditPackage[] creditImages;
     [SerializeField] private ColorFadeEvent finalFadeEvent;
+    [SerializeField] private Material skyboxMat;
+    [SerializeField] private Texture startingSkybox;
     private int creditsIndex = 0;
-    private float creditDuration = 3;
+
+    [Serializable]
+    private struct CreditPackage
+    {
+        public GameObject creditsOBJ;
+        public float timeToPauseFor;
+    }
 
     private void OnEnable()
     {
@@ -28,24 +37,31 @@ public class CreditsScript : MonoBehaviour
 
     private void BeginCredits()
     {
-        EventSystem.SpawnSketch(creditImages[creditsIndex], false);
+        EventSystem.SpawnSketch(creditImages[creditsIndex].creditsOBJ, false);
+        StartCoroutine(Co_DelayNextCredit(creditImages[creditsIndex].timeToPauseFor));
         creditsIndex++;
-
-        StartCoroutine(Co_DelayNextCredit());
     }
 
     private void HandleNextCreditPage()
     {
         EventSystem.FlipNotepadPage(null);
-        EventSystem.SpawnSketch(creditImages[creditsIndex], false);
-        creditsIndex++;
+        SpawnNextSketch nextCreditEvent = gameObject.AddComponent<SpawnNextSketch>();
+        nextCreditEvent.SetSketch(creditImages[creditsIndex].creditsOBJ);
+        nextCreditEvent.isIndipendent = false;
+        nextCreditEvent.SetDelayTimer(0.3f);
+        nextCreditEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.EXECUTE_AFTER_SET_TIME);
 
-        StartCoroutine(Co_DelayNextCredit());
+        nextCreditEvent.SetIndipendentEventNotDestroyParent();
+        nextCreditEvent.enabled = true;
+        nextCreditEvent.Begin();
+
+        StartCoroutine(Co_DelayNextCredit(creditImages[creditsIndex].timeToPauseFor));
+        creditsIndex++;
     }
 
-    private IEnumerator Co_DelayNextCredit()
+    private IEnumerator Co_DelayNextCredit(float delay)
     {
-        yield return new WaitForSeconds(creditDuration);
+        yield return new WaitForSeconds(delay);
         if (creditsIndex < creditImages.Length)
         {
             HandleNextCreditPage();
@@ -67,6 +83,7 @@ public class CreditsScript : MonoBehaviour
     private IEnumerator Co_WaitUntilFadeFinished()
     {
         yield return new WaitUntil(FadeDone);
+        skyboxMat.SetTexture("_Tex", startingSkybox);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

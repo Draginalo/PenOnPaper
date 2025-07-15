@@ -229,6 +229,10 @@ public class FinalConfrontationManager : MonoBehaviour
         lightEvent.maxIntensity = 45;
         lightEvent.newRange = 60;
 
+        lightEvent.SetIndipendentEventNotDestroyParent();
+        lightEvent.enabled = true;
+        lightEvent.Begin();
+
         HandleReturnFaintEffect();
 
         loseFaintEvent.ResetEvent();
@@ -238,6 +242,7 @@ public class FinalConfrontationManager : MonoBehaviour
         StartFinalConfrontation introFinalConfrontation = gameObject.AddComponent<StartFinalConfrontation>();
         introFinalConfrontation.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
         introFinalConfrontation.intro = true;
+
         introFinalConfrontation.SetIndipendentEventNotDestroyParent();
         introFinalConfrontation.enabled = true;
         introFinalConfrontation.Begin();

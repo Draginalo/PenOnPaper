@@ -210,22 +210,29 @@ public class DrawingManager : MonoBehaviour
             if (sketchPosIndex < sketchPositions.Length)
             {
                 sketchOBJ = Instantiate(nextSketch, _NotepadManager.CurrentPage.transform);
-                sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.localPosition.y, sketchPositions[sketchPosIndex].y);
-                sketchOBJ.GetComponentInChildren<DrawHandler>().MainCam = _MainCamera;
-                sketchPosIndex++;
+                DrawHandler possibleDrawHandler = sketchOBJ.GetComponentInChildren<DrawHandler>();
 
-                HighlightScript possibleScript = CheckForConnectingObject(nextSketch.GetComponentInChildren<DrawHandler>());
-                if (possibleScript != null)
+                if (possibleDrawHandler != null)
                 {
-                    //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
-                    Destroy(possibleScript);
+                    possibleDrawHandler.MainCam = _MainCamera;
+                    sketchOBJ.transform.localPosition = new Vector3(sketchPositions[sketchPosIndex].x, sketchOBJ.transform.localPosition.y, sketchPositions[sketchPosIndex].y);
+                    sketchPosIndex++;
+
+                    HighlightScript possibleScript = CheckForConnectingObject(nextSketch.GetComponentInChildren<DrawHandler>());
+                    if (possibleScript != null)
+                    {
+                        //DrawHandler.RemoveObjectToDraw(possibleSketch.GetComponentInChildren<DrawHandler>());
+                        Destroy(possibleScript);
+                    }
+
+                    //To allow for adding of loaded sketches and new non-loaded sketches
+                    if (sketchesToDraw.Contains(nextSketch))
+                    {
+                        sketchesToDraw.Remove(nextSketch);
+                    }
                 }
 
-                //To allow for adding of loaded sketches and new non-loaded sketches
-                if (sketchesToDraw.Contains(nextSketch))
-                {
-                    sketchesToDraw.Remove(nextSketch);
-                }
+
             }
 
             return;
