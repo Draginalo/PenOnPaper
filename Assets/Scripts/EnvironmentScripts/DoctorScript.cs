@@ -48,6 +48,11 @@ public class DoctorScript : MonoBehaviour
         mSmokeEffect.SetActive(false);
     }
 
+    public void TriggerSketchChange()
+    {
+        EventSystem.ChangeSketch();
+    }
+
     private void HandleSlice()
     {
         switch (sliceIndex)

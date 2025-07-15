@@ -57,6 +57,7 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private bool triggerSketchCompletion = true;
     [SerializeField] private WhenToHandleFollowingEvents handleFollowingEvents = WhenToHandleFollowingEvents.AFTER_FLASH;
     private bool finishedDrawing = false;
+    protected bool destroySelf = true;
 
     public enum WhenToHandleFollowingEvents
     {
@@ -68,12 +69,12 @@ public class DrawHandler : MonoBehaviour
     public Camera MainCam { set { cam = value; } }
     //public DrawingManager.DrawingCompleteTrigger CompletionTrigger { get { return completeTrigger; } }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EventSystem.OnDeactivateAllOtherSketches += HandleOnDisable;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         EventSystem.OnDeactivateAllOtherSketches -= HandleOnDisable;
     }
@@ -91,7 +92,7 @@ public class DrawHandler : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         colorMap = new Color[totalPixelsX * totalPixelsY];
 
@@ -347,7 +348,10 @@ public class DrawHandler : MonoBehaviour
             HandleGameEvents();
         }
 
-        Destroy(this);
+        if (destroySelf)
+        {
+            Destroy(this);
+        }
     }
 
     private void HandleGameEvents()

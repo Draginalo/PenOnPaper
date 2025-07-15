@@ -25,6 +25,9 @@ public static class EventSystem
     public static event UnityAction<DrawHandler> OnDeactivateAllOtherSketches;
     public static void DeactivateAllOtherSketches(DrawHandler initiator) => OnDeactivateAllOtherSketches?.Invoke(initiator);
 
+    public static event UnityAction OnChangeSketch;
+    public static void ChangeSketch() => OnChangeSketch?.Invoke();
+
     //Notepad events
     public static event UnityAction<GameEvent> OnFlipNotepadPage;
     public static void FlipNotepadPage(GameEvent eventData) => OnFlipNotepadPage?.Invoke(eventData);

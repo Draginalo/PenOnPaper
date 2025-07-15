@@ -150,6 +150,9 @@ public class DrawingManager : MonoBehaviour
         if (sketchPosIndex == sketchPositions.Length)
         {
             FlipPageEvent flipPageEvent = gameObject.AddComponent<FlipPageEvent>();
+            flipPageEvent.SetEventTrigger(DrawingCompleteTrigger.EXECUTE_AFTER_SET_TIME);
+            flipPageEvent.SetDelayTimer(3.0f);
+
             ActivateSketchesToChooseEvent spawnNextSketchEvent = gameObject.AddComponent<ActivateSketchesToChooseEvent>();
             spawnNextSketchEvent.SetEventTrigger(DrawingCompleteTrigger.LOOKING_UP);
 
