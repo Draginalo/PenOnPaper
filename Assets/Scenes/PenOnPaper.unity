@@ -9059,7 +9059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -9641,7 +9641,7 @@ PrefabInstance:
     - target: {fileID: 6241662363760262632, guid: 68c77df1995591040a1bc34c65b72656, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e8ab44190e3cf2e4ab698f00d107287b, type: 2}
+      objectReference: {fileID: 2100000, guid: cbe074fe2512d0d4b8f91d2e4d4f68f9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11420,7 +11420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
@@ -22826,7 +22826,7 @@ MonoBehaviour:
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2049096250}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!114 &2049096256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23526,7 +23526,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
