@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NotepadManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class NotepadManager : MonoBehaviour
     [SerializeField] private GameObject currPage;
     [SerializeField] private Animator pageAnimator;
     [SerializeField] private GameObject indipendentSketchOBJ;
+    [SerializeField] private GameObject __DateOBJ;
 
     public GameObject CurrentPage {  get { return currPage; } }
 
@@ -15,12 +17,14 @@ public class NotepadManager : MonoBehaviour
     {
         EventSystem.OnFlipNotepadPage += HandleFlipPage;
         EventSystem.OnClearNotepadPage += HandleResetNotepad;
+        EventSystem.OnChangeDate += HandleChangeDate;
     }
 
     private void OnDisable()
     {
         EventSystem.OnFlipNotepadPage -= HandleFlipPage;
         EventSystem.OnClearNotepadPage -= HandleResetNotepad;
+        EventSystem.OnChangeDate -= HandleChangeDate;
     }
 
     private void Start()
@@ -58,5 +62,10 @@ public class NotepadManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void HandleChangeDate(string newDate)
+    {
+        Instantiate(__DateOBJ, currPage.transform).GetComponentInChildren<TextMeshProUGUI>().text = newDate;
     }
 }

@@ -238,10 +238,10 @@ RectTransform:
   - {fileID: 739027816}
   m_Father: {fileID: 1966089289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133.33334, y: -112.50792}
+  m_SizeDelta: {x: 266.6667, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22239355
 MonoBehaviour:
@@ -1588,10 +1588,10 @@ RectTransform:
   - {fileID: 1145567736}
   m_Father: {fileID: 729745673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -112.52624}
-  m_SizeDelta: {x: 800, y: 225.05247}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &146809258
 MonoBehaviour:
@@ -2153,7 +2153,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -285, y: 60}
-  m_SizeDelta: {x: -630, y: 0}
+  m_SizeDelta: {x: -630, y: -171.89082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213625208
 MonoBehaviour:
@@ -4424,7 +4424,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 9
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -6197,8 +6197,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557977112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.04662468, y: -0.000000019974184, z: -9.323038e-10, w: 0.9989125}
-  m_LocalPosition: {x: -1.32, y: 7.46, z: -5.68}
+  m_LocalRotation: {x: -0.000000007450581, y: -0.000000019995932, z: -8.3266727e-16, w: 1}
+  m_LocalPosition: {x: 0, y: 11.48, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6738,6 +6738,7 @@ GameObject:
   - component: {fileID: 590773020}
   - component: {fileID: 590773019}
   - component: {fileID: 590773018}
+  - component: {fileID: 590773025}
   m_Layer: 0
   m_Name: StartingGameEvents (3)
   m_TagString: Untagged
@@ -6947,6 +6948,7 @@ MonoBehaviour:
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 590773021}
+    - {fileID: 590773025}
     - {fileID: 2064146513}
     componentParent: {fileID: 590773017}
     destroyParentComponent: 1
@@ -6968,6 +6970,21 @@ Transform:
   - {fileID: 225828281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &590773025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590773017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2dcad4afea1464db5ec1f59b7223b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  newDate: 8/10/2025
 --- !u!4 &609666195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9359af3abcff1134885e920fe704101e, type: 3}
@@ -8138,7 +8155,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: b6af6a77b6d71694ca88bf659dc20450, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 696081873}
-  highlightColor: {r: 1, g: 0.9429533, b: 0, a: 0}
+  highlightColor: {r: 4, g: 3.7718132, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: b5b6449408b62f843a2eaafd381418ed, type: 3}
 --- !u!65 &696081872
 BoxCollider:
@@ -8236,11 +8253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8042392497972562025, guid: 723e86ff332e273489540edab396559b, type: 3}
       propertyPath: highlightColor.g
-      value: 2
+      value: 2.9960785
       objectReference: {fileID: 0}
     - target: {fileID: 8042392497972562025, guid: 723e86ff332e273489540edab396559b, type: 3}
       propertyPath: highlightColor.r
-      value: 2
+      value: 2.9960785
       objectReference: {fileID: 0}
     - target: {fileID: 8042392497972562025, guid: 723e86ff332e273489540edab396559b, type: 3}
       propertyPath: materialsToHighlight.Array.size
@@ -8534,7 +8551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &729745673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9234,10 +9251,10 @@ RectTransform:
   - {fileID: 2015974845}
   m_Father: {fileID: 39709875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.00003, y: -337.52374}
+  m_SizeDelta: {x: 800.00006, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &773882438
 MonoBehaviour:
@@ -10097,10 +10114,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1966089289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.00003, y: -112.50792}
+  m_SizeDelta: {x: 266.6667, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860421090
 MonoBehaviour:
@@ -10145,7 +10162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -10356,7 +10373,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     substatuteColor: {r: 0.5254902, g: 0.5372549, b: 0.3803922, a: 0}
     renderer: {fileID: 880132740}
-  highlightColor: {r: 4, g: 3.6263642, b: 0, a: 0}
+  highlightColor: {r: 8.474191, g: 7.6826253, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 9f7d52d5f069f5540a158703a9b3cc71, type: 3}
 --- !u!65 &880132743
 BoxCollider:
@@ -11799,7 +11816,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 46314558178b90145b6ad8acdcf07eca, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 1005544701}
-  highlightColor: {r: 1, g: 0.99557805, b: 0, a: 0}
+  highlightColor: {r: 4, g: 3.9823122, b: 0, a: 0}
   connectingSketch: {fileID: 7806719808546884800, guid: 05ea10d1584b795478bd5cafd07fd377, type: 3}
 --- !u!65 &1005544704
 BoxCollider:
@@ -12652,7 +12669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
@@ -15514,7 +15531,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -285, y: 0}
-  m_SizeDelta: {x: -630, y: 0}
+  m_SizeDelta: {x: -630, y: -171.89082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348524028
 MonoBehaviour:
@@ -16224,7 +16241,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 42abb394f6735b340bdff07ddab34940, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 1389880251}
-  highlightColor: {r: 3.9532669, g: 3.9999998, b: 0, a: 0}
+  highlightColor: {r: 5.922149, g: 5.992157, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 4fbde426f46e8ef4299e0ced050e3fc9, type: 3}
 --- !u!65 &1389880254
 BoxCollider:
@@ -16988,7 +17005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1485289293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17298,10 +17315,10 @@ RectTransform:
   - {fileID: 1707591820}
   m_Father: {fileID: 729745673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -337.5787}
-  m_SizeDelta: {x: 800, y: 225.05247}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1542622248
 GameObject:
@@ -17320,6 +17337,7 @@ GameObject:
   - component: {fileID: 1542622256}
   - component: {fileID: 1542622257}
   - component: {fileID: 1542622258}
+  - component: {fileID: 1542622259}
   m_Layer: 0
   m_Name: StartingGameEvents (1)
   m_TagString: Untagged
@@ -17627,6 +17645,7 @@ MonoBehaviour:
     - {fileID: 1542622258}
     - {fileID: 1542622250}
     - {fileID: 1542622251}
+    - {fileID: 1542622259}
     - {fileID: 1875980098}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
@@ -17714,6 +17733,21 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 155.34, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 0
+--- !u!114 &1542622259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542622248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2dcad4afea1464db5ec1f59b7223b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  newDate: 6/28/2025
 --- !u!1 &1548838259
 GameObject:
   m_ObjectHideFlags: 0
@@ -19041,10 +19075,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1966089289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 666.66675, y: -112.50792}
+  m_SizeDelta: {x: 266.6667, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659440852
 MonoBehaviour:
@@ -19669,7 +19703,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 4a90ee33c77f78d4ebc2ae02fa0f3d12, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 97044294}
-  highlightColor: {r: 3.9999998, g: 3.6125119, b: 0, a: 0}
+  highlightColor: {r: 5.992157, g: 5.411685, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: a2335d7c9060ef64b941d4a87468112d, type: 3}
 --- !u!65 &1700968647
 BoxCollider:
@@ -20623,7 +20657,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -285, y: -60}
-  m_SizeDelta: {x: -630, y: 0}
+  m_SizeDelta: {x: -630, y: -171.89082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791110314
 MonoBehaviour:
@@ -21441,6 +21475,7 @@ GameObject:
   - component: {fileID: 1875980095}
   - component: {fileID: 1875980093}
   - component: {fileID: 1875980100}
+  - component: {fileID: 1875980101}
   m_Layer: 0
   m_Name: StartingGameEvents (2)
   m_TagString: Untagged
@@ -21460,7 +21495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd805b108d5624409182d95ea7e70d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 0
+  eventTrigger: 2
   executionDelay: 0
   newSketchesToDraw:
   - {fileID: 2477873707247255058, guid: 7daefcadd3a31f24d9f460be2664b7c3, type: 3}
@@ -21529,6 +21564,7 @@ MonoBehaviour:
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 1875980095}
+    - {fileID: 1875980101}
     - {fileID: 590773023}
     componentParent: {fileID: 1875980092}
     destroyParentComponent: 1
@@ -21564,6 +21600,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 2
   executionDelay: 0
+--- !u!114 &1875980101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875980092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2dcad4afea1464db5ec1f59b7223b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  newDate: 7/14/2025
 --- !u!1 &1887137853
 GameObject:
   m_ObjectHideFlags: 0
@@ -22986,10 +23037,10 @@ RectTransform:
   - {fileID: 1659440851}
   m_Father: {fileID: 39709875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.00003, y: -112.50792}
+  m_SizeDelta: {x: 800.00006, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966089290
 MonoBehaviour:
@@ -24167,10 +24218,10 @@ RectTransform:
   - {fileID: 1791110313}
   m_Father: {fileID: 773882437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.00003, y: -112.50792}
+  m_SizeDelta: {x: 800.00006, y: 225.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2015974846
 MonoBehaviour:
@@ -24254,7 +24305,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 46314558178b90145b6ad8acdcf07eca, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 164626000}
-  highlightColor: {r: 1, g: 0.9318018, b: 0, a: 0}
+  highlightColor: {r: 4, g: 3.7272072, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 084c0821f22ed524598da97efd89b13b, type: 3}
 --- !u!23 &2017907628 stripped
 MeshRenderer:
@@ -24483,7 +24534,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 955b620da623c474ab1b036f81914608, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 2023557334}
-  highlightColor: {r: 1, g: 0.9764706, b: 0, a: 0}
+  highlightColor: {r: 2, g: 1.9529412, b: 0, a: 0}
   connectingSketch: {fileID: 7806719808546884800, guid: 34110ce9132cd9a49ada564ff4d81277, type: 3}
 --- !u!1 &2023928119
 GameObject:
@@ -24590,7 +24641,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: ed1322a4491abe14cacf64197aa15e9e, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 461074808}
-  highlightColor: {r: 3.8240511, g: 3.9999998, b: 0, a: 0}
+  highlightColor: {r: 5.728579, g: 5.992157, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: ced60857f242f8343a7f88e0f0a8cf51, type: 3}
 --- !u!65 &2023928124
 BoxCollider:
@@ -24920,6 +24971,8 @@ GameObject:
   - component: {fileID: 2049096256}
   - component: {fileID: 2049096260}
   - component: {fileID: 2049096261}
+  - component: {fileID: 2049096262}
+  - component: {fileID: 2049096263}
   m_Layer: 0
   m_Name: StartingGameEvents
   m_TagString: Untagged
@@ -24959,6 +25012,14 @@ MonoBehaviour:
   executionDelay: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 2049096256}
+    - {fileID: 2049096257}
+    - {fileID: 2049096263}
+    - {fileID: 1542622254}
+    componentParent: {fileID: 2049096250}
+    destroyParentComponent: 1
+  - eventChain:
+    - {fileID: 2049096262}
     - {fileID: 2049096260}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
@@ -24974,12 +25035,6 @@ MonoBehaviour:
     - {fileID: 2049096258}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 2049096256}
-    - {fileID: 2049096257}
-    - {fileID: 1542622254}
-    componentParent: {fileID: 2049096250}
-    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 2049096250}
   excecuteOnStart: 0
 --- !u!114 &2049096256
@@ -24994,8 +25049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cea8815fe7f03540bf921711669e9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 0
-  executionDelay: 0
+  eventTrigger: 3
+  executionDelay: 3
   VignetteCurve:
     serializedVersion: 2
     m_Curve:
@@ -25151,6 +25206,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventTrigger: 2
   executionDelay: 0
+--- !u!114 &2049096262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049096250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2dcad4afea1464db5ec1f59b7223b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 1
+  executionDelay: 0
+  newDate: 6/20/2025
+--- !u!114 &2049096263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049096250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2dcad4afea1464db5ec1f59b7223b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  newDate: 6/26/2025
 --- !u!1 &2050836083
 GameObject:
   m_ObjectHideFlags: 0
@@ -25681,7 +25766,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
@@ -26376,7 +26461,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 18305cbaf1b0f4947bf0fc1ee4e95e17, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 2138542761}
-  highlightColor: {r: 2, g: 1.5243423, b: 0, a: 0}
+  highlightColor: {r: 2.9960785, g: 2.2835245, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 15e47902cb4902246b3e59003b2c2826, type: 3}
 --- !u!23 &2138542761
 MeshRenderer:
@@ -29239,7 +29324,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 52303d9c89a187e4bbac6a6da718d330, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 8567717000095086658}
-  highlightColor: {r: 0.99320495, g: 1, b: 0, a: 0}
+  highlightColor: {r: 5.6184154, g: 5.656854, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 59c3681cd31d01f4d83f9011818457c3, type: 3}
 --- !u!23 &2070790988544400166
 MeshRenderer:
@@ -32169,7 +32254,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 1009001ec8b0e654a8f6d77c38f0d05f, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 903781127992955635}
-  highlightColor: {r: 1, g: 0.9479125, b: 0, a: 0}
+  highlightColor: {r: 5.656854, g: 5.3622026, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: ea07d3cc36ea6024b9170e23b83eb1e7, type: 3}
 --- !u!65 &5092708245334357156
 BoxCollider:
@@ -32460,6 +32545,10 @@ PrefabInstance:
       propertyPath: currGameEventChains.Array.data[0].eventChain.Array.data[0]
       value: 
       objectReference: {fileID: 2049096255}
+    - target: {fileID: 7553367111645398023, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
+      propertyPath: __DateOBJ
+      value: 
+      objectReference: {fileID: 1587076735898894170, guid: 5dab68e60892bb04a90489862c0594c7, type: 3}
     - target: {fileID: 7553367111645398023, guid: e9dd448c30c675b4e80708f522e0f086, type: 3}
       propertyPath: indipendentSketchOBJ
       value: 
@@ -34389,7 +34478,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 1e8be70b85ab8d44f9a33b5de3786152, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 6947464324826345854}
-  highlightColor: {r: 1.8979261, g: 2, b: 0, a: 0}
+  highlightColor: {r: 4.0208464, g: 4.237095, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 7daefcadd3a31f24d9f460be2664b7c3, type: 3}
 --- !u!65 &6947464324826345856
 BoxCollider:
@@ -34654,7 +34743,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     substatuteColor: {r: 0.3254902, g: 0.21568629, b: 0.16470589, a: 0}
     renderer: {fileID: 7047145312262404658}
-  highlightColor: {r: 0.99603176, g: 1, b: 0, a: 0}
+  highlightColor: {r: 3.984127, g: 4, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 71f319cb627713a46b3cf4b06b03d4ee, type: 3}
 --- !u!65 &7047145312262404660
 BoxCollider:
@@ -35008,7 +35097,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     substatuteColor: {r: 0.43529415, g: 0.2627451, b: 0.14509805, a: 0}
     renderer: {fileID: 1731507560945237137}
-  highlightColor: {r: 1, g: 0.9559485, b: 0, a: 0}
+  highlightColor: {r: 4, g: 3.823794, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 0456a78ac90da644499ed87b65f0d64f, type: 3}
 --- !u!65 &7331757581482395037
 BoxCollider:
@@ -35371,7 +35460,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 584d5bbd7ee41a14facc40c6aad5eb88, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 6702168355420381423}
-  highlightColor: {r: 2, g: 1.6529807, b: 0, a: 0}
+  highlightColor: {r: 5.992157, g: 4.95246, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: e5a1f2f9db21fb84fb0b1d81f8d56305, type: 3}
 --- !u!65 &7665313685442918222
 BoxCollider:
@@ -35800,7 +35889,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: c6f53638a5468fb448cdc9990dd4a609, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 6977748262235082211}
-  highlightColor: {r: 1.9943705, g: 2, b: 0, a: 0}
+  highlightColor: {r: 4.225168, g: 4.237095, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 3fba4a7bcd8643842b0eb78f754bc003, type: 3}
 --- !u!65 &8197709019226809708
 BoxCollider:
@@ -36687,7 +36776,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: ff9487ee206e10f418c8ceef018ba9cc, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 7028995854268629047}
-  highlightColor: {r: 1, g: 0.8653184, b: 0, a: 0}
+  highlightColor: {r: 4, g: 3.4612737, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: bde588869adee614182283d991ed6a25, type: 3}
 --- !u!4 &9109430276787779498
 Transform:

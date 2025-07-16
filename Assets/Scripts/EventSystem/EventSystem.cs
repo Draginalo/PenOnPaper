@@ -35,6 +35,9 @@ public static class EventSystem
     public static event UnityAction<bool, GameObject> OnClearNotepadPage;
     public static void ClearNotepadPage(bool clearIndipendentSketches, GameObject initiatingSketch) => OnClearNotepadPage?.Invoke(clearIndipendentSketches, initiatingSketch);
 
+    public static event UnityAction<string> OnChangeDate;
+    public static void ChangeDate(string newDate) => OnChangeDate?.Invoke(newDate);
+
     //Environment events
     public static event UnityAction<EnvironmentSwitchManager.Environments, GameEvent> OnSwapEnvironments;
     public static void SwapEnvironment(EnvironmentSwitchManager.Environments newEnvironment, GameEvent gameEvent) => OnSwapEnvironments?.Invoke(newEnvironment, gameEvent);

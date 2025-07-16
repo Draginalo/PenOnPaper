@@ -24,7 +24,17 @@ public class MainMenuScript : MonoBehaviour
     {
         mainMenuCam.Priority = 0;
         CameraHandler.instance.SwitchToUpCam();
+        DeactivateButtons();
         StartCoroutine(Co_WaitUntilCameraTransitioned());
+    }
+
+    private void DeactivateButtons()
+    {
+        Button[] buttons = gameObject.GetComponentsInChildren<Button>();
+        foreach (Button button in buttons)
+        {
+            button.enabled = false;
+        }
     }
 
     private bool IsNotDoneTransitioning()

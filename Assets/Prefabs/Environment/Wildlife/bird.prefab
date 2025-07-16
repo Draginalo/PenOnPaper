@@ -138,7 +138,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 88beb87643cc1b74ca17bbdcfc1dfca5, type: 3}
     substatuteColor: {r: 0, g: 0, b: 0, a: 0}
     renderer: {fileID: 430736870377611017}
-  highlightColor: {r: 3.9999998, g: 3.7893825, b: 0, a: 0}
+  highlightColor: {r: 5.992157, g: 5.6766443, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 2dfa79f32d402ba409807084e58e8982, type: 3}
 --- !u!114 &3957375311605215953
 MonoBehaviour:

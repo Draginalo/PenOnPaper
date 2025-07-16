@@ -147,8 +147,8 @@ public class DrawHandler : MonoBehaviour
 
                 //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
                 int flippedCurrXPixel = totalPixelsX - currXPixel;
-                Debug.Log(currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel).r);
-                //Checks if you can draw there based on template texture
+
+                //Checks if you can draw there based on template texture and mode
                 if ((!GameManager.instance.IsFreeMode && currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel).b == 1) || (GameManager.instance.IsFreeMode && currDrawTemplateTexture.GetPixel(flippedCurrXPixel, currYPixel).r == 1))
                 {
                     //Handles logic if starting to draw for the first time
