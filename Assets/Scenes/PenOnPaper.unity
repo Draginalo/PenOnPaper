@@ -1339,7 +1339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &119781413
 Transform:
   m_ObjectHideFlags: 0
@@ -10373,7 +10373,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     substatuteColor: {r: 0.5254902, g: 0.5372549, b: 0.3803922, a: 0}
     renderer: {fileID: 880132740}
-  highlightColor: {r: 8.474191, g: 7.6826253, b: 0, a: 0}
+  highlightColor: {r: 16.948381, g: 15.365251, b: 0, a: 0}
   connectingSketch: {fileID: 2477873707247255058, guid: 9f7d52d5f069f5540a158703a9b3cc71, type: 3}
 --- !u!65 &880132743
 BoxCollider:
@@ -12669,7 +12669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
