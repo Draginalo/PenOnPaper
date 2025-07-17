@@ -1339,7 +1339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &119781413
 Transform:
   m_ObjectHideFlags: 0
@@ -10162,7 +10162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864968028
 Transform:
   m_ObjectHideFlags: 0
@@ -25036,7 +25036,7 @@ MonoBehaviour:
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2049096250}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!114 &2049096256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25766,7 +25766,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 1
+  excecuteOnStart: 0
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
