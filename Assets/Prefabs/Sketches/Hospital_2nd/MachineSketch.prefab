@@ -366,6 +366,8 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   currDrawTemplateTexture: {fileID: 2800000, guid: f7d3a884427e0254484de14a9e2bdd12, type: 3}
   finalSketchTexture: {fileID: 2800000, guid: 754c2ffd4278d5548b7ee30115ec4cd1, type: 3}
+  finishSketchSoundBegining: {fileID: 8300000, guid: 4761dea66b2d2144aa57336a03e6c866, type: 3}
+  finishSketchSoundEnd: {fileID: 8300000, guid: 92ef6bcbc1cd504448c66fb9ae5613f5, type: 3}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -537,6 +539,8 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
   finalSketchTexture: {fileID: 0}
+  finishSketchSoundBegining: {fileID: 0}
+  finishSketchSoundEnd: {fileID: 0}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}

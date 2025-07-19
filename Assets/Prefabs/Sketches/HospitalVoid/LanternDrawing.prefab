@@ -368,6 +368,8 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   currDrawTemplateTexture: {fileID: 2800000, guid: a3c2d4807666a434cbf44bc08f9dbd95, type: 3}
   finalSketchTexture: {fileID: 2800000, guid: c410464eb4de1404cbed3b0a3541721b, type: 3}
+  finishSketchSoundBegining: {fileID: 8300000, guid: 4761dea66b2d2144aa57336a03e6c866, type: 3}
+  finishSketchSoundEnd: {fileID: 8300000, guid: 92ef6bcbc1cd504448c66fb9ae5613f5, type: 3}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -396,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 2
+  executionDelay: 0
   m_ObjectToSpawn: {fileID: 7011390479330073815, guid: 7b9a16d51c33ebe47a0604e591bd72a1, type: 3}
   mDeactivateParentAnimation: 0
   useAnimationToTriggerCompletion: 0
@@ -412,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 1
+  executionDelay: 0
   m_NextSketchToSpawn: {fileID: 2477873707247255058, guid: 7239ae5846ed8924c92740a0d3d0247c, type: 3}
   isIndipendent: 0
   m_Image: {fileID: 0}
@@ -574,6 +578,8 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
   finalSketchTexture: {fileID: 0}
+  finishSketchSoundBegining: {fileID: 0}
+  finishSketchSoundEnd: {fileID: 0}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}

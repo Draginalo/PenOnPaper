@@ -364,9 +364,10 @@ MonoBehaviour:
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
-  generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 98e3ade864303d449abf86e46f6a9c6a, type: 3}
   finalSketchTexture: {fileID: 2800000, guid: 224bec75b81379c438dd2bdf275bcc12, type: 3}
+  finishSketchSoundBegining: {fileID: 8300000, guid: 4761dea66b2d2144aa57336a03e6c866, type: 3}
+  finishSketchSoundEnd: {fileID: 8300000, guid: 92ef6bcbc1cd504448c66fb9ae5613f5, type: 3}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -378,6 +379,8 @@ MonoBehaviour:
     eventChain: []
     componentParent: {fileID: 0}
     destroyParentComponent: 1
+  triggerSketchCompletion: 1
+  handleFollowingEvents: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,9 +537,10 @@ MonoBehaviour:
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 0}
-  generatedTexture: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
   finalSketchTexture: {fileID: 0}
+  finishSketchSoundBegining: {fileID: 0}
+  finishSketchSoundEnd: {fileID: 0}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -548,6 +552,8 @@ MonoBehaviour:
     eventChain: []
     componentParent: {fileID: 0}
     destroyParentComponent: 1
+  triggerSketchCompletion: 1
+  handleFollowingEvents: 1
 --- !u!1 &8620985687687449880
 GameObject:
   m_ObjectHideFlags: 0

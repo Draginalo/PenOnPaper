@@ -10,9 +10,14 @@ public class FaintEvent : GameEvent
     [SerializeField] private float vignetteMultiple = 100.0f;
     [SerializeField] private float curveEvaluationSpeed;
     [SerializeField] private float markedAsCompletedTimeOnCurve = 1.0f;
+    [SerializeField] private AudioClip faintSound;
+    [SerializeField] private float timeToFadeOut = 1.0f;
+    [SerializeField] private float fadeOutTime = 1.0f;
+    [SerializeField] private AudioSource audioSource;
     BlurSettings blurSettings;
     private float currTime = 0;
     private bool markedDone = false;
+    private bool fadeOutStarted = false;
     public bool overideCleanup = false;
 
     private Coroutine coroutine;
@@ -50,7 +55,7 @@ public class FaintEvent : GameEvent
             blurSettings.blurrStrength.value = 10.0f;
         }
 
-
+        SoundManager.instance.LoadAndPlaySound(faintSound, 1.0f, false, audioSource);
         coroutine = StartCoroutine(Co_RunFaintEffect());
     }
 
@@ -104,7 +109,13 @@ public class FaintEvent : GameEvent
             GameEventCompleted(this);
         }
 
-        return currTime * curveEvaluationSpeed >= 1;
+        if (!fadeOutStarted && currTime * curveEvaluationSpeed >= timeToFadeOut)
+        {
+            SoundManager.instance.FadeOutLoadedSound(fadeOutTime);
+            fadeOutStarted = true;
+        }
+
+            return currTime * curveEvaluationSpeed >= 1;
     }
 
     private IEnumerator Co_RunFaintEffect()

@@ -12,6 +12,8 @@ public class MainMenuScript : MonoBehaviour
     public GameObject mModeMenu;
     public TextMeshProUGUI explinationText;
     public GameObject explinationPanel;
+    public AudioClip buttonSound;
+    public AudioClip startSound;
     private float referenceAspect = 1.777f;
     private float aspectMultiplyer = 2f;
 
@@ -22,6 +24,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void HandleStartGame()
     {
+        SoundManager.instance.PlayOneShotSound(startSound);
         mainMenuCam.Priority = 0;
         CameraHandler.instance.SwitchToUpCam();
         DeactivateButtons();
@@ -56,12 +59,14 @@ public class MainMenuScript : MonoBehaviour
 
     public void SwitchToModeMenu()
     {
+        SoundManager.instance.PlayOneShotSound(buttonSound);
         mMainMenu.SetActive(false);
         mModeMenu.SetActive(true);
     }
 
     public void SwitchToMainMenu()
     {
+        SoundManager.instance.PlayOneShotSound(buttonSound);
         mMainMenu.SetActive(true);
         mModeMenu.SetActive(false);
     }
@@ -85,12 +90,14 @@ public class MainMenuScript : MonoBehaviour
 
     public void SelectFreeMode()
     {
+        SoundManager.instance.PlayOneShotSound(buttonSound);
         GameManager.instance.IsFreeMode = true;
         SwitchToMainMenu();
     }
 
     public void SelectNotFreeMode()
     {
+        SoundManager.instance.PlayOneShotSound(buttonSound);
         GameManager.instance.IsFreeMode = false;
         SwitchToMainMenu();
     }

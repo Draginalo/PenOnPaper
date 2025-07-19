@@ -751,6 +751,10 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 0.2
   markedAsCompletedTimeOnCurve: 1
+  faintSound: {fileID: 0}
+  timeToFadeOut: 1
+  fadeOutTime: 1
+  audioSource: {fileID: 0}
   overideCleanup: 0
 --- !u!114 &4387832006327995145
 MonoBehaviour:
@@ -927,6 +931,9 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   currDrawTemplateTexture: {fileID: 2800000, guid: f288ef16859bc1e42ab04c04098d9d31, type: 3}
   finalSketchTexture: {fileID: 2800000, guid: 36c00d36e5ef04f4885dd1223e126aa5, type: 3}
+  finishSketchSoundBegining: {fileID: 8300000, guid: 4761dea66b2d2144aa57336a03e6c866, type: 3}
+  finishSketchSoundEnd: {fileID: 8300000, guid: 92ef6bcbc1cd504448c66fb9ae5613f5, type: 3}
+  sketchSFX: {fileID: 8300000, guid: 4d4c58389beb67949be9e24a2720e428, type: 3}
   _TopLeftPoint: {fileID: 3291188820301064696}
   _BottomRightPoint: {fileID: 5764827953568201835}
   drawPoint: {fileID: 1660214430031423520}
@@ -1098,6 +1105,9 @@ MonoBehaviour:
   finalCanvasMaterial: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
   finalSketchTexture: {fileID: 0}
+  finishSketchSoundBegining: {fileID: 0}
+  finishSketchSoundEnd: {fileID: 0}
+  sketchSFX: {fileID: 0}
   _TopLeftPoint: {fileID: 3291188820301064696}
   _BottomRightPoint: {fileID: 5764827953568201835}
   drawPoint: {fileID: 1660214430031423520}

@@ -22,6 +22,9 @@ public class DrawHandler : MonoBehaviour
     private Material generatedMaterial;
     [SerializeField] private Texture2D currDrawTemplateTexture;
     [SerializeField] private Texture2D finalSketchTexture;
+    [SerializeField] private AudioClip finishSketchSoundBegining;
+    [SerializeField] private AudioClip finishSketchSoundEnd;
+    [SerializeField] private AudioClip sketchSFX;
 
     private Color[] colorMap;
 
@@ -39,6 +42,7 @@ public class DrawHandler : MonoBehaviour
     private bool pressedLastFrame = false;
     private bool startedDrawing = false;
     private Vector2Int lastPoint = Vector2Int.zero;
+    private Vector2Int lastClickedPoint = Vector2Int.zero;
 
     [SerializeField] private SplineContainer drawSpline;
     private float minDistToSplinePoints = 0.0025f;
@@ -58,6 +62,13 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private WhenToHandleFollowingEvents handleFollowingEvents = WhenToHandleFollowingEvents.AFTER_FLASH;
     private bool finishedDrawing = false;
     protected bool destroySelf = true;
+
+    private AudioSource audioSource;
+    private Coroutine endSketchSFXCoroutine;
+    private Coroutine startSketchSFXCoroutine;
+    private float currTime = 0.0f;
+    private float maxSketchSFXVolume = 0.5f;
+    private float currVolume;
 
     public enum WhenToHandleFollowingEvents
     {
@@ -90,6 +101,11 @@ public class DrawHandler : MonoBehaviour
 
             this.enabled = false;
         }
+    }
+
+    private void Awake()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     protected virtual void Start()
@@ -128,6 +144,7 @@ public class DrawHandler : MonoBehaviour
         }
         else
         {
+            HandleStopSketchSFX();
             pressedLastFrame = false;
         }
     }
@@ -144,6 +161,17 @@ public class DrawHandler : MonoBehaviour
                 drawPoint.position = hit.point;
                 currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
                 currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
+
+                if (currXPixel != lastClickedPoint.x || currYPixel != lastClickedPoint.y)
+                {
+                    HandleStartSketchSFX();
+                }
+                else
+                {
+                    HandleStopSketchSFX();
+                }
+
+                lastClickedPoint = new Vector2Int(currXPixel,  currYPixel);
 
                 //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
                 int flippedCurrXPixel = totalPixelsX - currXPixel;
@@ -171,6 +199,7 @@ public class DrawHandler : MonoBehaviour
             }
         }
 
+        HandleStopSketchSFX();
         pressedLastFrame = false;
     }
 
@@ -193,6 +222,81 @@ public class DrawHandler : MonoBehaviour
         lastPoint = new Vector2Int(currXPixel, currYPixel);
         SetDrawingTexture();
     }
+
+    private void HandleStartSketchSFX()
+    {
+        if (endSketchSFXCoroutine != null)
+        {
+            StopCoroutine(endSketchSFXCoroutine);
+            endSketchSFXCoroutine = null;
+
+            currTime = 0.0f;
+            currVolume = audioSource.volume;
+            startSketchSFXCoroutine = StartCoroutine(Co_FadeBackIn());
+            return;
+        }
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = sketchSFX;
+            audioSource.loop = true;
+            currVolume = 0.0f;
+            audioSource.volume = currVolume;
+            audioSource.Play();
+
+            currTime = 0.0f;
+            startSketchSFXCoroutine = StartCoroutine(Co_FadeBackIn());
+        }
+    }
+
+    private void HandleStopSketchSFX()
+    {
+        if (audioSource.isPlaying && endSketchSFXCoroutine == null)
+        {
+            if (startSketchSFXCoroutine != null)
+            {
+                StopCoroutine(startSketchSFXCoroutine);
+                startSketchSFXCoroutine = null;
+            }
+
+            currTime = 0.0f;
+            currVolume = audioSource.volume;
+            endSketchSFXCoroutine = StartCoroutine(Co_DelayStopSketchSFX());
+        }
+    }
+
+    private bool FadeOutStop()
+    {
+        currTime += Time.deltaTime;
+        audioSource.volume = Mathf.Lerp(currVolume, 0, currTime / 0.3f);
+
+        return currTime / 0.3f >= 1.0f;
+    }
+
+    private IEnumerator Co_DelayStopSketchSFX()
+    {
+        yield return new WaitUntil(FadeOutStop);
+        audioSource.Stop();
+        endSketchSFXCoroutine = null;
+        currVolume = 0.0f;
+    }
+
+    private bool FadeBackIn()
+    {
+        currTime += Time.deltaTime;
+        audioSource.volume = Mathf.Lerp(currVolume, maxSketchSFXVolume, currTime / 0.3f);
+
+        return currTime / 0.3f >= 1.0f;
+    }
+
+    private IEnumerator Co_FadeBackIn()
+    {
+        yield return new WaitUntil(FadeBackIn);
+        startSketchSFXCoroutine = null;
+        currVolume = maxSketchSFXVolume;
+    }
+
+
 
     private void DrawPixels(int xPixel, int yPixel)
     {
@@ -322,6 +426,8 @@ public class DrawHandler : MonoBehaviour
             HandleGameEvents();
         }
 
+        SoundManager.instance.LoadAndPlaySound(finishSketchSoundBegining, 4.0f);
+
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
         StartCoroutine(Co_DelaySketchChangeVFXDone(vfx.GetFloat("Delay") - vfx.GetFloat("BeforeSpawnTime") + vfx.GetFloat("FinalMaxLifetime")));
     }
@@ -337,6 +443,9 @@ public class DrawHandler : MonoBehaviour
         {
             HandleGameEvents();
         }
+
+        SoundManager.instance.StopLoadedSound();
+        SoundManager.instance.LoadAndPlaySound(finishSketchSoundEnd, 1.0f);
     }
 
     private IEnumerator Co_DelaySketchChangeVFXDone(float delay)
