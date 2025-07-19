@@ -29,6 +29,15 @@ public class FaintEvent : GameEvent
     public float VignetteMultiple { get { return vignetteMultiple; } set { vignetteMultiple = value; } }
     public float CurveEvaluationSpeed { get { return curveEvaluationSpeed; } set { curveEvaluationSpeed = value; } }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
+
     public float GetCurrTime()
     {
         return currTime;
@@ -87,6 +96,8 @@ public class FaintEvent : GameEvent
         {
             blurSettings.active = false;
         }
+
+        Destroy(audioSource);
 
         if (!overideCleanup)
         {

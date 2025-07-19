@@ -81,7 +81,12 @@ public class SoundManager : MonoBehaviour
     private bool FadeOutHandler()
     {
         currTime += Time.deltaTime;
-        currAudioSource.volume = Mathf.Lerp(currVolume, 0, currTime / m_FadeTime);
+
+        //Checks for if audio source is deleted before fade out done
+        if (currAudioSource != null)
+        {
+            currAudioSource.volume = Mathf.Lerp(currVolume, 0, currTime / m_FadeTime);
+        }
         
         return currTime / m_FadeTime >= 1.0f;
     }

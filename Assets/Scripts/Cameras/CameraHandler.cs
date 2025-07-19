@@ -11,6 +11,7 @@ public class CameraHandler : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _EndCam;
     [SerializeField] private GameObject _UpCamActivator;
     [SerializeField] private GameObject _DownCamActivator;
+    [SerializeField] private AudioClip _CamSwooshSFX;
     [SerializeField] private float cameraSwitchTime = 0.3f;
     private bool currentlylookingDown = false;
     private CinemachineBrain camBrain;
@@ -48,6 +49,7 @@ public class CameraHandler : MonoBehaviour
 
     public void SwitchToUpCam()
     {
+        SoundManager.instance.PlayOneShotSound(_CamSwooshSFX);
         _UpCam.MoveToTopOfPrioritySubqueue();
         currentlylookingDown = false;
         _UpCamActivator.SetActive(false);
@@ -57,6 +59,7 @@ public class CameraHandler : MonoBehaviour
 
     public void SwitchToDownCam()
     {
+        SoundManager.instance.PlayOneShotSound(_CamSwooshSFX);
         _DowmCam.MoveToTopOfPrioritySubqueue();
         currentlylookingDown = true;
         _DownCamActivator.SetActive(false);

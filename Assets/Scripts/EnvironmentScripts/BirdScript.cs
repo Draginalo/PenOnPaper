@@ -5,6 +5,9 @@ using UnityEngine;
 public class BirdScript : ClickableObject
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip birdChirp;
+    [SerializeField] private AudioClip birdWings;
+    [SerializeField] private AudioClip birdScreach;
 
     public override void Clicked()
     {
@@ -15,5 +18,20 @@ public class BirdScript : ClickableObject
     public void TriggerNextEventChain()
     {
         EventSystem.TriggerNextEventChain();
+    }
+
+    public void PlayWingsSound()
+    {
+        SoundManager.instance.PlayOneShotSound(birdWings, 1.0f, transform.position);
+    }
+
+    public void PlayChirpSound()
+    {
+        SoundManager.instance.PlayOneShotSound(birdChirp, 1.0f, transform.position);
+    }
+
+    public void PlayScreachSound()
+    {
+        SoundManager.instance.PlayOneShotSound(birdScreach, 1.0f, transform.position);
     }
 }

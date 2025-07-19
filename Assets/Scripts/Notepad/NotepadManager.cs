@@ -9,7 +9,8 @@ public class NotepadManager : MonoBehaviour
     [SerializeField] private GameObject currPage;
     [SerializeField] private Animator pageAnimator;
     [SerializeField] private GameObject indipendentSketchOBJ;
-    [SerializeField] private GameObject __DateOBJ;
+    [SerializeField] private GameObject _DateOBJ;
+    [SerializeField] private AudioClip flipSFX;
 
     public GameObject CurrentPage {  get { return currPage; } }
 
@@ -34,6 +35,8 @@ public class NotepadManager : MonoBehaviour
 
     private void HandleFlipPage(GameEvent eventData)
     {
+        SoundManager.instance.PlayOneShotSound(flipSFX, 1.0f, transform.position);
+
         pageAnimator.GetComponent<AnimationHandler>().sourceGameEvent = eventData;
         pageAnimator.SetBool("StartPageFlip", true);
 
@@ -66,6 +69,6 @@ public class NotepadManager : MonoBehaviour
 
     private void HandleChangeDate(string newDate)
     {
-        Instantiate(__DateOBJ, currPage.transform).GetComponentInChildren<TextMeshProUGUI>().text = newDate;
+        Instantiate(_DateOBJ, currPage.transform).GetComponentInChildren<TextMeshProUGUI>().text = newDate;
     }
 }

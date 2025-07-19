@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 9123784346701233101}
+  m_FootstepsSFX: {fileID: 8300000, guid: a9913836cc8c25240b8a155ce1991a75, type: 3}
 --- !u!65 &7592715272498803011
 BoxCollider:
   m_ObjectHideFlags: 0

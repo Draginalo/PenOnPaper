@@ -368,6 +368,7 @@ MonoBehaviour:
   finalSketchTexture: {fileID: 2800000, guid: 3054566eb1965aa448e52d3bdb9c2d70, type: 3}
   finishSketchSoundBegining: {fileID: 8300000, guid: 4761dea66b2d2144aa57336a03e6c866, type: 3}
   finishSketchSoundEnd: {fileID: 8300000, guid: 92ef6bcbc1cd504448c66fb9ae5613f5, type: 3}
+  sketchSFX: {fileID: 8300000, guid: 4d4c58389beb67949be9e24a2720e428, type: 3}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
@@ -541,6 +542,7 @@ MonoBehaviour:
   finalSketchTexture: {fileID: 0}
   finishSketchSoundBegining: {fileID: 0}
   finishSketchSoundEnd: {fileID: 0}
+  sketchSFX: {fileID: 0}
   _TopLeftPoint: {fileID: 5636036060712716595}
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}

@@ -20,7 +20,7 @@ public class SpawnDoctorWithAnimation : GameEvent
 
         Animator animator = mDoctorInstance.GetComponent<Animator>();
 
-        if (animator != null && animationToTrigger != null)
+        if (animator != null && animationToTrigger != "")
         {
             animator.SetBool(animationToTrigger, true);
         }

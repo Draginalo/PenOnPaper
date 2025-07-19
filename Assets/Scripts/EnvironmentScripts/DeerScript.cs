@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeerScript : MonoBehaviour
 {
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private AudioClip m_FootstepsSFX;
 
     private void OnEnable()
     {
@@ -24,5 +25,10 @@ public class DeerScript : MonoBehaviour
     private void HandleDestroy()
     {
         Destroy(gameObject);
+    }
+
+    private void PlayFootstepsSFX()
+    {
+        SoundManager.instance.PlayOneShotSound(m_FootstepsSFX, 0.3f, transform.position);
     }
 }

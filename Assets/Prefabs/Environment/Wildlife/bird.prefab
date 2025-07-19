@@ -166,6 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1152885324373050297}
+  birdChirp: {fileID: 8300000, guid: 9efcd8c2d4410644dad8ff87ba8c6f6e, type: 3}
+  birdWings: {fileID: 8300000, guid: 643befd988558ec439aad33893579290, type: 3}
+  birdScreach: {fileID: 8300000, guid: b6d5b7776eb67304d94a48a7755b4b0d, type: 3}
 --- !u!65 &614843576973732778
 BoxCollider:
   m_ObjectHideFlags: 0

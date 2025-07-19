@@ -162,17 +162,6 @@ public class DrawHandler : MonoBehaviour
                 currXPixel = (int)((drawPoint.localPosition.x - _TopLeftPoint.localPosition.x) * xDrawMult);
                 currYPixel = (int)((drawPoint.localPosition.y - _TopLeftPoint.localPosition.y) * yDrawMult);
 
-                if (currXPixel != lastClickedPoint.x || currYPixel != lastClickedPoint.y)
-                {
-                    HandleStartSketchSFX();
-                }
-                else
-                {
-                    HandleStopSketchSFX();
-                }
-
-                lastClickedPoint = new Vector2Int(currXPixel,  currYPixel);
-
                 //Gets the flipped horizontal X pixel on the texure because the outline texture is read differently than the outline
                 int flippedCurrXPixel = totalPixelsX - currXPixel;
 
@@ -391,6 +380,17 @@ public class DrawHandler : MonoBehaviour
 
     private void HandleDrawingLogic()
     {
+        if (currXPixel != lastClickedPoint.x || currYPixel != lastClickedPoint.y)
+        {
+            HandleStartSketchSFX();
+        }
+        else
+        {
+            HandleStopSketchSFX();
+        }
+
+        lastClickedPoint = new Vector2Int(currXPixel, currYPixel);
+
         DrawAndSetTexure();
         HandleSplineChecking();
         startedDrawing = true;

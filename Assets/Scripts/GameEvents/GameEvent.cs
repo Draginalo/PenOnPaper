@@ -19,7 +19,7 @@ public class GameEvent : MonoBehaviour
         EventSystem.OnCameraLookChange -= OnLookChanging;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         this.enabled = false; 
     }
