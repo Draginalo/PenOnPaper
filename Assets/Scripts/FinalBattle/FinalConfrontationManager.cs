@@ -15,6 +15,11 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private GameObject m_PlankBlock;
     [SerializeField] private GameObject m_DoorLock;
     [SerializeField] private FaintEvent loseFaintEvent;
+    [SerializeField] private AudioClip flameOut;
+    [SerializeField] private AudioClip lockBreakSFX;
+    [SerializeField] private AudioClip planksBreakSFX;
+    [SerializeField] private AudioClip lockSetSFX;
+    [SerializeField] private AudioClip planksSetSFX;
     private int scriptedNumber = 0;
     private bool confrontationOver = false;
     private Coroutine nextConfrontationEvent;
@@ -101,6 +106,7 @@ public class FinalConfrontationManager : MonoBehaviour
         lightEvent.curveEvaluationSpeed = 0.2f;
         lightEvent.maxIntensity = 0;
         lightEvent.newRange = 0;
+        lightEvent.SetSFX(flameOut);
 
         ClearNotepad clearEvent = gameObject.AddComponent<ClearNotepad>();
         clearEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
@@ -283,9 +289,11 @@ public class FinalConfrontationManager : MonoBehaviour
         {
             case Issues.DOOR:
                 currDoorLock = Instantiate(m_DoorLock);
+                SoundManager.instance.PlayOneShotSound(lockSetSFX, 1.0f, currWindowPlanks.transform.position);
                 break;
             case Issues.WINDOW:
                 currWindowPlanks = Instantiate(m_PlankBlock);
+                SoundManager.instance.PlayOneShotSound(planksSetSFX, 1.0f, currWindowPlanks.transform.position);
                 break;
         }
     }
@@ -303,6 +311,7 @@ public class FinalConfrontationManager : MonoBehaviour
                         return;
                     }
 
+                    SoundManager.instance.PlayOneShotSound(lockBreakSFX, 1.0f, currDoorLock.transform.position);
                     DropPhysics[] physicsScripts = currDoorLock.GetComponentsInChildren<DropPhysics>();
                     foreach (DropPhysics physicsScript in physicsScripts)
                     {
@@ -319,6 +328,7 @@ public class FinalConfrontationManager : MonoBehaviour
                         return;
                     }
 
+                    SoundManager.instance.PlayOneShotSound(planksBreakSFX, 1.0f, currWindowPlanks.transform.position);
                     DropPhysics[] physicsScripts = currWindowPlanks.GetComponentsInChildren<DropPhysics>();
                     foreach (DropPhysics physicsScript in physicsScripts)
                     {

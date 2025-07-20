@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
 
     public void StopLoadedSound(AudioSource otherAudioSource = null)
     {
-        if (currAudioSource.isPlaying)
+        if (currAudioSource != null && currAudioSource.isPlaying)
         {
             currAudioSource.Stop();
         }

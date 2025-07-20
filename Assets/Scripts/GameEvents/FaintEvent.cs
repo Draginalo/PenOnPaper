@@ -14,6 +14,7 @@ public class FaintEvent : GameEvent
     [SerializeField] private float timeToFadeOut = 1.0f;
     [SerializeField] private float fadeOutTime = 1.0f;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private bool playOneShot = false;
     BlurSettings blurSettings;
     private float currTime = 0;
     private bool markedDone = false;
@@ -64,8 +65,16 @@ public class FaintEvent : GameEvent
             blurSettings.blurrStrength.value = 10.0f;
         }
 
-        SoundManager.instance.LoadAndPlaySound(faintSound, 1.0f, false, audioSource);
         coroutine = StartCoroutine(Co_RunFaintEffect());
+
+        if (playOneShot)
+        {
+            SoundManager.instance.PlayOneShotSound(faintSound, 1.0f);
+            fadeOutStarted = true;
+            return;
+        }
+
+        SoundManager.instance.LoadAndPlaySound(faintSound, 1.0f, false, audioSource);
     }
 
     public override void GameEventCompleted(GameEvent eventCompleted)

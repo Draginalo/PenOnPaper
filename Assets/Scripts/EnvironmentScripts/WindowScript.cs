@@ -6,6 +6,7 @@ using static FinalConfrontationManager;
 public class WindowScript : MonoBehaviour
 {
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private AudioClip m_WindowClip;
 
     private void OnEnable()
     {
@@ -21,6 +22,7 @@ public class WindowScript : MonoBehaviour
 
     private void OpenWindow()
     {
+        SoundManager.instance.PlayOneShotSound(m_WindowClip, 1.0f, transform.position);
         m_Animator.enabled = true;
     }
 

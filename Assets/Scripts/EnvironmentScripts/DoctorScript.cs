@@ -8,6 +8,7 @@ public class DoctorScript : MonoBehaviour
     [SerializeField] private GameObject mRightArmToSliceOff;
     [SerializeField] private GameObject mSmokeEffect;
     [SerializeField] private Texture2D m_HeartGoneTex;
+    [SerializeField] private AudioClip m_JumpscareSFX;
     private int sliceIndex = 0;
 
     private void OnEnable()
@@ -69,5 +70,10 @@ public class DoctorScript : MonoBehaviour
         }
 
         sliceIndex++;
+    }
+
+    private void PlayJumpscareSFX()
+    {
+        SoundManager.instance.PlayOneShotSound(m_JumpscareSFX, 1.0f);
     }
 }

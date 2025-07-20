@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationHandler : MonoBehaviour
 {
     public GameEvent sourceGameEvent;
+    [SerializeField] private AudioClip sfx;
 
     private void DestroyAnimationObject()
     {
@@ -47,5 +48,13 @@ public class AnimationHandler : MonoBehaviour
         }
 
         EventSystem.DeActivateSketchChoosing();
+    }
+
+    private void PlaySFX()
+    {
+        if (sfx != null)
+        {
+            SoundManager.instance.PlayOneShotSound(sfx);
+        }
     }
 }

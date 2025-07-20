@@ -421,12 +421,12 @@ public class DrawHandler : MonoBehaviour
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
         vfx.transform.localScale = new Vector3(3.0f / transform.parent.localScale.x, 3.0f / transform.parent.localScale.y, 3.0f / transform.parent.localScale.z);
 
+        SoundManager.instance.LoadAndPlaySound(finishSketchSoundBegining, 1.0f);
+
         if (handleFollowingEvents == WhenToHandleFollowingEvents.IMEDIATELY)
         {
             HandleGameEvents();
         }
-
-        SoundManager.instance.LoadAndPlaySound(finishSketchSoundBegining, 4.0f);
 
         StartCoroutine(Co_DelayFinalSketchChange(vfx.GetFloat("Delay")));
         StartCoroutine(Co_DelaySketchChangeVFXDone(vfx.GetFloat("Delay") - vfx.GetFloat("BeforeSpawnTime") + vfx.GetFloat("FinalMaxLifetime")));
@@ -445,7 +445,7 @@ public class DrawHandler : MonoBehaviour
         }
 
         SoundManager.instance.StopLoadedSound();
-        SoundManager.instance.LoadAndPlaySound(finishSketchSoundEnd, 1.0f);
+        SoundManager.instance.PlayOneShotSound(finishSketchSoundEnd, 1.0f);
     }
 
     private IEnumerator Co_DelaySketchChangeVFXDone(float delay)

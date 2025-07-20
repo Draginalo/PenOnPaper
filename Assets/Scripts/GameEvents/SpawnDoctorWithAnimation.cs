@@ -10,6 +10,7 @@ public class SpawnDoctorWithAnimation : GameEvent
     [SerializeField] private Vector3 startingRotation;
     [SerializeField] private bool useAnimationToTriggerCompletion;
     [SerializeField] private bool deactivateSmokeEffect;
+    [SerializeField] private AudioClip sfxToPlay;
     private GameObject mDoctorInstance;
 
     public override void Execute()
@@ -23,6 +24,11 @@ public class SpawnDoctorWithAnimation : GameEvent
         if (animator != null && animationToTrigger != "")
         {
             animator.SetBool(animationToTrigger, true);
+        }
+
+        if (sfxToPlay != null)
+        {
+            SoundManager.instance.PlayOneShotSound(sfxToPlay, 1.0f);
         }
 
         animator.applyRootMotion = enableRootMotion;

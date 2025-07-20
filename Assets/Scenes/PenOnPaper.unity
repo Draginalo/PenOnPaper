@@ -1122,6 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 77521707}
+  m_WindowClip: {fileID: 8300000, guid: 54d3bffc4a32cd94c8bc341d406c71f8, type: 3}
 --- !u!23 &97044294 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5084057207446883479, guid: 0259d4ebb40429a4f87b530d13c0316e, type: 3}
@@ -3318,6 +3319,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285168888}
   m_Mesh: {fileID: 4619028131362611533, guid: eaff46ebcd0d25a4098f71fabe225d15, type: 3}
+--- !u!1001 &290936168
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7403503683592733440, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_Name
+      value: doctor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.21351288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9769403
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 155.343
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923335822418844090, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f1945ad228404f4481ea2be4453c0d4, type: 3}
 --- !u!4 &292221000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9359af3abcff1134885e920fe704101e, type: 3}
@@ -6891,6 +6949,7 @@ MonoBehaviour:
   timeToFadeOut: 0
   fadeOutTime: 1
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &590773021
 MonoBehaviour:
@@ -7409,6 +7468,7 @@ GameObject:
   - component: {fileID: 638375746}
   - component: {fileID: 638375749}
   - component: {fileID: 638375748}
+  - component: {fileID: 638375750}
   m_Layer: 0
   m_Name: Door.001
   m_TagString: Untagged
@@ -7515,6 +7575,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 638375748}
+  m_DoorSFX: {fileID: 0}
+--- !u!114 &638375750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638375744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e28a3df2567724e9545e09401cf4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceGameEvent: {fileID: 0}
+  sfx: {fileID: 8300000, guid: 3dedb748e69728d4ebd9351097d4a588, type: 3}
 --- !u!1001 &639101731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10975,6 +11050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 910653278}
+  m_DoorSFX: {fileID: 8300000, guid: 3dedb748e69728d4ebd9351097d4a588, type: 3}
 --- !u!23 &910653280
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12143,6 +12219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 1014733075}
+  m_DoorSFX: {fileID: 0}
 --- !u!23 &1014733077
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12817,7 +12894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1070870758
 Transform:
   m_ObjectHideFlags: 0
@@ -12910,6 +12987,11 @@ MonoBehaviour:
   m_PlankBlock: {fileID: 4390381446198983931, guid: 0010877f9e2cd6441bcd7a4aa1f72860, type: 3}
   m_DoorLock: {fileID: 2590445058024146272, guid: 627273fe0f041224fb1ed4a80110774e, type: 3}
   loseFaintEvent: {fileID: 1070919367}
+  flameOut: {fileID: 8300000, guid: fc60e38bdedad2048ac74d7ae19c139b, type: 3}
+  lockBreakSFX: {fileID: 8300000, guid: 1da5058f82de71d45bfdf1a830a2ee06, type: 3}
+  planksBreakSFX: {fileID: 8300000, guid: c9c748050fee6d542934a32c3266dda1, type: 3}
+  lockSetSFX: {fileID: 8300000, guid: b0cd363772d2b974cb20363df581468b, type: 3}
+  planksSetSFX: {fileID: 8300000, guid: 8d648d60dd62cd94cbc5fdb983ef803f, type: 3}
 --- !u!4 &1070919366
 Transform:
   m_ObjectHideFlags: 0
@@ -12981,6 +13063,7 @@ MonoBehaviour:
   timeToFadeOut: 0
   fadeOutTime: 1
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 1
 --- !u!1 &1093943767
 GameObject:
@@ -14252,7 +14335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1217093677
 Transform:
   m_ObjectHideFlags: 0
@@ -17754,6 +17837,7 @@ MonoBehaviour:
   timeToFadeOut: 0.84
   fadeOutTime: 1.16
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &1542622251
 MonoBehaviour:
@@ -17891,6 +17975,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 155.34, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 0
+  sfxToPlay: {fileID: 0}
 --- !u!114 &1542622259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20546,6 +20631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceGameEvent: {fileID: 0}
+  sfx: {fileID: 0}
 --- !u!1 &1776312302
 GameObject:
   m_ObjectHideFlags: 0
@@ -22063,6 +22149,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 0, z: 0}
   useAnimationToTriggerCompletion: 1
   deactivateSmokeEffect: 0
+  sfxToPlay: {fileID: 0}
 --- !u!114 &1926488626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22124,10 +22211,11 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 2
   markedAsCompletedTimeOnCurve: 0.5
-  faintSound: {fileID: 0}
-  timeToFadeOut: 0
+  faintSound: {fileID: 8300000, guid: fd5b982e70f7375419c3ac8903d265f6, type: 3}
+  timeToFadeOut: 1
   fadeOutTime: 1
   audioSource: {fileID: 0}
+  playOneShot: 1
   overideCleanup: 0
 --- !u!114 &1926488627
 MonoBehaviour:
@@ -22189,6 +22277,7 @@ MonoBehaviour:
   newRange: 60
   curveEvaluationSpeed: 1
   markedAsCompletedTimeOnCurve: 0.4
+  sfx: {fileID: 8300000, guid: fc60e38bdedad2048ac74d7ae19c139b, type: 3}
 --- !u!114 &1926488628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24895,6 +24984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 2032252894}
+  m_DoorSFX: {fileID: 0}
 --- !u!23 &2032252896
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25310,6 +25400,7 @@ MonoBehaviour:
   timeToFadeOut: 0.8
   fadeOutTime: 1
   audioSource: {fileID: 2049096264}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &2049096257
 MonoBehaviour:
@@ -25953,6 +26044,7 @@ MonoBehaviour:
   timeToFadeOut: 0.84
   fadeOutTime: 1.16
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &2064146511
 MonoBehaviour:
@@ -26033,7 +26125,7 @@ MonoBehaviour:
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
-  excecuteOnStart: 0
+  excecuteOnStart: 1
 --- !u!4 &2064146514
 Transform:
   m_ObjectHideFlags: 0
@@ -26100,6 +26192,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 0, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 0
+  sfxToPlay: {fileID: 0}
 --- !u!114 &2064146518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26355,6 +26448,7 @@ MonoBehaviour:
   timeToFadeOut: 0.5714286
   fadeOutTime: 3
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &2064146522
 MonoBehaviour:
@@ -26406,6 +26500,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 0, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 0
+  sfxToPlay: {fileID: 0}
 --- !u!114 &2064146525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37213,3 +37308,4 @@ SceneRoots:
   - {fileID: 1485289296}
   - {fileID: 963677347}
   - {fileID: 1047508687}
+  - {fileID: 290936168}

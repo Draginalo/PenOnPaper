@@ -3816,7 +3816,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: 
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3828,7 +3828,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: 
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3840,151 +3840,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: 
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4068,7 +3924,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
+    path: 
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4080,7 +3936,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
+    path: 
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4092,7 +3948,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone
+    path: 
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4103,8 +3959,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018
+    attribute: m_LocalEulerAngles.z
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4116,7 +3972,19 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4129,9 +3997,148 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
     path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012/Bone_013/Bone_014/Bone_020
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_012
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: scp-049_skeleton/Scene_Root/Scene_Root1/Scene_Root2/Scene_Root3/Skeleton/Scene_Root4/Armature/Bone/Bone_001/Bone_018/Bone_019
     classID: 4
     script: {fileID: 0}
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.68333334
+    functionName: PlayJumpscareSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

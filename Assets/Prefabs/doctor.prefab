@@ -10455,6 +10455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceGameEvent: {fileID: 0}
+  sfx: {fileID: 0}
 --- !u!114 &-4673219585897019894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10471,6 +10472,7 @@ MonoBehaviour:
   mRightArmToSliceOff: {fileID: 1501165094792803032}
   mSmokeEffect: {fileID: 6147757248326198943}
   m_HeartGoneTex: {fileID: 2800000, guid: 87b89f5f949090c48b54244ff48d11c7, type: 3}
+  m_JumpscareSFX: {fileID: 8300000, guid: fd5b982e70f7375419c3ac8903d265f6, type: 3}
 --- !u!4 &7446885584267254703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 947805917571737086, guid: 8e6221a501bf6ce46803a84d9a645527, type: 3}

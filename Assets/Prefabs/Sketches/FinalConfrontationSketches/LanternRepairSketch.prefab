@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 2115805245090539716}
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
-  - component: {fileID: 5979383521193499886}
   - component: {fileID: 2702866239626963999}
   - component: {fileID: 1649775109895714718}
   m_Layer: 0
@@ -347,22 +346,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5979383521193499886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611650364959769581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1416209e17c7f2040ae01713bc2b01c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 1
-  executionDelay: 0
-  clearIndipendentSketches: 0
-  doNotClearSelf: 0
 --- !u!114 &2702866239626963999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +388,7 @@ MonoBehaviour:
   newRange: 45
   curveEvaluationSpeed: 1
   markedAsCompletedTimeOnCurve: 0
+  sfx: {fileID: 8300000, guid: 254307d1aa49f9c4993fc3c892e9b12a, type: 3}
 --- !u!114 &1649775109895714718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +424,7 @@ MonoBehaviour:
     eventChain:
     - {fileID: 2702866239626963999}
     componentParent: {fileID: 3611650364959769581}
-    destroyParentComponent: 1
+    destroyParentComponent: 0
   triggerSketchCompletion: 0
   handleFollowingEvents: 0
   issueToFix: 2

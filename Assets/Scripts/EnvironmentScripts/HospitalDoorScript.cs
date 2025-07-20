@@ -5,6 +5,7 @@ using UnityEngine;
 public class HospitalDoorScript : MonoBehaviour
 {
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private AudioClip m_DoorSFX;
 
     private void Awake()
     {
@@ -25,6 +26,11 @@ public class HospitalDoorScript : MonoBehaviour
 
     private void HandleOpenDoor(bool slowOpen)
     {
+        if (m_DoorSFX != null)
+        {
+            SoundManager.instance.PlayOneShotSound(m_DoorSFX, 1.0f, transform.position);
+        }
+
         m_Animator.enabled = true;
 
         m_Animator.SetBool("SlowOpen", slowOpen);
