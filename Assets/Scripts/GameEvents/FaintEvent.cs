@@ -15,6 +15,7 @@ public class FaintEvent : GameEvent
     [SerializeField] private float fadeOutTime = 1.0f;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private bool playOneShot = false;
+    [SerializeField] private float fadeInTime = 0.0f;
     BlurSettings blurSettings;
     private float currTime = 0;
     private bool markedDone = false;
@@ -58,6 +59,8 @@ public class FaintEvent : GameEvent
     {
         base.Execute();
 
+        currTime = 0;
+
         Volume volume = GameObject.FindGameObjectWithTag("MainGlobalVolume").GetComponent<Volume>();
         if (volume.profile.TryGet(out blurSettings))
         {
@@ -74,7 +77,16 @@ public class FaintEvent : GameEvent
             return;
         }
 
-        SoundManager.instance.LoadAndPlaySound(faintSound, 1.0f, false, audioSource);
+        if (faintSound != null)
+        {
+            if (fadeInTime == 0.0f)
+            {
+                SoundManager.instance.LoadAndPlaySound(faintSound, 1.0f, false, audioSource);
+                return;
+            }
+
+            SoundManager.instance.LoadAndFadeInSound(faintSound, 1.0f, false, fadeInTime, audioSource);
+        }
     }
 
     public override void GameEventCompleted(GameEvent eventCompleted)
@@ -90,6 +102,7 @@ public class FaintEvent : GameEvent
             StopCoroutine(coroutine);
         }
 
+        fadeOutStarted = false;
         currTime = 0;
     }
 
@@ -116,31 +129,46 @@ public class FaintEvent : GameEvent
 
     private bool FaintFinished()
     {
-        blurSettings.vignetteSpread.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed);
-        blurSettings.vignetteStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * vignetteMultiple;
-        blurSettings.colorStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * colorMultiple;
-        blurSettings.blurrStrength.value = VignetteCurve.Evaluate(currTime * curveEvaluationSpeed) * blurrMultiple;
+        float normalizedTime = currTime * curveEvaluationSpeed;
+
+        blurSettings.vignetteSpread.value = VignetteCurve.Evaluate(normalizedTime);
+        blurSettings.vignetteStrength.value = VignetteCurve.Evaluate(normalizedTime) * vignetteMultiple;
+        blurSettings.colorStrength.value = VignetteCurve.Evaluate(normalizedTime) * colorMultiple;
+        blurSettings.blurrStrength.value = VignetteCurve.Evaluate(normalizedTime) * blurrMultiple;
 
         currTime += Time.deltaTime;
+        normalizedTime = currTime * curveEvaluationSpeed;
 
         //This is to stop the event so another event can be triggered while this one is still running
-        if (!markedDone && currTime * curveEvaluationSpeed >= markedAsCompletedTimeOnCurve)
+        if (!markedDone && normalizedTime >= markedAsCompletedTimeOnCurve)
         {
             GameEventCompleted(this);
         }
 
-        if (!fadeOutStarted && currTime * curveEvaluationSpeed >= timeToFadeOut)
+        if (normalizedTime >= timeToFadeOut)
         {
-            SoundManager.instance.FadeOutLoadedSound(fadeOutTime);
-            fadeOutStarted = true;
+            TriggerFadeOut();
         }
 
-            return currTime * curveEvaluationSpeed >= 1;
+            return normalizedTime >= 1;
     }
 
     private IEnumerator Co_RunFaintEffect()
     {
         yield return new WaitUntil(FaintFinished);
         HandleEffectDone();
+    }
+
+    public void TriggerFadeOut()
+    {
+        if (!fadeOutStarted)
+        {
+            if (faintSound != null)
+            {
+                SoundManager.instance.FadeOutLoadedSound(fadeOutTime, audioSource);
+            }
+
+            fadeOutStarted = true;
+        }
     }
 }

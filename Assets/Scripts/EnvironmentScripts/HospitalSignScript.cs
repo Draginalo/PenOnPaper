@@ -5,6 +5,7 @@ using UnityEngine;
 public class HospitalSignScript : MonoBehaviour
 {
     [SerializeField] private Material m_SignMat;
+    [SerializeField] private AudioClip m_SFX;
 
     private void Start()
     {
@@ -23,6 +24,11 @@ public class HospitalSignScript : MonoBehaviour
 
     private void HandleSignOff()
     {
+        if (m_SignMat != null)
+        {
+            SoundManager.instance.PlayOneShotSound(m_SFX);
+        }
+
         m_SignMat.DisableKeyword("_EMISSION");
     }
 }

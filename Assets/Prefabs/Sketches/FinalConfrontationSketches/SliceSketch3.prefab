@@ -554,9 +554,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   fadeColor: {r: 1, g: 1, b: 1, a: 0}
-  curveEvaluationSpeed: 0.5
+  curveEvaluationSpeed: 0.25
   markedAsCompletedTimeOnCurve: 0.9
   fadeMat: {fileID: -876546973899608171, guid: 5bb727a60c2bbf0438f3622345888070, type: 3}
+  fadeSFX: {fileID: 8300000, guid: bffec5c6c7e2b4c41b7f203ed6b6ba54, type: 3}
 --- !u!114 &3236914156329299036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,10 +664,11 @@ MonoBehaviour:
   vignetteMultiple: 100
   curveEvaluationSpeed: 0.2
   markedAsCompletedTimeOnCurve: 1
-  faintSound: {fileID: 0}
-  timeToFadeOut: 1
+  faintSound: {fileID: 8300000, guid: 17d53ccbb6d37264c80fc2612a31fb1b, type: 3}
+  timeToFadeOut: 0.8
   fadeOutTime: 1
   audioSource: {fileID: 0}
+  playOneShot: 0
   overideCleanup: 0
 --- !u!114 &7229335604753011061
 MonoBehaviour:

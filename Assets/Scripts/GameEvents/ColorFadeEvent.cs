@@ -9,6 +9,7 @@ public class ColorFadeEvent : GameEvent
     [SerializeField] private float curveEvaluationSpeed;
     [SerializeField] private float markedAsCompletedTimeOnCurve = 1.0f;
     [SerializeField] private Material fadeMat;
+    [SerializeField] private AudioClip fadeSFX;
     private float currTime = 0;
     ColorFadeSettings colorFadeSettings;
     private bool markedDone = false;
@@ -16,6 +17,8 @@ public class ColorFadeEvent : GameEvent
     public override void Execute()
     {
         base.Execute();
+
+        SoundManager.instance.PlayOneShotSound(fadeSFX);
 
         Volume volume = GameObject.FindGameObjectWithTag("MainGlobalVolume").GetComponent<Volume>();
         if (volume.profile.TryGet(out colorFadeSettings))

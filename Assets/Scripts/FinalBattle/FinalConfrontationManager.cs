@@ -269,12 +269,14 @@ public class FinalConfrontationManager : MonoBehaviour
         {
             returnFaint.SetCurve(AnimationCurve.EaseInOut(0, loseFaintEvent.GetCurrValue(), 1, 0));
         }
+
         returnFaint.BlurrMultiple = loseFaintEvent.BlurrMultiple;
         returnFaint.ColorMultiple = loseFaintEvent.ColorMultiple;
         returnFaint.VignetteMultiple = loseFaintEvent.VignetteMultiple;
         returnFaint.CurveEvaluationSpeed = evaluationTime;
 
         loseFaintEvent.ResetEvent();
+        loseFaintEvent.TriggerFadeOut();
         loseFaintEvent.enabled = false;
 
         returnFaint.SetIndipendentEventNotDestroyParent();
@@ -300,7 +302,7 @@ public class FinalConfrontationManager : MonoBehaviour
         {
             case Issues.DOOR:
                 currDoorLock = Instantiate(m_DoorLock);
-                SoundManager.instance.PlayOneShotSound(lockSetSFX, 1.0f, currWindowPlanks.transform.position);
+                SoundManager.instance.PlayOneShotSound(lockSetSFX, 1.0f, currDoorLock.transform.position);
                 break;
             case Issues.WINDOW:
                 currWindowPlanks = Instantiate(m_PlankBlock);
