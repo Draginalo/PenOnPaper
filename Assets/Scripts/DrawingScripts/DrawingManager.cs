@@ -33,6 +33,7 @@ public class DrawingManager : MonoBehaviour
     private int sketchPosIndex = 0;
 
     [SerializeField] private GameObject indipendentSketchOBJ;
+    [SerializeField] private AudioClip selectSketchSFX;
 
     private float _RaycastDistence = 1000.0f;
     private bool ThingsToDrawActivated = false;
@@ -200,6 +201,7 @@ public class DrawingManager : MonoBehaviour
             {
                 DeactivateThingsToDraw();
 
+                SoundManager.instance.PlayOneShotSound(selectSketchSFX, 1.0f);
                 HandleSpawnNextSketch(possibleSketch, false);
             }
         }

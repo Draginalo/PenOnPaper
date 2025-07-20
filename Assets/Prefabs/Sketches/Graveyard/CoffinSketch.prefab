@@ -367,6 +367,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 0, z: 0}
   useAnimationToTriggerCompletion: 1
   deactivateSmokeEffect: 0
+  sfxToPlay: {fileID: 8300000, guid: fd5b982e70f7375419c3ac8903d265f6, type: 3}
 --- !u!114 &8474280545545024946
 MonoBehaviour:
   m_ObjectHideFlags: 0

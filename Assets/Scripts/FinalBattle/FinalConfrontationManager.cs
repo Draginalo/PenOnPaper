@@ -15,11 +15,13 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private GameObject m_PlankBlock;
     [SerializeField] private GameObject m_DoorLock;
     [SerializeField] private FaintEvent loseFaintEvent;
+    [SerializeField] private AnimationCurve returnFaintCurve;
     [SerializeField] private AudioClip flameOut;
     [SerializeField] private AudioClip lockBreakSFX;
     [SerializeField] private AudioClip planksBreakSFX;
     [SerializeField] private AudioClip lockSetSFX;
     [SerializeField] private AudioClip planksSetSFX;
+    [SerializeField] private AudioClip defibrilatorSFX;
     private int scriptedNumber = 0;
     private bool confrontationOver = false;
     private Coroutine nextConfrontationEvent;
@@ -227,6 +229,8 @@ public class FinalConfrontationManager : MonoBehaviour
             StopCoroutine(nextConfrontationEvent);
         }
 
+        SoundManager.instance.PlayOneShotSound(defibrilatorSFX, 1.0f);
+
         EventSystem.ClearNotepadPage(true, null);
 
         SetLightIntesityEvent lightEvent = gameObject.AddComponent<SetLightIntesityEvent>();
@@ -239,7 +243,7 @@ public class FinalConfrontationManager : MonoBehaviour
         lightEvent.enabled = true;
         lightEvent.Begin();
 
-        HandleReturnFaintEffect();
+        HandleReturnFaintEffect(returnFaintCurve, 0.4f);
 
         loseFaintEvent.ResetEvent();
 
@@ -254,14 +258,21 @@ public class FinalConfrontationManager : MonoBehaviour
         introFinalConfrontation.Begin();
     }
 
-    private void HandleReturnFaintEffect()
+    private void HandleReturnFaintEffect(AnimationCurve possibleCurve = null, float evaluationTime = 0.8f)
     {
         FaintEvent returnFaint = gameObject.AddComponent<FaintEvent>();
-        returnFaint.SetCurve(AnimationCurve.EaseInOut(0, loseFaintEvent.GetCurrValue(), 1, 0));
+        if (possibleCurve != null)
+        {
+            returnFaint.SetCurve(possibleCurve);
+        }
+        else
+        {
+            returnFaint.SetCurve(AnimationCurve.EaseInOut(0, loseFaintEvent.GetCurrValue(), 1, 0));
+        }
         returnFaint.BlurrMultiple = loseFaintEvent.BlurrMultiple;
         returnFaint.ColorMultiple = loseFaintEvent.ColorMultiple;
         returnFaint.VignetteMultiple = loseFaintEvent.VignetteMultiple;
-        returnFaint.CurveEvaluationSpeed = 0.8f;
+        returnFaint.CurveEvaluationSpeed = evaluationTime;
 
         loseFaintEvent.ResetEvent();
         loseFaintEvent.enabled = false;
