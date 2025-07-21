@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 9219489995354976218}
   - component: {fileID: 2602018116689853039}
   - component: {fileID: 5525967611509136968}
+  - component: {fileID: 4451510446155754378}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -386,6 +387,7 @@ MonoBehaviour:
   followingGameEvents:
     eventChain:
     - {fileID: 1144735744432514315}
+    - {fileID: 4451510446155754378}
     - {fileID: 5508542423011541094}
     - {fileID: 2657867886433879123}
     - {fileID: 9219489995354976218}
@@ -416,6 +418,7 @@ MonoBehaviour:
   startingRotation: {x: 0, y: 175.54, z: 0}
   useAnimationToTriggerCompletion: 0
   deactivateSmokeEffect: 1
+  sfxToPlay: {fileID: 0}
 --- !u!114 &2657867886433879123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +502,25 @@ MonoBehaviour:
   isIndipendent: 1
   m_Image: {fileID: 0}
   newSize: {x: 0, y: 0, z: 0}
+--- !u!114 &4451510446155754378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  music: {fileID: 8300000, guid: 6859204fe0bb3214d9c5dfd9400b430d, type: 3}
+  musicVolume: 1
+  fadeOutMusic: 0
+  fadeInMusic: 0
+  fadeTime: 0
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0

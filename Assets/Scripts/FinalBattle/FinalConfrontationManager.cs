@@ -155,7 +155,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
         nextEventsChain.destroyParentComponent = false;
 
-        SoundManager.instance.LoadAndPlayMusic(confrontationMusic, 0.6f);
+        SoundManager.instance.LoadAndPlayMusic(confrontationMusic, 1.0f);
 
         spawnFinalSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
         spawnFinalSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);

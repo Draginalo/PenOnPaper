@@ -421,7 +421,7 @@ public class DrawHandler : MonoBehaviour
         vfx.transform.localEulerAngles += new Vector3(0, 90, -90);
         vfx.transform.localScale = new Vector3(3.0f / transform.parent.localScale.x, 3.0f / transform.parent.localScale.y, 3.0f / transform.parent.localScale.z);
 
-        SoundManager.instance.LoadAndPlaySound(finishSketchSoundBegining, 1.0f);
+        SoundManager.instance.LoadAndPlaySound(finishSketchSoundBegining, 0.4f);
 
         if (handleFollowingEvents == WhenToHandleFollowingEvents.IMEDIATELY)
         {

@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 3501050464348078998}
   - component: {fileID: 8053844794381059487}
   - component: {fileID: 6663071328765507513}
+  - component: {fileID: 4449809404356353696}
   m_Layer: 0
   m_Name: SketchCanvas
   m_TagString: Untagged
@@ -362,7 +363,7 @@ MonoBehaviour:
   totalPixelsX: 512
   totalPixelsY: 512
   brushSize: 4
-  brushColor: {r: 0.8415094, g: 0, b: 0, a: 1}
+  brushColor: {r: 53.8566, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   currDrawTemplateTexture: {fileID: 2800000, guid: 85cbdef274bbed6458060bd8c0539d46, type: 3}
@@ -383,6 +384,7 @@ MonoBehaviour:
     - {fileID: 100601442851963742}
     - {fileID: 5567458473292165405}
     - {fileID: 7229335604753011061}
+    - {fileID: 4449809404356353696}
     - {fileID: 3236914156329299036}
     - {fileID: 3032270995087183749}
     - {fileID: 5716777041377073989}
@@ -390,6 +392,25 @@ MonoBehaviour:
     destroyParentComponent: 1
   triggerSketchCompletion: 0
   handleFollowingEvents: 1
+--- !u!114 &4449809404356353696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611650364959769581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 0
+  executionDelay: 0
+  music: {fileID: 0}
+  musicVolume: 1
+  fadeOutMusic: 1
+  fadeInMusic: 0
+  fadeTime: 1
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +690,7 @@ MonoBehaviour:
   fadeOutTime: 1
   audioSource: {fileID: 0}
   playOneShot: 0
+  fadeInTime: 0
   overideCleanup: 0
 --- !u!114 &7229335604753011061
 MonoBehaviour:

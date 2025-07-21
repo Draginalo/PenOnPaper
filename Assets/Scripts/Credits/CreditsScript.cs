@@ -68,6 +68,7 @@ public class CreditsScript : MonoBehaviour
         }
         else
         {
+            SoundManager.instance.FadeOutLoadedMusic(3.5f);
             finalFadeEvent.SetIndipendentEventNotDestroyParent();
             finalFadeEvent.enabled = true;
             finalFadeEvent.Begin();

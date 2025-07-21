@@ -10,6 +10,7 @@ public class CampfireScript : MonoBehaviour
     [SerializeField] private AnimationCurve lightIntensityCurve;
     [SerializeField] private bool preserveMaxRange = false;
     [SerializeField] private bool preserveIntensity = false;
+    [SerializeField] private AudioClip fireSFX = null;
     private float currTime = 0;
     private bool runningOtherLightIntensity = false;
 
@@ -24,6 +25,8 @@ public class CampfireScript : MonoBehaviour
     private float transitionTime = 0.2f;
     private bool destroyAfterSwitch = false;
     private SetLightIntesityEvent currEvent;
+
+    private AudioSource audioSource;
 
     private void OnEnable()
     {
@@ -40,6 +43,15 @@ public class CampfireScript : MonoBehaviour
     private void Start()
     {
         originalIntensity = campfireLight.range;
+
+        if (fireSFX != null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = fireSFX;
+            audioSource.loop = true;
+            audioSource.volume = 1.0f;
+            audioSource.Play();
+        }
     }
 
     private void FixedUpdate()

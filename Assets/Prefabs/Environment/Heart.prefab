@@ -261,4 +261,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceGameEvent: {fileID: 0}
-  sfx: {fileID: 0}
+  sfx: {fileID: 8300000, guid: c54cdc316074b204286fce5001337f9e, type: 3}

@@ -7,6 +7,7 @@ public class MusicEvent : GameEvent
     [SerializeField] private bool fadeOutMusic;
     [SerializeField] private bool fadeInMusic;
     [SerializeField] private float fadeTime = 0.0f;
+    [SerializeField] private bool playAsOneShotSound;
 
     public void SetMusic(AudioClip music)
     {
@@ -22,26 +23,33 @@ public class MusicEvent : GameEvent
     {
         base.Execute();
 
-        if (music != null)
+        if (playAsOneShotSound)
         {
-            if (fadeInMusic)
-            {
-                SoundManager.instance.FadeInMusic(music, musicVolume);
-            }
-            else
-            {
-                SoundManager.instance.LoadAndPlayMusic(music, musicVolume);
-            }
+            SoundManager.instance.PlayOneShotSound(music, musicVolume);
         }
         else
         {
-            if (fadeOutMusic)
+            if (music != null)
             {
-                SoundManager.instance.FadeOutLoadedMusic(fadeTime);
+                if (fadeInMusic)
+                {
+                    SoundManager.instance.FadeInMusic(music, musicVolume);
+                }
+                else
+                {
+                    SoundManager.instance.LoadAndPlayMusic(music, musicVolume);
+                }
             }
             else
             {
-                SoundManager.instance.StopLoadedMusic();
+                if (fadeOutMusic)
+                {
+                    SoundManager.instance.FadeOutLoadedMusic(fadeTime);
+                }
+                else
+                {
+                    SoundManager.instance.StopLoadedMusic();
+                }
             }
         }
         
