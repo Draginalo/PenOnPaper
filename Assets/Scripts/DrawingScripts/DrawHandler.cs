@@ -13,7 +13,11 @@ public class DrawHandler : MonoBehaviour
     [SerializeField] private int totalPixelsX = 1024;
     [SerializeField] private int totalPixelsY = 512;
     [SerializeField] private int brushSize = 8;
+
     [SerializeField] private Color brushColor = Color.black;
+
+    [ColorUsage(true, hdr:true)]
+    [SerializeField] private Color emmisionColor = Color.black;
 
     [SerializeField] private Material drawingCanvasMaterial;
     [SerializeField] private Material finalCanvasMaterial;
@@ -117,6 +121,13 @@ public class DrawHandler : MonoBehaviour
 
         generatedMaterial = new Material(drawingCanvasMaterial);
         generatedMaterial.SetTexture("_BaseMap", generatedTexture);
+
+        //Handle emission
+        if (emmisionColor != Color.black)
+        {
+            generatedMaterial.EnableKeyword("_EMISSION");
+            generatedMaterial.SetColor("_EmissionColor", emmisionColor);
+        }
 
         gameObject.GetComponent<MeshRenderer>().material = generatedMaterial;
 
@@ -446,6 +457,9 @@ public class DrawHandler : MonoBehaviour
 
         SoundManager.instance.StopLoadedSound();
         SoundManager.instance.PlayOneShotSound(finishSketchSoundEnd, 1.0f);
+
+        //Handle reset emmision
+        generatedMaterial.DisableKeyword("_EMISSION");
     }
 
     private IEnumerator Co_DelaySketchChangeVFXDone(float delay)

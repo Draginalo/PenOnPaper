@@ -364,6 +364,7 @@ MonoBehaviour:
   totalPixelsY: 512
   brushSize: 4
   brushColor: {r: 53.8566, g: 0, b: 0, a: 1}
+  emmisionColor: {r: 33.89676, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 2100000, guid: e222f2fad9e717a40ba332b4de09f868, type: 2}
   currDrawTemplateTexture: {fileID: 2800000, guid: 85cbdef274bbed6458060bd8c0539d46, type: 3}
@@ -411,6 +412,7 @@ MonoBehaviour:
   fadeOutMusic: 1
   fadeInMusic: 0
   fadeTime: 1
+  playAsOneShotSound: 0
 --- !u!1 &3645650068724077681
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +848,7 @@ MonoBehaviour:
   totalPixelsY: 512
   brushSize: 10
   brushColor: {r: 0, g: 0, b: 0, a: 1}
+  emmisionColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}
   finalCanvasMaterial: {fileID: 0}
   currDrawTemplateTexture: {fileID: 2800000, guid: 6455afccc7fccc441a58efc6a7610ca3, type: 3}
