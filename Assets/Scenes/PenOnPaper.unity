@@ -11423,13 +11423,19 @@ MonoBehaviour:
   - creditsOBJ: {fileID: 5821432732675698282, guid: b58de3e1bb66cff47a71e593962bd4f2, type: 3}
     timeToPauseFor: 4
   - creditsOBJ: {fileID: 4247472185490247837, guid: 573b1a655c72ab44ea80a361794428c4, type: 3}
-    timeToPauseFor: 5
+    timeToPauseFor: 6
   - creditsOBJ: {fileID: 4771946083000585623, guid: a692db39a9febb444acc870cba3065d6, type: 3}
-    timeToPauseFor: 5
+    timeToPauseFor: 6
   - creditsOBJ: {fileID: 3701891062062652651, guid: 5c90a0a051a6cf64ca2c0f648c67846a, type: 3}
     timeToPauseFor: 8
   - creditsOBJ: {fileID: 4175298061929297205, guid: 3910418bc0aaf7c478e9d6f4c94f015d, type: 3}
     timeToPauseFor: 8
+  - creditsOBJ: {fileID: 4915739712172065344, guid: f3554da7e6f513240b756ca3c9a144b7, type: 3}
+    timeToPauseFor: 8
+  - creditsOBJ: {fileID: 4023382030942973358, guid: b927551504ffccd42ad12bcd3ce8d62d, type: 3}
+    timeToPauseFor: 8
+  - creditsOBJ: {fileID: 3873683342092384533, guid: 88580f22619bc3b44a8a9854e89d2f97, type: 3}
+    timeToPauseFor: 6
   - creditsOBJ: {fileID: 7504098049805236360, guid: 768b009bc5d2aa34cbd9260ae36ca347, type: 3}
     timeToPauseFor: 5
   finalFadeEvent: {fileID: 924546126}
