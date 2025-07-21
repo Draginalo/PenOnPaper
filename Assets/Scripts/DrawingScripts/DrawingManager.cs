@@ -11,6 +11,7 @@ public class DrawingManager : MonoBehaviour
         NONE,
         LOOKING_DOWN,
         LOOKING_UP,
+        CHANGING_VIEW,
         EXECUTE_AFTER_SET_TIME
     }
 

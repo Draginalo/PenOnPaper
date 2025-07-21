@@ -17,12 +17,18 @@ public class MainMenuScript : MonoBehaviour
     public AudioClip buttonSound;
     public AudioClip startSound;
     public AudioClip hoverSound;
+    public AudioClip mainMenuMusic;
     private float referenceAspect = 1.777f;
     private float aspectMultiplyer = 2f;
 
     private void Awake()
     {
         transform.position -= new Vector3(0, 0, (1 - (referenceAspect / Camera.main.aspect)) * aspectMultiplyer);
+    }
+
+    private void Start()
+    {
+        SoundManager.instance.LoadAndPlayMusic(mainMenuMusic);
     }
 
     public void HandleStartGame()

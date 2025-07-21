@@ -22,6 +22,7 @@ public class FinalConfrontationManager : MonoBehaviour
     [SerializeField] private AudioClip lockSetSFX;
     [SerializeField] private AudioClip planksSetSFX;
     [SerializeField] private AudioClip defibrilatorSFX;
+    [SerializeField] private AudioClip confrontationMusic;
     private int scriptedNumber = 0;
     private bool confrontationOver = false;
     private Coroutine nextConfrontationEvent;
@@ -29,6 +30,8 @@ public class FinalConfrontationManager : MonoBehaviour
     private GameObject currDoorLock;
     private GameObject currWindowPlanks;
     private float loseTime = 20;
+
+    private SpawnNextSketch spawnFinalSketchEvent;
 
     //This is to not make a new chain within the functions which will go out of scope after run and deleted (before events run)
     private GameEventChain nextEventsChain = new();
@@ -152,14 +155,16 @@ public class FinalConfrontationManager : MonoBehaviour
 
         nextEventsChain.destroyParentComponent = false;
 
-        SpawnNextSketch newSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
-        newSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
-        newSketchEvent.SetSketch(m_FinalSketch);
-        newSketchEvent.isIndipendent = true;
+        SoundManager.instance.LoadAndPlayMusic(confrontationMusic, 0.6f);
 
-        newSketchEvent.SetIndipendentEventNotDestroyParent();
-        newSketchEvent.enabled = true;
-        newSketchEvent.Begin();
+        spawnFinalSketchEvent = gameObject.AddComponent<SpawnNextSketch>();
+        spawnFinalSketchEvent.SetEventTrigger(DrawingManager.DrawingCompleteTrigger.LOOKING_DOWN);
+        spawnFinalSketchEvent.SetSketch(m_FinalSketch);
+        spawnFinalSketchEvent.isIndipendent = true;
+
+        spawnFinalSketchEvent.SetIndipendentEventNotDestroyParent();
+        spawnFinalSketchEvent.enabled = true;
+        spawnFinalSketchEvent.Begin();
 
         confrontationOver = false;
         loseFaintEvent.SetIndipendentEventNotDestroyParent();
@@ -172,6 +177,8 @@ public class FinalConfrontationManager : MonoBehaviour
         nextEventsChain.CleanupChain();
 
         confrontationOver = true;
+
+        SoundManager.instance.FadeOutLoadedMusic(2.0f);
 
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
@@ -220,6 +227,11 @@ public class FinalConfrontationManager : MonoBehaviour
 
         confrontationOver = true;
 
+        if (spawnFinalSketchEvent != null)
+        {
+            Destroy(spawnFinalSketchEvent);
+        }
+
         //To reset window animations and destroy doctor
         EventSystem.FixConfrontationIssue(Issues.ALL);
         HandleDestroyPotentialFix(Issues.ALL, true);
@@ -229,6 +241,7 @@ public class FinalConfrontationManager : MonoBehaviour
             StopCoroutine(nextConfrontationEvent);
         }
 
+        SoundManager.instance.FadeOutLoadedMusic(1.0f);
         SoundManager.instance.PlayOneShotSound(defibrilatorSFX, 1.0f);
 
         EventSystem.ClearNotepadPage(true, null);

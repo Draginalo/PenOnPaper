@@ -5,7 +5,7 @@ using static DrawingManager;
 
 public class GameEvent : MonoBehaviour
 {
-    [SerializeField] protected DrawingCompleteTrigger eventTrigger;
+    [SerializeField] protected DrawingCompleteTrigger eventTrigger = DrawingCompleteTrigger.NONE;
     [SerializeField] private float executionDelay = 0;
     protected bool destroyParent = false;
 
@@ -46,6 +46,13 @@ public class GameEvent : MonoBehaviour
 
     protected virtual void OnLookChanging(bool lookingUp)
     {
+        if (eventTrigger == DrawingCompleteTrigger.CHANGING_VIEW)
+        {
+            eventTrigger = DrawingCompleteTrigger.NONE;
+            Execute();
+            return;
+        }
+
         if ((eventTrigger == DrawingCompleteTrigger.LOOKING_UP && lookingUp) || (eventTrigger == DrawingCompleteTrigger.LOOKING_DOWN && !lookingUp))
         {
             eventTrigger = DrawingCompleteTrigger.NONE;

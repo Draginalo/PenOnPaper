@@ -6,13 +6,17 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource m_SelfAudioSource;
-    private float m_FadeTime = 3.0f;
-    private float currTime = 0.0f;
-    private float currVolume = 0.0f;
-    private AudioSource currAudioSource;
+    [SerializeField] private AudioSource m_MusicAudioSource;
+    private float m_MusicFadeTime = 3.0f;
+    private float currMusicTime = 0.0f;
+    private float currMusicVolume = 0.0f;
+
     private List<AudioPack> audioPack = new();
 
     public Coroutine fadeOutHandleCoroutine;
+
+    public Coroutine fadeOutMusicHandleCoroutine;
+    public Coroutine fadeInMusicHandleCoroutine;
 
     public static SoundManager instance;
 
@@ -189,11 +193,6 @@ public class SoundManager : MonoBehaviour
         return counter == 0;
     }
 
-    private void Update()
-    {
-        Debug.Log(audioPack.Count);
-    }
-
     private IEnumerator Co_FadeOut()
     {
         yield return new WaitUntil(FadeOutHandler);
@@ -248,5 +247,99 @@ public class SoundManager : MonoBehaviour
     private IEnumerator Co_FadeIn()
     {
         yield return new WaitUntil(FadeInHandler);
+    }
+
+
+    ////MUSIC
+    public void LoadAndPlayMusic(AudioClip music, float volume = 1.0f)
+    {
+        if (m_MusicAudioSource.isPlaying)
+        {
+            m_MusicAudioSource.Stop();
+        }
+
+        m_MusicAudioSource.volume = volume;
+        m_MusicAudioSource.loop = true;
+        m_MusicAudioSource.clip = music;
+        m_MusicAudioSource.Play();
+    }
+
+    public void StopLoadedMusic()
+    {
+        if (fadeOutMusicHandleCoroutine != null)
+        {
+            StopCoroutine(fadeOutMusicHandleCoroutine);
+        }
+
+        if (m_MusicAudioSource != null && m_MusicAudioSource.isPlaying)
+        {
+            m_MusicAudioSource.Stop();
+        }
+    }
+
+    public void FadeOutLoadedMusic(float fadeOutTime)
+    {
+        if (fadeInMusicHandleCoroutine != null)
+        {
+            StopCoroutine(fadeInMusicHandleCoroutine);
+        }
+
+        m_MusicFadeTime = fadeOutTime;
+        currMusicVolume = m_MusicAudioSource.volume;
+        currMusicTime = 0.0f;
+
+        if (fadeOutMusicHandleCoroutine == null)
+        {
+            fadeOutMusicHandleCoroutine = StartCoroutine(Co_FadeOutMusic());
+        }
+    }
+
+    private bool FadeOutMusicHandler()
+    {
+        currMusicTime += Time.deltaTime;
+
+        m_MusicAudioSource.volume = Mathf.Lerp(currMusicVolume, 0, currMusicTime / m_MusicFadeTime);
+
+        return currMusicTime / m_MusicFadeTime >= 1.0f;
+    }
+
+    private IEnumerator Co_FadeOutMusic()
+    {
+        yield return new WaitUntil(FadeOutMusicHandler);
+        fadeOutMusicHandleCoroutine = null;
+    }
+
+    public void FadeInMusic(AudioClip music, float volume, float fadeInTime = 1.0f)
+    {
+        if (fadeOutMusicHandleCoroutine != null)
+        {
+            StopCoroutine(fadeOutMusicHandleCoroutine);
+        }
+
+        LoadAndPlayMusic(music, 0.0f);
+
+        m_MusicFadeTime = fadeInTime;
+        currMusicVolume = volume;
+        currMusicTime = 0.0f;
+
+        if (fadeInMusicHandleCoroutine == null)
+        {
+            fadeInMusicHandleCoroutine = StartCoroutine(Co_FadeInMusic());
+        }
+    }
+
+    private bool FadeInMusicHandler()
+    {
+        currMusicTime += Time.deltaTime;
+
+        m_MusicAudioSource.volume = Mathf.Lerp(0, currMusicVolume, currMusicTime / m_MusicFadeTime);
+
+        return currMusicTime / m_MusicFadeTime >= 1.0f;
+    }
+
+    private IEnumerator Co_FadeInMusic()
+    {
+        yield return new WaitUntil(FadeInMusicHandler);
+        fadeInMusicHandleCoroutine = null;
     }
 }
