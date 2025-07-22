@@ -125,8 +125,11 @@ public class DrawHandler : MonoBehaviour
         //Handle emission
         if (emmisionColor != Color.black)
         {
-            generatedMaterial.EnableKeyword("_EMISSION");
             generatedMaterial.SetColor("_EmissionColor", emmisionColor);
+        }
+        else
+        {
+            generatedMaterial.DisableKeyword("_EMISSION");
         }
 
         gameObject.GetComponent<MeshRenderer>().material = generatedMaterial;

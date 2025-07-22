@@ -384,7 +384,7 @@ public class FinalConfrontationManager : MonoBehaviour
 
     private IEnumerator Co_PickNextEventWithRandomDelay()
     {
-        yield return new WaitForSeconds(Random.Range(3, 9));
+        yield return new WaitForSeconds(Random.Range(5, 10));
 
         loseBattleCoroutine = StartCoroutine(Co_DelayHandleLose());
 
