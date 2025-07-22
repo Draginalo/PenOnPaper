@@ -22903,7 +22903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: 4
-  executionDelay: 0
+  executionDelay: 2
   enableUpPanel: 0
   enableDownPanel: 1
 --- !u!1001 &1942711011
