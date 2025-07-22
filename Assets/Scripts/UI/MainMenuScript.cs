@@ -74,7 +74,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void SwitchToModeMenu()
     {
-        SoundManager.instance.PlayOneShotSound(buttonSound);
+        SoundManager.instance.PlayOneShotSound(hoverSound);
         mMainMenu.SetActive(false);
         mModeMenu.SetActive(true);
     }

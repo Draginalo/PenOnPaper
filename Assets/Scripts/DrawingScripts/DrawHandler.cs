@@ -71,7 +71,7 @@ public class DrawHandler : MonoBehaviour
     private Coroutine endSketchSFXCoroutine;
     private Coroutine startSketchSFXCoroutine;
     private float currTime = 0.0f;
-    private float maxSketchSFXVolume = 0.5f;
+    private float maxSketchSFXVolume = 0.3f;
     private float currVolume;
 
     public enum WhenToHandleFollowingEvents

@@ -33,7 +33,6 @@ public class SoundManager : MonoBehaviour
         public float currTime;
         public float currVolume;
         public float fadeTime;
-        public Coroutine sfxFadeInCoroutine;
         public AudioState state;
     }
 
@@ -70,6 +69,12 @@ public class SoundManager : MonoBehaviour
         {
             newPack.audioSource = m_SelfAudioSource;
         }
+
+        //To handle if previous music is still fading out
+        //if (newPack.state == AudioState.FADING_IN)
+        //{
+        //    newPack.state = AudioState.NONE;
+        //}
 
         if (newPack.audioSource.isPlaying)
         {
@@ -117,10 +122,13 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        if (audioPack[index].sfxFadeInCoroutine != null)
+        AudioPack pack = audioPack[index];
+        if (pack.state == AudioState.FADING_IN)
         {
-            StopCoroutine(audioPack[index].sfxFadeInCoroutine);
+            pack.state = AudioState.NONE;
         }
+
+        audioPack[index] = pack;
 
         if (audioPack[index].audioSource != null && audioPack[index].audioSource.isPlaying)
         {
@@ -143,12 +151,13 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        if (audioPack[index].sfxFadeInCoroutine != null)
+        AudioPack pack = audioPack[index];
+        if (pack.state == AudioState.FADING_IN)
         {
-            StopCoroutine(audioPack[index].sfxFadeInCoroutine);
+            pack.state = AudioState.NONE;
         }
 
-        AudioPack pack = audioPack[index];
+        audioPack[index] = pack;
 
         pack.fadeTime = fadeOutTime;
         pack.currVolume = audioPack[index].audioSource.volume;
@@ -253,6 +262,12 @@ public class SoundManager : MonoBehaviour
     ////MUSIC
     public void LoadAndPlayMusic(AudioClip music, float volume = 1.0f)
     {
+        //To handle if previous music is still fading out
+        if (fadeOutMusicHandleCoroutine != null)
+        {
+            StopCoroutine(fadeOutMusicHandleCoroutine);
+        }
+
         if (m_MusicAudioSource.isPlaying)
         {
             m_MusicAudioSource.Stop();

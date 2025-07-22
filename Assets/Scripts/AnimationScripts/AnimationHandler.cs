@@ -54,7 +54,7 @@ public class AnimationHandler : MonoBehaviour
     {
         if (sfx != null)
         {
-            SoundManager.instance.PlayOneShotSound(sfx);
+            SoundManager.instance.PlayOneShotSound(sfx, 1.0f);
         }
     }
 }

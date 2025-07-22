@@ -22,7 +22,7 @@ public class SetLightIntesityEvent : GameEvent
 
         if (sfx != null)
         {
-            SoundManager.instance.PlayOneShotSound(sfx);
+            SoundManager.instance.PlayOneShotSound(sfx, 1.0f);
         }
 
         EventSystem.SetLightIntensity(this);

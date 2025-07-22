@@ -362,7 +362,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   totalPixelsX: 512
   totalPixelsY: 512
-  brushSize: 10
+  brushSize: 8
   brushColor: {r: 0, g: 0, b: 0, a: 1}
   emmisionColor: {r: 0, g: 0, b: 0, a: 1}
   drawingCanvasMaterial: {fileID: 2100000, guid: de5412cf00f3e4b44b4aba44e8958ef2, type: 2}

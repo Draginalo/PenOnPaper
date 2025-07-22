@@ -6772,6 +6772,8 @@ GameObject:
   - component: {fileID: 590773019}
   - component: {fileID: 590773018}
   - component: {fileID: 590773025}
+  - component: {fileID: 590773026}
+  - component: {fileID: 590773027}
   m_Layer: 0
   m_Name: StartingGameEvents (3)
   m_TagString: Untagged
@@ -6970,13 +6972,8 @@ MonoBehaviour:
   executionDelay: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 590773021}
-    - {fileID: 590773025}
-    - {fileID: 2064146513}
-    componentParent: {fileID: 590773017}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 590773018}
+    - {fileID: 590773026}
     componentParent: {fileID: 225828278}
     destroyParentComponent: 0
   - eventChain:
@@ -6991,6 +6988,13 @@ MonoBehaviour:
     - {fileID: 590773019}
     componentParent: {fileID: 590773017}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 590773027}
+    - {fileID: 590773021}
+    - {fileID: 590773025}
+    - {fileID: 2064146513}
+    componentParent: {fileID: 590773017}
+    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 590773017}
   excecuteOnStart: 0
 --- !u!4 &590773024
@@ -7024,6 +7028,46 @@ MonoBehaviour:
   eventTrigger: 0
   executionDelay: 0
   newDate: 8/10/2025
+--- !u!114 &590773026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590773017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  executionDelay: 0
+  music: {fileID: 8300000, guid: ed59e73558ecaf94280c8e395aa4282e, type: 3}
+  musicVolume: 1
+  fadeOutMusic: 0
+  fadeInMusic: 1
+  fadeTime: 2
+  playAsOneShotSound: 0
+--- !u!114 &590773027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590773017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  executionDelay: 0
+  music: {fileID: 0}
+  musicVolume: 1
+  fadeOutMusic: 1
+  fadeInMusic: 0
+  fadeTime: 2
+  playAsOneShotSound: 0
 --- !u!4 &609666195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9359af3abcff1134885e920fe704101e, type: 3}
@@ -12771,37 +12815,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036690953}
   m_Mesh: {fileID: 1879900250216117662, guid: eaff46ebcd0d25a4098f71fabe225d15, type: 3}
---- !u!1 &1047508686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1047508687}
-  m_Layer: 0
-  m_Name: ModeTextAndButtons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1047508687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047508686}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8196234, y: 7.6337028, z: -4.504917}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058133605
 GameObject:
   m_ObjectHideFlags: 0
@@ -17728,6 +17741,7 @@ GameObject:
   - component: {fileID: 1542622258}
   - component: {fileID: 1542622259}
   - component: {fileID: 1542622260}
+  - component: {fileID: 1542622261}
   m_Layer: 0
   m_Name: StartingGameEvents (1)
   m_TagString: Untagged
@@ -18038,16 +18052,8 @@ MonoBehaviour:
   executionDelay: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 1542622258}
-    - {fileID: 1542622260}
-    - {fileID: 1542622250}
-    - {fileID: 1542622251}
-    - {fileID: 1542622259}
-    - {fileID: 1875980098}
-    componentParent: {fileID: 1542622248}
-    destroyParentComponent: 0
-  - eventChain:
     - {fileID: 1542622249}
+    - {fileID: 1542622261}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 0
   - eventChain:
@@ -18060,8 +18066,17 @@ MonoBehaviour:
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 1542622256}
+    - {fileID: 1542622260}
     componentParent: {fileID: 1542622248}
     destroyParentComponent: 1
+  - eventChain:
+    - {fileID: 1542622258}
+    - {fileID: 1542622250}
+    - {fileID: 1542622251}
+    - {fileID: 1542622259}
+    - {fileID: 1875980098}
+    componentParent: {fileID: 1542622248}
+    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 1542622248}
   excecuteOnStart: 0
 --- !u!4 &1542622255
@@ -18165,6 +18180,26 @@ MonoBehaviour:
   fadeOutMusic: 1
   fadeInMusic: 0
   fadeTime: 1
+  playAsOneShotSound: 0
+--- !u!114 &1542622261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542622248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  executionDelay: 0
+  music: {fileID: 8300000, guid: 0d6be56799489d3418cbd04b585ce92f, type: 3}
+  musicVolume: 1
+  fadeOutMusic: 0
+  fadeInMusic: 1
+  fadeTime: 5
   playAsOneShotSound: 0
 --- !u!1 &1548838259
 GameObject:
@@ -21926,6 +21961,7 @@ GameObject:
   - component: {fileID: 1875980100}
   - component: {fileID: 1875980101}
   - component: {fileID: 1875980102}
+  - component: {fileID: 1875980103}
   m_Layer: 0
   m_Name: StartingGameEvents (2)
   m_TagString: Untagged
@@ -22002,12 +22038,6 @@ MonoBehaviour:
     componentParent: {fileID: 1409614222}
     destroyParentComponent: 0
   - eventChain:
-    - {fileID: 1875980095}
-    - {fileID: 1875980101}
-    - {fileID: 590773023}
-    componentParent: {fileID: 1875980092}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 1409614223}
     componentParent: {fileID: 1409614222}
     destroyParentComponent: 0
@@ -22019,6 +22049,13 @@ MonoBehaviour:
     - {fileID: 1875980100}
     componentParent: {fileID: 1875980092}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 1875980103}
+    - {fileID: 1875980095}
+    - {fileID: 1875980101}
+    - {fileID: 590773023}
+    componentParent: {fileID: 1875980092}
+    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 1875980092}
   excecuteOnStart: 0
 --- !u!4 &1875980099
@@ -22085,6 +22122,26 @@ MonoBehaviour:
   fadeOutMusic: 0
   fadeInMusic: 0
   fadeTime: 0
+  playAsOneShotSound: 0
+--- !u!114 &1875980103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875980092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  executionDelay: 0
+  music: {fileID: 0}
+  musicVolume: 1
+  fadeOutMusic: 1
+  fadeInMusic: 0
+  fadeTime: 2
   playAsOneShotSound: 0
 --- !u!1 &1887137853
 GameObject:
@@ -22273,6 +22330,7 @@ GameObject:
   - component: {fileID: 1926488641}
   - component: {fileID: 1926488642}
   - component: {fileID: 1926488644}
+  - component: {fileID: 1926488645}
   m_Layer: 0
   m_Name: StartingGameEvents (5)
   m_TagString: Untagged
@@ -22329,6 +22387,7 @@ MonoBehaviour:
     destroyParentComponent: 0
   - eventChain:
     - {fileID: 1926488628}
+    - {fileID: 1926488645}
     - {fileID: 1926488630}
     componentParent: {fileID: 1926488621}
     destroyParentComponent: 0
@@ -22819,6 +22878,22 @@ MonoBehaviour:
   fadeInMusic: 0
   fadeTime: 0
   playAsOneShotSound: 1
+--- !u!114 &1926488645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926488621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ea3af87b147ef45b9e7143ba1cfbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 4
+  executionDelay: 0
+  enableUpPanel: 0
+  enableDownPanel: 1
 --- !u!1001 &1942711011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25544,7 +25619,6 @@ GameObject:
   - component: {fileID: 2049096263}
   - component: {fileID: 2049096265}
   - component: {fileID: 2049096264}
-  - component: {fileID: 2049096266}
   m_Layer: 0
   m_Name: StartingGameEvents
   m_TagString: Untagged
@@ -25584,15 +25658,6 @@ MonoBehaviour:
   executionDelay: 0
   gameEventChains:
   - eventChain:
-    - {fileID: 2049096265}
-    - {fileID: 2049096256}
-    - {fileID: 2049096257}
-    - {fileID: 2049096263}
-    - {fileID: 2049096266}
-    - {fileID: 1542622254}
-    componentParent: {fileID: 2049096250}
-    destroyParentComponent: 1
-  - eventChain:
     - {fileID: 2049096262}
     - {fileID: 2049096260}
     componentParent: {fileID: 2049096250}
@@ -25609,6 +25674,14 @@ MonoBehaviour:
     - {fileID: 2049096258}
     componentParent: {fileID: 2049096250}
     destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 2049096265}
+    - {fileID: 2049096256}
+    - {fileID: 2049096257}
+    - {fileID: 2049096263}
+    - {fileID: 1542622254}
+    componentParent: {fileID: 2049096250}
+    destroyParentComponent: 1
   gameEventChainsParent: {fileID: 2049096250}
   excecuteOnStart: 0
 --- !u!114 &2049096256
@@ -25924,33 +25997,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: 3
+  eventTrigger: 4
   executionDelay: 3
   music: {fileID: 0}
   musicVolume: 0
   fadeOutMusic: 1
   fadeInMusic: 0
   fadeTime: 1
-  playAsOneShotSound: 0
---- !u!114 &2049096266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049096250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTrigger: 0
-  executionDelay: 0
-  music: {fileID: 8300000, guid: 0d6be56799489d3418cbd04b585ce92f, type: 3}
-  musicVolume: 1
-  fadeOutMusic: 0
-  fadeInMusic: 1
-  fadeTime: 5
   playAsOneShotSound: 0
 --- !u!1 &2050836083
 GameObject:
@@ -26132,6 +26185,7 @@ GameObject:
   - component: {fileID: 2064146526}
   - component: {fileID: 2064146525}
   - component: {fileID: 2064146527}
+  - component: {fileID: 2064146528}
   m_Layer: 0
   m_Name: StartingGameEvents (4)
   m_TagString: Untagged
@@ -26455,6 +26509,19 @@ MonoBehaviour:
   executionDelay: 0
   gameEventChains:
   - eventChain:
+    - {fileID: 2064146508}
+    - {fileID: 2064146528}
+    componentParent: {fileID: 370387641}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 2064146512}
+    componentParent: {fileID: 2064146507}
+    destroyParentComponent: 0
+  - eventChain:
+    - {fileID: 370387642}
+    componentParent: {fileID: 370387641}
+    destroyParentComponent: 0
+  - eventChain:
     - {fileID: 2064146515}
     - {fileID: 2064146527}
     componentParent: {fileID: 2064146507}
@@ -26477,18 +26544,6 @@ MonoBehaviour:
     - {fileID: 1926488623}
     componentParent: {fileID: 2064146507}
     destroyParentComponent: 1
-  - eventChain:
-    - {fileID: 2064146508}
-    componentParent: {fileID: 370387641}
-    destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 370387642}
-    componentParent: {fileID: 370387641}
-    destroyParentComponent: 0
-  - eventChain:
-    - {fileID: 2064146512}
-    componentParent: {fileID: 2064146507}
-    destroyParentComponent: 0
   gameEventChainsParent: {fileID: 2064146507}
   excecuteOnStart: 0
 --- !u!4 &2064146514
@@ -26918,6 +26973,26 @@ MonoBehaviour:
   fadeOutMusic: 1
   fadeInMusic: 0
   fadeTime: 1
+  playAsOneShotSound: 0
+--- !u!114 &2064146528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064146507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cb01a3137e0145a662d9370e17762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: 2
+  executionDelay: 0
+  music: {fileID: 8300000, guid: ed59e73558ecaf94280c8e395aa4282e, type: 3}
+  musicVolume: 1
+  fadeOutMusic: 0
+  fadeInMusic: 1
+  fadeTime: 2
   playAsOneShotSound: 0
 --- !u!1 &2099362072
 GameObject:
@@ -37684,21 +37759,20 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 557977116}
-  - {fileID: 5186076928361018907}
-  - {fileID: 1673792737}
+  - {fileID: 963677347}
   - {fileID: 36411563}
-  - {fileID: 107312758}
-  - {fileID: 1018797376}
   - {fileID: 423622184}
+  - {fileID: 107312758}
   - {fileID: 631882746}
+  - {fileID: 1070919366}
+  - {fileID: 924546125}
+  - {fileID: 1673792737}
+  - {fileID: 1485289296}
+  - {fileID: 5186076928361018907}
+  - {fileID: 1018797376}
   - {fileID: 2049096254}
   - {fileID: 1542622255}
   - {fileID: 1875980099}
   - {fileID: 590773024}
   - {fileID: 2064146514}
   - {fileID: 1926488624}
-  - {fileID: 1070919366}
-  - {fileID: 924546125}
-  - {fileID: 1485289296}
-  - {fileID: 963677347}
-  - {fileID: 1047508687}
