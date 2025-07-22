@@ -382,7 +382,7 @@ MonoBehaviour:
   _BottomRightPoint: {fileID: 3889189375377420796}
   drawPoint: {fileID: 8172193093353764175}
   _RaycastDistence: 30
-  drawSpline: {fileID: 5183054694250672997}
+  drawSpline: {fileID: 6929228159023656924}
   _NextPointMarker: {fileID: 9107376181944695540, guid: 1783ff5a557c9da4bbd91b1e4b1faae2, type: 3}
   _CompleteVFX: {fileID: 953012722598039772, guid: 3cf616c1f4667b44384086b9b5becd4e, type: 3}
   followingGameEvents:
@@ -714,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6846075200896744488
 Transform:
   m_ObjectHideFlags: 0
@@ -938,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8872836099295445006
 Transform:
   m_ObjectHideFlags: 0
