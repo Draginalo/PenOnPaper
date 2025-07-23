@@ -266,6 +266,7 @@ public class SoundManager : MonoBehaviour
         if (fadeOutMusicHandleCoroutine != null)
         {
             StopCoroutine(fadeOutMusicHandleCoroutine);
+            fadeOutMusicHandleCoroutine = null;
         }
 
         if (m_MusicAudioSource.isPlaying)
@@ -284,6 +285,7 @@ public class SoundManager : MonoBehaviour
         if (fadeOutMusicHandleCoroutine != null)
         {
             StopCoroutine(fadeOutMusicHandleCoroutine);
+            fadeOutMusicHandleCoroutine = null;
         }
 
         if (m_MusicAudioSource != null && m_MusicAudioSource.isPlaying)
@@ -297,6 +299,7 @@ public class SoundManager : MonoBehaviour
         if (fadeInMusicHandleCoroutine != null)
         {
             StopCoroutine(fadeInMusicHandleCoroutine);
+            fadeInMusicHandleCoroutine = null;
         }
 
         m_MusicFadeTime = fadeOutTime;
@@ -329,6 +332,7 @@ public class SoundManager : MonoBehaviour
         if (fadeOutMusicHandleCoroutine != null)
         {
             StopCoroutine(fadeOutMusicHandleCoroutine);
+            fadeOutMusicHandleCoroutine = null;
         }
 
         LoadAndPlayMusic(music, 0.0f);
